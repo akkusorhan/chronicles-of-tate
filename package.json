@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "three": "^0.157.0",
+    "vite": "^4.4.11"
+  },
+  "name": "chronicles-of-tate",
+  "description": "",
+  "version": "1.0.0",
+  "main": "vite.config.js",
+  "scripts": {
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC"
+}
