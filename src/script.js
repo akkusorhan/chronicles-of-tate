@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
 /**
  * Scene
@@ -8,7 +9,12 @@ const scene = new THREE.Scene()
 /**
  * Models
  */
-
+const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({ color: "red" })
+)
+cube.position.x = 1
+scene.add(cube)
 
 /**
  * Lights
@@ -41,11 +47,13 @@ window.addEventListener('resize', () =>
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(10, sizes.width / sizes.height)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
 
 /**
  * Controls
  */
+const controls = new OrbitControls(camera, document.querySelector(".webgl"))
+controls.enableDamping = true
 
 /**
  * Renderer
@@ -65,7 +73,7 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
 
     // Update controls 
-    // controls.update()
+    controls.update()
 
     // Render
     renderer.render(scene, camera)
