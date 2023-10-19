@@ -16,14 +16,35 @@ const scene = new THREE.Scene()
 /**
  * Models
  */
-const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({ color: "red" })
-)
-cube.position.x = -.05
-cube.position.y = -.05
-cube.position.z = -.05
-scene.add(cube)
+// Group
+const group = new THREE.Group()
+
+for(let i = 0; i < 189; i++) {
+    // Generate random values for red, green, and blue (0 to 255)
+    const red = Math.floor(Math.random() * 256);
+    const green = Math.floor(Math.random() * 256);
+    const blue = Math.floor(Math.random() * 256);
+
+    // Create an RGB color string
+    const randomColor = `rgb(${red}, ${green}, ${blue})`;
+
+    let cube = new THREE.Mesh(
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.MeshBasicMaterial({ color: randomColor })
+    )
+    // Setting a random X, Y, Z value for position
+    const min = -1.5;
+    const max = 1.5;
+    const random = Math.random() * (max - min) + min;
+
+    cube.position.y = (Math.random() - 0.5) * 50 +- Math.random()
+    cube.position.z = (Math.random() - 0.5) * 1 +- Math.random()
+    cube.position.x = (Math.random() - 0.5) * 10 +- Math.random()
+
+    group.add(cube)
+}
+
+scene.add(group)
 
 /**
  * Lights
@@ -56,13 +77,13 @@ window.addEventListener('resize', () =>
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
-camera.position.x = 5
+const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
+camera.position.z = 10
 scene.add(camera)
 
-// gui.add(camera.position, "x").min(-15).max(15).step(.01)
-// gui.add(camera.position, "y").min(-15).max(15).step(.01)
-// gui.add(camera.position, "z").min(-15).max(15).step(.01)
+gui.add(camera.position, "x").min(-15).max(15).step(.01)
+gui.add(camera.position, "y").min(-15).max(15).step(.01)
+gui.add(camera.position, "z").min(-15).max(15).step(.01)
 
 /**
  * Controls
@@ -82,6 +103,9 @@ renderer.render(scene, camera)
 /**
  * Animate
  */
+
+
+// Canvas scene animation (tick function)
 const clock = new THREE.Clock()
 
 const tick = () => {
@@ -96,8 +120,8 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 
-    // console.log(`Camera Position: X: ${camera.position.x} | Y: ${camera.position.y}, Z: ${camera.position.z}`)
-    console.log(`Canvas info: Width: ${sizes.width} | Height: ${sizes.height}`)
+    console.log(`Camera Position: X: ${camera.position.x} | Y: ${camera.position.y}, Z: ${camera.position.z}`)
+    // console.log(`Canvas info: Width: ${sizes.width} | Height: ${sizes.height}`)
 
 }
 tick()
