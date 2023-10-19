@@ -17,7 +17,7 @@ const scene = new THREE.Scene()
  * Models
  */
 // Group
-const group = new THREE.Group()
+const cubes = []
 
 for(let i = 0; i < 189; i++) {
     // Generate random values for red, green, and blue (0 to 255)
@@ -37,14 +37,13 @@ for(let i = 0; i < 189; i++) {
     const max = 1.5;
     const random = Math.random() * (max - min) + min;
 
-    cube.position.y = (Math.random() - 0.5) * 50 +- Math.random()
-    cube.position.z = (Math.random() - 0.5) * 1 +- Math.random()
-    cube.position.x = (Math.random() - 0.5) * 10 +- Math.random()
+    cube.position.y = (Math.random() - 0.5) * 60
+    cube.position.z = (Math.random() - 0.5) * 1 + 1
+    cube.position.x = (Math.random() - 0.5) * 10 
 
-    group.add(cube)
+    scene.add(cube)
+    cubes.push(cube)
 }
-
-scene.add(group)
 
 /**
  * Lights
@@ -107,12 +106,27 @@ renderer.render(scene, camera)
 
 // Canvas scene animation (tick function)
 const clock = new THREE.Clock()
+let previousTime = 0
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
 
     // Update controls 
     controls.update()
+
+    // Animate meshes
+    // for(const mesh of cubes) {
+    //     mesh.rotation.x += deltaTime * 0.1
+    //     mesh.rotation.y += deltaTime * 0.1
+
+    //     mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.001
+
+    //     // mesh.position.y += (Math.random() - 0.5) * 60
+    //     // mesh.position.z = (Math.random() - 0.5) * 1 + 1
+    //     // mesh.position.x = (Math.random() - 0.5) * 10 
+    // }
 
     // Render
     renderer.render(scene, camera)
