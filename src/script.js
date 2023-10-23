@@ -13,11 +13,13 @@ const gui = new dat.GUI()
  */
 const scene = new THREE.Scene()
 
+// Scene conversion factor (adjust as needed)
+const pixelsPerUnit = 10
+
 /**
  * Models
  */
 // Group
-const cubes = []
 
 for(let i = 0; i < 189; i++) {
     // Generate random values for red, green, and blue (0 to 255)
@@ -29,7 +31,7 @@ for(let i = 0; i < 189; i++) {
     const randomColor = `rgb(${red}, ${green}, ${blue})`;
 
     let cube = new THREE.Mesh(
-        new THREE.BoxGeometry(0.5, 0.5, 0.5),
+        new THREE.BoxGeometry(0.5 /pixelsPerUnit , 0.5 / pixelsPerUnit, 0.5 / pixelsPerUnit),
         new THREE.MeshBasicMaterial({ color: randomColor })
     )
     // Setting a random X, Y, Z value for position
@@ -37,12 +39,11 @@ for(let i = 0; i < 189; i++) {
     const max = 1.5;
     const random = Math.random() * (max - min) + min;
 
-    cube.position.y = (Math.random() - 0.5) * 60
-    cube.position.z = (Math.random() - 0.5) * 1 + 1
-    cube.position.x = (Math.random() - 0.5) * 10 
+    cube.position.y = ((Math.random() - 0.5) * 60) / pixelsPerUnit
+    cube.position.z = ((Math.random() - 0.5) * 1 + 1) / pixelsPerUnit
+    cube.position.x = ((Math.random() - 0.5) * 10) / pixelsPerUnit
 
     scene.add(cube)
-    cubes.push(cube)
 }
 
 /**
@@ -52,7 +53,7 @@ for(let i = 0; i < 189; i++) {
 /**
  * Sizes
  */
-const sizes = {
+let sizes = {
     width: window.innerWidth,
     height: window.innerHeight
 }
@@ -72,6 +73,27 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
+// Calculate canvas size
+let highestObject = null
+let lowestObject = null
+
+scene.traverse(object => {
+    if (object instanceof THREE.Mesh) {
+        if (highestObject === null || object.position.y > highestObject.position.y) {
+            highestObject = object
+        } else if (lowestObject === null || object.position.y < lowestObject.position.y) {
+            lowestObject = object
+        }
+    }
+})
+
+if (highestObject && lowestObject) {
+    const distance = highestObject.position.distanceTo(lowestObject.position) * pixelsPerUnit
+
+    console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
+} else {
+    console.log("No valid objects found in the scene, error. Check code.")
+}
 
 /**
  * Camera
@@ -102,6 +124,13 @@ renderer.render(scene, camera)
 /**
  * Animate
  */
+let scrollY = window.scrollY
+
+window.addEventListener("scroll", () => {
+    scrollY = window.scrollY
+
+    console.log(scrollY)
+})
 
 
 // Canvas scene animation (tick function)
@@ -134,7 +163,7 @@ const tick = () => {
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
 
-    console.log(`Camera Position: X: ${camera.position.x} | Y: ${camera.position.y}, Z: ${camera.position.z}`)
+    // console.log(`Camera Position: X: ${camera.position.x} | Y: ${camera.position.y}, Z: ${camera.position.z}`)
     // console.log(`Canvas info: Width: ${sizes.width} | Height: ${sizes.height}`)
 
 }
