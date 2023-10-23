@@ -14,12 +14,11 @@ const gui = new dat.GUI()
 const scene = new THREE.Scene()
 
 // Scene conversion factor (adjust as needed)
-const pixelsPerUnit = 10
+const pixelsPerUnit = 100
 
 /**
  * Models
  */
-// Group
 
 for(let i = 0; i < 189; i++) {
     // Generate random values for red, green, and blue (0 to 255)
@@ -31,17 +30,13 @@ for(let i = 0; i < 189; i++) {
     const randomColor = `rgb(${red}, ${green}, ${blue})`;
 
     let cube = new THREE.Mesh(
-        new THREE.BoxGeometry(0.5 /pixelsPerUnit , 0.5 / pixelsPerUnit, 0.5 / pixelsPerUnit),
+        new THREE.BoxGeometry(0.5, 0.5, 0.5),
         new THREE.MeshBasicMaterial({ color: randomColor })
     )
     // Setting a random X, Y, Z value for position
-    const min = -1.5;
-    const max = 1.5;
-    const random = Math.random() * (max - min) + min;
-
-    cube.position.y = ((Math.random() - 0.5) * 60) / pixelsPerUnit
-    cube.position.z = ((Math.random() - 0.5) * 1 + 1) / pixelsPerUnit
-    cube.position.x = ((Math.random() - 0.5) * 10) / pixelsPerUnit
+    cube.position.y = ((Math.random() - 0.5) * 100)
+    cube.position.z = ((Math.random() - 0.5) * 1) 
+    cube.position.x = ((Math.random() - 0.5) * 10)
 
     scene.add(cube)
 }
@@ -73,7 +68,7 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-// Calculate canvas size
+// Calculate height of scene
 let highestObject = null
 let lowestObject = null
 
@@ -88,7 +83,7 @@ scene.traverse(object => {
 })
 
 if (highestObject && lowestObject) {
-    const distance = highestObject.position.distanceTo(lowestObject.position) * pixelsPerUnit
+    const distance = highestObject.position.distanceTo(lowestObject.position)
 
     console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
 } else {
@@ -105,6 +100,7 @@ scene.add(camera)
 gui.add(camera.position, "x").min(-15).max(15).step(.01)
 gui.add(camera.position, "y").min(-15).max(15).step(.01)
 gui.add(camera.position, "z").min(-15).max(15).step(.01)
+
 
 /**
  * Controls
