@@ -78,6 +78,7 @@ window.addEventListener('resize', () =>
 // Calculate height of scene
 let highestObject = null
 let lowestObject = null
+let distance = null
 
 scene.traverse(object => {
     if (object instanceof THREE.Mesh) {
@@ -90,7 +91,7 @@ scene.traverse(object => {
 })
 
 if (highestObject && lowestObject) {
-    const distance = highestObject.position.distanceTo(lowestObject.position)
+    distance = highestObject.position.distanceTo(lowestObject.position)
 
     console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
 } else {
@@ -148,6 +149,9 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
+
+    // Animate camera
+    // camera.position.y = - scrollY// / sizes.height * distance
 
     // Update controls 
     // controls.update()
