@@ -1,5 +1,5 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from "lil-gui"
 
 /**
@@ -33,10 +33,14 @@ for(let i = 0; i < 189; i++) {
         new THREE.BoxGeometry(0.5, 0.5, 0.5),
         new THREE.MeshBasicMaterial({ color: randomColor })
     )
+    
+    // cubeRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
+    let cubeRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+
     // Setting a random X, Y, Z value for position
-    cube.position.y = ((Math.random() - 0.5) * 100)
+    cube.position.y = ((Math.random() - 0.5) * 120)
     cube.position.z = ((Math.random() - 0.5) * 1) 
-    cube.position.x = ((Math.random() - 0.5) * 10)
+    cube.position.x = ((Math.random() - 0.5) * cubeRandomPositionX)
 
     scene.add(cube)
 }
@@ -50,7 +54,8 @@ for(let i = 0; i < 189; i++) {
  */
 let sizes = {
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+    cameraZ: window.innerHeight / window.innerWidth
 }
 
 window.addEventListener('resize', () =>
@@ -66,6 +71,8 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    console.log(sizes.height / sizes.width)
 })
 
 // Calculate height of scene
@@ -94,19 +101,23 @@ if (highestObject && lowestObject) {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
-camera.position.z = 10
+camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness)
+camera.position.y = highestObject.position.y
+
+
+
 scene.add(camera)
 
 gui.add(camera.position, "x").min(-15).max(15).step(.01)
-gui.add(camera.position, "y").min(-15).max(15).step(.01)
-gui.add(camera.position, "z").min(-15).max(15).step(.01)
+gui.add(camera.position, "y").min(-60).max(60).step(.01)
+gui.add(camera.position, "z").min(-15).max(45).step(.01)
 
 
 /**
  * Controls
  */
-const controls = new OrbitControls(camera, document.querySelector(".webgl"))
-controls.enableDamping = true
+// const controls = new OrbitControls(camera, document.querySelector(".webgl"))
+// controls.enableDamping = true
 
 /**
  * Renderer
@@ -139,7 +150,7 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Update controls 
-    controls.update()
+    // controls.update()
 
     // Animate meshes
     // for(const mesh of cubes) {
