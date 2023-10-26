@@ -38,7 +38,7 @@ for(let i = 0; i < 189; i++) {
     let cubeRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
 
     // Setting a random X, Y, Z value for position
-    cube.position.y = ((Math.random() - 0.5) * 120)
+    cube.position.y = ((Math.random() - 1) * 120)
     cube.position.z = ((Math.random() - 0.5) * 1) 
     cube.position.x = ((Math.random() - 0.5) * cubeRandomPositionX)
 
@@ -110,7 +110,7 @@ camera.position.y = highestObject.position.y
 scene.add(camera)
 
 gui.add(camera.position, "x").min(-15).max(15).step(.01)
-gui.add(camera.position, "y").min(-60).max(60).step(.01)
+gui.add(camera.position, "y").min(-120).max(60).step(.01)
 gui.add(camera.position, "z").min(-15).max(45).step(.01)
 
 
@@ -151,7 +151,7 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Animate camera
-    // camera.position.y = - scrollY// / sizes.height * distance
+    camera.position.y = - scrollY * 0.008  // / sizes.height * distance
 
     // Update controls 
     // controls.update()
