@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 // import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as dat from "lil-gui"
 
 /**
@@ -19,6 +20,7 @@ const pixelsPerUnit = 100
 /**
  * Models
  */
+const gltfLoader = new GLTFLoader()
 
 for(let i = 0; i < 189; i++) {
     // Generate random values for red, green, and blue (0 to 255)
@@ -29,25 +31,50 @@ for(let i = 0; i < 189; i++) {
     // Create an RGB color string
     const randomColor = `rgb(${red}, ${green}, ${blue})`;
 
-    let cube = new THREE.Mesh(
-        new THREE.BoxGeometry(0.5, 0.5, 0.5),
-        new THREE.MeshBasicMaterial({ color: randomColor })
+    const color = new THREE.Color(randomColor).convertSRGBToLinear();
+
+
+    gltfLoader.load(
+        "./letter.glb",
+        (gltf) => {
+            let letter = gltf.scene
+
+            // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
+            let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+
+            // Setting a random X, Y, Z value for position
+            letter.position.y = ((Math.random() - 1) * 120)
+            letter.position.z = ((Math.random() - 0.5) * 1) 
+            letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX)
+
+            scene.add(gltf.scene)
+        }
     )
+
+    // let cube = new THREE.Mesh(
+    //     new THREE.BoxGeometry(0.5, 0.5, 0.5),
+    //     new THREE.MeshBasicMaterial({ color: randomColor })
+    // )
     
-    // cubeRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
-    let cubeRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+    // // cubeRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
+    // let cubeRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
 
-    // Setting a random X, Y, Z value for position
-    cube.position.y = ((Math.random() - 1) * 120)
-    cube.position.z = ((Math.random() - 0.5) * 1) 
-    cube.position.x = ((Math.random() - 0.5) * cubeRandomPositionX)
+    // // Setting a random X, Y, Z value for position
+    // cube.position.y = ((Math.random() - 1) * 120)
+    // cube.position.z = ((Math.random() - 0.5) * 1) 
+    // cube.position.x = ((Math.random() - 0.5) * cubeRandomPositionX)
 
-    scene.add(cube)
+    // scene.add(cube)
 }
 
 /**
  * Lights
  */
+// Ambient Light
+const ambientLight = new THREE.AmbientLight("white")
+ambientLight.intensity = 10
+
+scene.add(ambientLight)
 
 /**
  * Sizes
@@ -80,30 +107,30 @@ let highestObject = null
 let lowestObject = null
 let distance = null
 
-scene.traverse(object => {
-    if (object instanceof THREE.Mesh) {
-        if (highestObject === null || object.position.y > highestObject.position.y) {
-            highestObject = object
-        } else if (lowestObject === null || object.position.y < lowestObject.position.y) {
-            lowestObject = object
-        }
-    }
-})
+// scene.traverse(object => {
+//     if (object instanceof THREE.Mesh) {
+//         if (highestObject === null || object.position.y > highestObject.position.y) {
+//             highestObject = object
+//         } else if (lowestObject === null || object.position.y < lowestObject.position.y) {
+//             lowestObject = object
+//         }
+//     }
+// })
 
-if (highestObject && lowestObject) {
-    distance = highestObject.position.distanceTo(lowestObject.position)
+// if (highestObject && lowestObject) {
+//     distance = highestObject.position.distanceTo(lowestObject.position)
 
-    console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
-} else {
-    console.log("No valid objects found in the scene, error. Check code.")
-}
+//     console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
+// } else {
+//     console.log("No valid objects found in the scene, error. Check code.")
+// }
 
 /**
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
 camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness)
-camera.position.y = highestObject.position.y
+// camera.position.y = highestObject.position.y
 
 
 
