@@ -18,36 +18,52 @@ const scene = new THREE.Scene()
 const pixelsPerUnit = 100
 
 /**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader()
+const letterTexture = textureLoader.load("./textures/letter-texture.png")
+
+/**
  * Models
  */
 const gltfLoader = new GLTFLoader()
 
+const letters = []
+
 for(let i = 0; i < 189; i++) {
-    // Generate random values for red, green, and blue (0 to 255)
-    const red = Math.floor(Math.random() * 256);
-    const green = Math.floor(Math.random() * 256);
-    const blue = Math.floor(Math.random() * 256);
-
-    // Create an RGB color string
-    const randomColor = `rgb(${red}, ${green}, ${blue})`;
-
-    const color = new THREE.Color(randomColor).convertSRGBToLinear();
-
-
     gltfLoader.load(
         "./letter.glb",
         (gltf) => {
             let letter = gltf.scene
 
+            // Applying texture
+            gltf.scene.children[0].material.map = letterTexture
+            gltf.scene.children[0].material.color = null
+
+            gltf.scene.children[1].material.map = letterTexture
+            gltf.scene.children[1].material.color = null
+
+            gltf.scene.children[2].material.map = letterTexture
+            gltf.scene.children[2].material.color = null
+
+            gltf.scene.children[3].material.map = letterTexture
+            gltf.scene.children[3].material.color = null
+
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
             let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
 
             // Setting a random X, Y, Z value for position
-            letter.position.y = ((Math.random() - 1) * 120)
-            letter.position.z = ((Math.random() - 0.5) * 1) 
+            letter.position.y = ((Math.random() - 1) * 110)
+            letter.position.z = ((Math.random() - 0.5) * 3) 
             letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX)
 
+            letter.rotation.x = 0.5
+            letter.rotation.x = Math.random() - 0.1
+            letter.rotation.y = Math.random() - 0.5
+            letter.rotation.z = Math.random() - 0.5
+
             scene.add(gltf.scene)
+            letters.push(letter)
         }
     )
 
@@ -72,7 +88,9 @@ for(let i = 0; i < 189; i++) {
  */
 // Ambient Light
 const ambientLight = new THREE.AmbientLight("white")
-ambientLight.intensity = 10
+ambientLight.intensity = 0.3
+
+gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 
 scene.add(ambientLight)
 
@@ -184,16 +202,16 @@ const tick = () => {
     // controls.update()
 
     // Animate meshes
-    // for(const mesh of cubes) {
-    //     mesh.rotation.x += deltaTime * 0.1
-    //     mesh.rotation.y += deltaTime * 0.1
+    for(const mesh of letters) {
+        // mesh.rotation.x += deltaTime * 0.1
+        // mesh.rotation.y += deltaTime * 0.1
 
-    //     mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.001
+        mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.0007
 
-    //     // mesh.position.y += (Math.random() - 0.5) * 60
-    //     // mesh.position.z = (Math.random() - 0.5) * 1 + 1
-    //     // mesh.position.x = (Math.random() - 0.5) * 10 
-    // }
+        // mesh.position.y += (Math.random() - 0.5) * 60
+        // mesh.position.z = (Math.random() - 0.5) * 1 + 1
+        // mesh.position.x = (Math.random() - 0.5) * 10 
+    }
 
     // Render
     renderer.render(scene, camera)
