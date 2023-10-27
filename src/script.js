@@ -202,6 +202,7 @@ const tick = () => {
     // controls.update()
 
     // Animate meshes
+
     for(const mesh of letters) {
         // mesh.rotation.x += deltaTime * 0.1
         // mesh.rotation.y += deltaTime * 0.1
