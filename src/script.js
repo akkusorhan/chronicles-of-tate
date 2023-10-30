@@ -8,7 +8,6 @@ import * as dat from "lil-gui"
  */
 const gui = new dat.GUI()
 
-
 /**
  * Scene
  */
@@ -33,13 +32,11 @@ const letters = []
 for(let i = 0; i < 189; i++) {
     gltfLoader.load(
         "./letter.glb",
-        (gltf) => {
+        function (gltf) {
             let letter = gltf.scene
 
             let mesh1 = gltf.scene.children[0].children[0]
             let mesh2 = gltf.scene.children[0].children[1]
-
-            let letterMeshes = mesh1 + mesh2
 
             // Applying texture
             mesh1.material.map = letterTexture
@@ -62,27 +59,10 @@ for(let i = 0; i < 189; i++) {
             letter.rotation.z = Math.random() - 0.5
 
             scene.add(gltf.scene)
-            letters.push(letter)
+            letters.push(gltf)
         }
     )
-
-    // let cube = new THREE.Mesh(
-    //     new THREE.BoxGeometry(0.5, 0.5, 0.5),
-    //     new THREE.MeshBasicMaterial({ color: randomColor })
-    // )
-    
-    // // cubeRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
-    // let cubeRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
-
-    // // Setting a random X, Y, Z value for position
-    // cube.position.y = ((Math.random() - 1) * 120)
-    // cube.position.z = ((Math.random() - 0.5) * 1) 
-    // cube.position.x = ((Math.random() - 0.5) * cubeRandomPositionX)
-
-    // scene.add(cube)
 }
-
-console.log(letters)
 
 /**
  * Lights
@@ -117,8 +97,6 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
-
-    console.log(sizes.height / sizes.width)
 })
 
 // Calculate height of scene
@@ -151,8 +129,6 @@ const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
 camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness)
 // camera.position.y = highestObject.position.y
 
-
-
 scene.add(camera)
 
 gui.add(camera.position, "x").min(-15).max(15).step(.01)
@@ -182,8 +158,6 @@ let scrollY = window.scrollY
 
 window.addEventListener("scroll", () => {
     scrollY = window.scrollY
-
-    console.log(scrollY)
 })
 
 
@@ -191,6 +165,7 @@ window.addEventListener("scroll", () => {
 // Canvas scene animation (tick function)
 const clock = new THREE.Clock()
 let previousTime = 0
+
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
@@ -204,25 +179,6 @@ const tick = () => {
 
     // Update controls 
     // controls.update()
-
-    // Animate meshes
-
-    // for(let i = 0; i <= letters.length; i++) {
-    //     let randomPositionAnimation = Math.sin(Math.random())
-
-    //     letters[i].position += new THREE.Vector3(randomPositionAnimation, randomPositionAnimation, randomPositionAnimation)
-    // }
-
-    for(const group of letters) {
-        // mesh.rotation.x += deltaTime * 0.1
-        // mesh.rotation.y += deltaTime * 0.1
-
-        group.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * randomValue * 0.005
-
-        // mesh.position.y += (Math.random() - 0.5) * 60
-        // mesh.position.z = (Math.random() - 0.5) * 1 + 1
-        // mesh.position.x = (Math.random() - 0.5) * 10 
-    }
 
     // Render
     renderer.render(scene, camera)

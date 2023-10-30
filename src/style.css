@@ -15,12 +15,15 @@ body
 
 .sections {
     z-index: 1;
-    border: 3px solid white;
+    /* border: 3px solid white; */
 }
 
 .section-2011 {
     height: 555vh;
-    border: 3px solid red;
+    /* border: 3px solid red; */
+    display: flex;
+    justify-content: center;
+    padding-top: 15vh;
 }
 
 .section-2011 h1 {
@@ -31,7 +34,9 @@ body
 
 .section-2012 {
     height: 555vh;
-    border: 3px solid green;
+    /* border: 3px solid green; */
+    display: flex;
+    justify-content: center;
 }
 
 .section-2012 h1 {
@@ -42,7 +47,9 @@ body
 
 .section-2013 {
     height: 555vh;
-    border: 3px solid blue;
+    /* border: 3px solid blue; */
+    display: flex;
+    justify-content: center;
 }
 
 .section-2013 h1 {
