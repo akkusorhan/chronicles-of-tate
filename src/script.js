@@ -36,18 +36,17 @@ for(let i = 0; i < 189; i++) {
         (gltf) => {
             let letter = gltf.scene
 
+            let mesh1 = gltf.scene.children[0].children[0]
+            let mesh2 = gltf.scene.children[0].children[1]
+
+            let letterMeshes = mesh1 + mesh2
+
             // Applying texture
-            gltf.scene.children[0].material.map = letterTexture
-            gltf.scene.children[0].material.color = null
+            mesh1.material.map = letterTexture
+            mesh1.material.color = null
 
-            gltf.scene.children[1].material.map = letterTexture
-            gltf.scene.children[1].material.color = null
-
-            gltf.scene.children[2].material.map = letterTexture
-            gltf.scene.children[2].material.color = null
-
-            gltf.scene.children[3].material.map = letterTexture
-            gltf.scene.children[3].material.color = null
+            mesh2.material.map = letterTexture
+            mesh2.material.color = null
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
             let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
@@ -82,6 +81,8 @@ for(let i = 0; i < 189; i++) {
 
     // scene.add(cube)
 }
+
+console.log(letters)
 
 /**
  * Lights
@@ -196,6 +197,8 @@ const tick = () => {
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
 
+    const randomValue = Math.round(Math.random() * 3)
+
     // Animate camera
     camera.position.y = - scrollY * 0.008  // / sizes.height * distance
 
@@ -204,11 +207,17 @@ const tick = () => {
 
     // Animate meshes
 
-    for(const mesh of letters) {
+    // for(let i = 0; i <= letters.length; i++) {
+    //     let randomPositionAnimation = Math.sin(Math.random())
+
+    //     letters[i].position += new THREE.Vector3(randomPositionAnimation, randomPositionAnimation, randomPositionAnimation)
+    // }
+
+    for(const group of letters) {
         // mesh.rotation.x += deltaTime * 0.1
         // mesh.rotation.y += deltaTime * 0.1
 
-        mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.007
+        group.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * randomValue * 0.005
 
         // mesh.position.y += (Math.random() - 0.5) * 60
         // mesh.position.z = (Math.random() - 0.5) * 1 + 1
