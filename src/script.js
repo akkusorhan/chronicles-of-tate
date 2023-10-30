@@ -186,6 +186,7 @@ window.addEventListener("scroll", () => {
 })
 
 
+
 // Canvas scene animation (tick function)
 const clock = new THREE.Clock()
 let previousTime = 0
@@ -207,7 +208,7 @@ const tick = () => {
         // mesh.rotation.x += deltaTime * 0.1
         // mesh.rotation.y += deltaTime * 0.1
 
-        mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.0007
+        mesh.position.x += Math.sin(elapsedTime * 0.5 + 0.5) * 0.007
 
         // mesh.position.y += (Math.random() - 0.5) * 60
         // mesh.position.z = (Math.random() - 0.5) * 1 + 1
