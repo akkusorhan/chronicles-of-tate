@@ -7,20 +7,24 @@
     font-family: "Give You Glory";
 }
 
-html,
-body
+html
 {
+    background: #090909;
     overflow: hide;
 }
 
 .sections {
     z-index: 1;
-    /* border: 3px solid white; */
+    border: 3px solid white;
+    /* display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    height: 1000vh; */
 }
 
 .section-2011 {
     height: 555vh;
-    /* border: 3px solid red; */
+    border: 3px solid red;
     display: flex;
     justify-content: center;
     padding-top: 15vh;
@@ -34,7 +38,7 @@ body
 
 .section-2012 {
     height: 555vh;
-    /* border: 3px solid green; */
+    border: 3px solid green;
     display: flex;
     justify-content: center;
 }
@@ -47,7 +51,7 @@ body
 
 .section-2013 {
     height: 555vh;
-    /* border: 3px solid blue; */
+    border: 3px solid blue;
     display: flex;
     justify-content: center;
 }

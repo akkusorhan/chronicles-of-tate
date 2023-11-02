@@ -38,6 +38,12 @@ for(let i = 0; i < 189; i++) {
             let mesh1 = gltf.scene.children[0].children[0]
             let mesh2 = gltf.scene.children[0].children[1]
 
+            mesh1.castShadow = true
+            mesh1.receiveShadow = true
+
+            mesh2.castShadow = true
+            mesh2.receiveShadow = true
+
             // Applying texture
             mesh1.material.map = letterTexture
             mesh1.material.color = null
@@ -60,9 +66,13 @@ for(let i = 0; i < 189; i++) {
 
             scene.add(gltf.scene)
             letters.push(gltf)
+
+
         }
     )
 }
+
+console.log(letters)
 
 /**
  * Lights
@@ -74,6 +84,30 @@ ambientLight.intensity = 0.3
 gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 
 scene.add(ambientLight)
+
+// Point Light (assigned to mouse position)
+// const pointLight = new THREE.PointLight("white", 50)
+// pointLight.position.z = 3
+// pointLight.castShadow = true
+// scene.add(pointLight)
+
+// const pointLightHelper = new THREE.PointLightHelper(pointLight)
+// scene.add(pointLightHelper)
+
+// const mouse = new THREE.Vector2()
+
+// document.addEventListener("mousemove", (event) => {
+//     // Convert mouse coordinates to a normalized value between -1 and 1
+//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+
+//     console.log(mouse.x)
+//     console.log(mouse.y)
+
+//     // Update light position based on mouse position
+//     pointLight.position.x = mouse.x * 5
+//     pointLight.position.y = mouse.y * 5
+// })
 
 /**
  * Sizes
@@ -105,7 +139,7 @@ let lowestObject = null
 let distance = null
 
 // scene.traverse(object => {
-//     if (object instanceof THREE.Mesh) {
+//     if (object instanceof THREE.Group) {
 //         if (highestObject === null || object.position.y > highestObject.position.y) {
 //             highestObject = object
 //         } else if (lowestObject === null || object.position.y < lowestObject.position.y) {
@@ -146,7 +180,8 @@ gui.add(camera.position, "z").min(-15).max(45).step(.01)
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: document.querySelector(".webgl"), 
+    canvas: document.querySelector(".webgl"),
+    alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.render(scene, camera)
