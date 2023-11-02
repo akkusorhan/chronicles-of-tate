@@ -49,11 +49,11 @@ for(let i = 0; i < 189; i++) {
             let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
 
             // Setting a random X, Y, Z value for position
-            letter.position.y = ((Math.random() - 1) * 110)
+            letter.position.y = ((Math.random() - 1) * 110) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle
             letter.position.z = ((Math.random() - 0.5) * 3) 
-            letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX)
+            letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
-            letter.rotation.x = 0.5
+            letter.rotation.x = 0.5 
             letter.rotation.x = Math.random() - 0.1
             letter.rotation.y = Math.random() - 0.5
             letter.rotation.z = Math.random() - 0.5
@@ -126,7 +126,7 @@ let distance = null
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
-camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness)
+camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness), camera will move back on Z axis if on mobile
 // camera.position.y = highestObject.position.y
 
 scene.add(camera)
@@ -171,8 +171,6 @@ const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
-
-    const randomValue = Math.round(Math.random() * 3)
 
     // Animate camera
     camera.position.y = - scrollY * 0.008  // / sizes.height * distance
