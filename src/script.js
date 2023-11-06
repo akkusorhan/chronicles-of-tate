@@ -29,7 +29,7 @@ const gltfLoader = new GLTFLoader()
 
 const letters = []
 
-for(let i = 0; i < 189; i++) {
+for(let i = 0; i < 20; i++) {
     gltfLoader.load(
         "./letter.glb",
         function (gltf) {
@@ -51,11 +51,22 @@ for(let i = 0; i < 189; i++) {
             mesh2.material.map = letterTexture
             mesh2.material.color = null
 
-            // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
-            let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+            // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
+            // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+            let letterRandomPositionX = null
+
+            if(window.innerHeight / window.innerWidth < 0.45) {
+                letterRandomPositionX = 15
+            } else if (window.innerHeight / window.innerWidth > 0.9) {
+                letterRandomPositionX = 5
+            } else if (!window.innerHeight / window.innerWidth < 0.45) {
+                letterRandomPositionX = 10
+            }
 
             // Setting a random X, Y, Z value for position
-            letter.position.y = ((Math.random() - 1) * 110) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle
+            // letter.position.y = ((Math.random() - 0.6) * 5) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle (0.5)
+
+            window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = ((Math.random() - 0.6) * 10) : letter.position.y = ((Math.random() - 0.6) * 7)
             letter.position.z = ((Math.random() - 0.5) * 3) 
             letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
@@ -71,6 +82,49 @@ for(let i = 0; i < 189; i++) {
         }
     )
 }
+
+// for(let i = 0; i < 189; i++) {
+//     gltfLoader.load(
+//         "./letter.glb",
+//         function (gltf) {
+//             let letter = gltf.scene
+
+//             let mesh1 = gltf.scene.children[0].children[0]
+//             let mesh2 = gltf.scene.children[0].children[1]
+
+//             mesh1.castShadow = true
+//             mesh1.receiveShadow = true
+
+//             mesh2.castShadow = true
+//             mesh2.receiveShadow = true
+
+//             // Applying texture
+//             mesh1.material.map = letterTexture
+//             mesh1.material.color = null
+
+//             mesh2.material.map = letterTexture
+//             mesh2.material.color = null
+
+//             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
+//             let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
+
+//             // Setting a random X, Y, Z value for position
+//             letter.position.y = ((Math.random() - 1) * 110) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle
+//             letter.position.z = ((Math.random() - 0.5) * 3) 
+//             letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
+
+//             letter.rotation.x = 0.5 
+//             letter.rotation.x = Math.random() - 0.1
+//             letter.rotation.y = Math.random() - 0.5
+//             letter.rotation.z = Math.random() - 0.5
+
+//             scene.add(gltf.scene)
+//             letters.push(gltf)
+
+
+//         }
+//     )
+// }
 
 console.log(letters)
 
@@ -160,7 +214,8 @@ let distance = null
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
-camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness), camera will move back on Z axis if on mobile
+camera.position.z = 10
+// camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness), camera will move back on Z axis if on mobile
 // camera.position.y = highestObject.position.y
 
 scene.add(camera)
@@ -190,11 +245,64 @@ renderer.render(scene, camera)
  * Animate
  */
 let scrollY = window.scrollY
+let lastScrollPosition = window.scrollY
 
-window.addEventListener("scroll", () => {
+let prevScrollPos = window.scrollY;
+let prevTimestamp = performance.now();
+
+let scrollSpeed
+
+
+window.addEventListener("scroll", (event) => {
     scrollY = window.scrollY
+
+    const currentTimestamp = performance.now();
+    const currentScrollPos = window.scrollY;
+  
+    const timeDiff = currentTimestamp - prevTimestamp;
+    const scrollDiff = currentScrollPos - prevScrollPos;
+  
+    // Calculate scroll speed in pixels per millisecond
+    scrollSpeed = scrollDiff / timeDiff;
+  
+    // Update the previous values for the next calculation
+    prevScrollPos = currentScrollPos;
+    prevTimestamp = currentTimestamp;
+  
+    console.log(`Scroll speed: ${scrollSpeed} pixels per millisecond`);
+  
+
+
+    const currentScrollPosition = window.scrollY
+    let scrollDamp
+    if(window.innerHeight / window.innerWidth < 0.45) {
+        scrollDamp = 0.08
+    } else if (window.innerHeight / window.innerWidth > 0.9) {
+        scrollDamp = 0.09
+    } else if (!window.innerHeight / window.innerWidth < 0.45) {
+        scrollDamp = 0.05
+    }
+
+
+    if (currentScrollPosition < lastScrollPosition) {
+        console.log("Scrolled up")
+
+        for(const mesh of letters) {
+            mesh.scene.position.y += scrollSpeed * scrollDamp
+        }
+
+    } else if (currentScrollPosition > lastScrollPosition) {
+        console.log("Scrolled down")
+
+        for(const mesh of letters) {
+            mesh.scene.position.y += scrollSpeed * scrollDamp
+        }
+    }
+
+    lastScrollPosition = currentScrollPosition
 })
 
+console.log(window.innerHeight * 0.0001)
 
 
 // Canvas scene animation (tick function)
@@ -208,7 +316,17 @@ const tick = () => {
     previousTime = elapsedTime
 
     // Animate camera
-    camera.position.y = - scrollY * 0.008  // / sizes.height * distance
+    // camera.position.y = - scrollY * 0.008  // / sizes.height * distance
+
+    // Updaate mesh position based on scroll
+    for(let i = 0; i < letters.length; i++) {
+        let letter = letters[i].scene
+        if (letter.position.y > 3.5) {
+            letter.position.y = -5
+        } else if (letter.position.y < - 5) {
+            letter.position.y = 3.5
+        }
+    }
 
     // Update controls 
     // controls.update()
