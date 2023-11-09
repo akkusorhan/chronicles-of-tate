@@ -29,7 +29,7 @@ const gltfLoader = new GLTFLoader()
 
 const letters = []
 
-for(let i = 0; i < 20; i++) {
+for(let i = 0; i < 12; i++) {
     gltfLoader.load(
         "./letter.glb",
         function (gltf) {
@@ -50,6 +50,11 @@ for(let i = 0; i < 20; i++) {
 
             mesh2.material.map = letterTexture
             mesh2.material.color = null
+
+            // size
+            letter.scale.x = 1.5
+            letter.scale.y = 1.5
+            letter.scale.z = 1.5
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
@@ -139,8 +144,8 @@ gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 
 scene.add(ambientLight)
 
-// Point Light (assigned to mouse position)
-// const pointLight = new THREE.PointLight("white", 50)
+// // Point Light (assigned to mouse position)
+// const pointLight = new THREE.PointLight("white", 20)
 // pointLight.position.z = 3
 // pointLight.castShadow = true
 // scene.add(pointLight)
@@ -251,6 +256,9 @@ let prevScrollPos = window.scrollY;
 let prevTimestamp = performance.now();
 
 let scrollSpeed
+const verticalScrollDistance = window.scrollY;
+
+console.log(document.querySelector(".sections").offsetHeight)
 
 
 window.addEventListener("scroll", (event) => {
@@ -285,14 +293,14 @@ window.addEventListener("scroll", (event) => {
 
 
     if (currentScrollPosition < lastScrollPosition) {
-        console.log("Scrolled up")
+        // console.log("Scrolled up")
 
         for(const mesh of letters) {
             mesh.scene.position.y += scrollSpeed * scrollDamp
         }
 
     } else if (currentScrollPosition > lastScrollPosition) {
-        console.log("Scrolled down")
+        // console.log("Scrolled down")
 
         for(const mesh of letters) {
             mesh.scene.position.y += scrollSpeed * scrollDamp
