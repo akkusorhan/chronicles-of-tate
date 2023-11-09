@@ -258,7 +258,11 @@ let prevTimestamp = performance.now();
 let scrollSpeed
 const verticalScrollDistance = window.scrollY;
 
-console.log(document.querySelector(".sections").offsetHeight)
+let isTouchScreen = false
+
+window.addEventListener("touchstart", () => {
+    isTouchScreen = true
+})
 
 
 window.addEventListener("scroll", (event) => {
@@ -277,7 +281,7 @@ window.addEventListener("scroll", (event) => {
     prevScrollPos = currentScrollPos;
     prevTimestamp = currentTimestamp;
   
-    console.log(`Scroll speed: ${scrollSpeed} pixels per millisecond`);
+    // console.log(`Scroll speed: ${scrollSpeed} pixels per millisecond`);
   
 
 
@@ -296,18 +300,19 @@ window.addEventListener("scroll", (event) => {
         // console.log("Scrolled up")
 
         for(const mesh of letters) {
-            mesh.scene.position.y += scrollSpeed * scrollDamp
+            mesh.scene.position.y += scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
         }
 
     } else if (currentScrollPosition > lastScrollPosition) {
         // console.log("Scrolled down")
 
         for(const mesh of letters) {
-            mesh.scene.position.y += scrollSpeed * scrollDamp
+            mesh.scene.position.y += scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
         }
     }
 
     lastScrollPosition = currentScrollPosition
+    console.log(lastScrollPosition)
 })
 
 console.log(window.innerHeight * 0.0001)
