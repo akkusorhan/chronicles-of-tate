@@ -51,6 +51,12 @@ for(let i = 0; i < 12; i++) {
             mesh2.material.map = letterTexture
             mesh2.material.color = null
 
+            // Animations
+            const animations = gltf.animations
+            const mixer = new THREE.AnimationMixer(gltf.scene)
+            const action = mixer.clipAction(animations[0])
+            action.play()
+
             // size
             letter.scale.x = 1.5
             letter.scale.y = 1.5
@@ -82,8 +88,6 @@ for(let i = 0; i < 12; i++) {
 
             scene.add(gltf.scene)
             letters.push(gltf)
-
-
         }
     )
 }
@@ -145,7 +149,7 @@ gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 scene.add(ambientLight)
 
 // // Point Light (assigned to mouse position)
-// const pointLight = new THREE.PointLight("white", 20)
+// const pointLight = new THREE.PointLight("white", 10)
 // pointLight.position.z = 3
 // pointLight.castShadow = true
 // scene.add(pointLight)
@@ -264,30 +268,36 @@ window.addEventListener("touchstart", () => {
     isTouchScreen = true
 })
 
+let initialScrollPosition = 0
+let scrollInteration
+let deltaScrollPosition = null
 
-window.addEventListener("scroll", (event) => {
-    scrollY = window.scrollY
+function handleScroll() {
+    scrollY = window.scrollY 
+    scrollInteration = scrollY
+    deltaScrollPosition = scrollInteration - initialScrollPosition 
+    initialScrollPosition = scrollY
 
     const currentTimestamp = performance.now();
     const currentScrollPos = window.scrollY;
-  
+
     const timeDiff = currentTimestamp - prevTimestamp;
     const scrollDiff = currentScrollPos - prevScrollPos;
-  
+
     // Calculate scroll speed in pixels per millisecond
     scrollSpeed = scrollDiff / timeDiff;
-  
+
     // Update the previous values for the next calculation
     prevScrollPos = currentScrollPos;
     prevTimestamp = currentTimestamp;
-  
+
     // console.log(`Scroll speed: ${scrollSpeed} pixels per millisecond`);
-  
+
 
 
     const currentScrollPosition = window.scrollY
     let scrollDamp
-    if(window.innerHeight / window.innerWidth < 0.45) {
+    if (window.innerHeight / window.innerWidth < 0.45) {
         scrollDamp = 0.08
     } else if (window.innerHeight / window.innerWidth > 0.9) {
         scrollDamp = 0.09
@@ -299,23 +309,41 @@ window.addEventListener("scroll", (event) => {
     if (currentScrollPosition < lastScrollPosition) {
         // console.log("Scrolled up")
 
-        for(const mesh of letters) {
-            mesh.scene.position.y += scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
+        for (const mesh of letters) {
+            mesh.scene.position.y += deltaScrollPosition * 0.007 // scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
         }
 
     } else if (currentScrollPosition > lastScrollPosition) {
         // console.log("Scrolled down")
 
-        for(const mesh of letters) {
-            mesh.scene.position.y += scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
+        for (const mesh of letters) {
+            mesh.scene.position.y += deltaScrollPosition * 0.007 // scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
         }
     }
 
     lastScrollPosition = currentScrollPosition
-    console.log(lastScrollPosition)
-})
+    // console.log(lastScrollPosition)
+}
 
-console.log(window.innerHeight * 0.0001)
+function debounce(func, wait, immediate) {
+    let timeout;
+    return function () {
+        const context = this;
+        const args = arguments;
+        const later = function () {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        const callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    };
+}
+
+const debouceScroll = debounce(handleScroll, 0.1 )
+
+window.addEventListener("scroll", debouceScroll)
 
 
 // Canvas scene animation (tick function)
