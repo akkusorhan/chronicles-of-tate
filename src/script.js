@@ -29,7 +29,7 @@ const gltfLoader = new GLTFLoader()
 
 const letters = []
 
-for(let i = 0; i < 12; i++) {
+for(let i = 0; i < 10; i++) {
     gltfLoader.load(
         "./letter.glb",
         function (gltf) {
@@ -82,7 +82,7 @@ for(let i = 0; i < 12; i++) {
             letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
             letter.rotation.x = 0.5 
-            letter.rotation.x = Math.random() - 0.1
+            letter.rotation.x = Math.random() - 0.5
             letter.rotation.y = Math.random() - 0.5
             letter.rotation.z = Math.random() - 0.5
 
