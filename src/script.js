@@ -28,6 +28,12 @@ const letterTexture = textureLoader.load("./textures/letter-texture.png")
 const gltfLoader = new GLTFLoader()
 
 const letters = []
+const mixers = []
+
+// let animations
+// let mixer = new THREE.AnimationMixer()
+// let clip = THREE.AnimationClip
+// let action
 
 for(let i = 0; i < 10; i++) {
     gltfLoader.load(
@@ -52,9 +58,14 @@ for(let i = 0; i < 10; i++) {
             mesh2.material.color = null
 
             // Animations
+            const randomDecimal = Math.random()
+            const randomNumber = Math.floor(randomDecimal * 3) + 1
+
             const animations = gltf.animations
             const mixer = new THREE.AnimationMixer(gltf.scene)
-            const action = mixer.clipAction(animations[0])
+            const clip = THREE.AnimationClip.findByName(animations, `LetterAnimation${randomNumber}`)
+            const action = mixer.clipAction(clip)
+            mixers.push(mixer)
             action.play()
 
             // size
@@ -136,15 +147,18 @@ for(let i = 0; i < 10; i++) {
 // }
 
 console.log(letters)
+console.log(mixers)
 
 /**
  * Lights
  */
 // Ambient Light
-const ambientLight = new THREE.AmbientLight("white")
+const ambientLightColor = new THREE.Color("#ffe7d6")
+const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 0.3
 
 gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
@@ -350,7 +364,6 @@ window.addEventListener("scroll", debouceScroll)
 const clock = new THREE.Clock()
 let previousTime = 0
 
-
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
@@ -358,6 +371,11 @@ const tick = () => {
 
     // Animate camera
     // camera.position.y = - scrollY * 0.008  // / sizes.height * distance
+
+    // Update animations mixer
+    for(const mixer of mixers) {
+        mixer.update(deltaTime)
+    }
 
     // Updaate mesh position based on scroll
     for(let i = 0; i < letters.length; i++) {
