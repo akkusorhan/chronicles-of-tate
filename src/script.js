@@ -99,6 +99,7 @@ for(let i = 0; i < 10; i++) {
 
             scene.add(gltf.scene)
             letters.push(gltf)
+
         }
     )
 }
@@ -359,7 +360,6 @@ const debouceScroll = debounce(handleScroll, 0.1 )
 
 window.addEventListener("scroll", debouceScroll)
 
-
 // Canvas scene animation (tick function)
 const clock = new THREE.Clock()
 let previousTime = 0
@@ -377,15 +377,20 @@ const tick = () => {
         mixer.update(deltaTime)
     }
 
-    // Updaate mesh position based on scroll
+    // Update mesh position based on scroll
     for(let i = 0; i < letters.length; i++) {
         let letter = letters[i].scene
+        let letter0X = letters[0].scene.position.x
+        let letter0Y = letters[0].scene.position.y
+        let letter0Z = letters[0].scene.position.z
+        console.log(`X: ${letter0X} | Y: ${letter0Y} | Z: ${letter0Z}`)
         if (letter.position.y > 3.5) {
             letter.position.y = -5
         } else if (letter.position.y < - 5) {
             letter.position.y = 3.5
         }
     }
+
 
     // Update controls 
     // controls.update()
