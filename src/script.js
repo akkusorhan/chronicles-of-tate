@@ -30,12 +30,16 @@ const gltfLoader = new GLTFLoader()
 const letters = []
 const mixers = []
 
-// let animations
-// let mixer = new THREE.AnimationMixer()
-// let clip = THREE.AnimationClip
-// let action
+let letterGenerationVariable
+if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
+    letterGenerationVariable = 20
+} else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
+    letterGenerationVariable = 10
+} else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
+    letterGenerationVariable = 15
+}
 
-for(let i = 0; i < 10; i++) {
+for(let i = 0; i < letterGenerationVariable; i++) {
     gltfLoader.load(
         "./letter.glb",
         function (gltf) {
@@ -77,11 +81,11 @@ for(let i = 0; i < 10; i++) {
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
             let letterRandomPositionX = null
 
-            if(window.innerHeight / window.innerWidth < 0.45) {
+            if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
                 letterRandomPositionX = 15
-            } else if (window.innerHeight / window.innerWidth > 0.9) {
+            } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
                 letterRandomPositionX = 5
-            } else if (!window.innerHeight / window.innerWidth < 0.45) {
+            } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
                 letterRandomPositionX = 10
             }
 
@@ -93,9 +97,9 @@ for(let i = 0; i < 10; i++) {
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
             letter.rotation.x = 0.5 
-            letter.rotation.x = Math.random() - 0.5 * 1.5
-            letter.rotation.y = Math.random() - 0.5 * 1.5
-            letter.rotation.z = Math.random() - 0.5 * 1.5
+            letter.rotation.x = Math.random() - 0.5 * 1.2
+            letter.rotation.y = Math.random() - 0.5 * 1.2
+            letter.rotation.z = Math.random() - 0.5 * 1.2
 
             scene.add(gltf.scene)
             letters.push(gltf)
@@ -364,6 +368,12 @@ window.addEventListener("scroll", debouceScroll)
 const clock = new THREE.Clock()
 let previousTime = 0
 
+// test button
+const testButton = document.createElement("button")
+testButton.classList.add("test-button")
+testButton.innerHTML = "test-button"
+document.querySelector(".sections").appendChild(testButton)
+
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
@@ -385,7 +395,17 @@ const tick = () => {
         let letter0X = letters[0].scene.position.x
         let letter0Y = letters[0].scene.position.y
         let letter0Z = letters[0].scene.position.z
-        console.log(`X: ${letter0X} | Y: ${letter0Y} | Z: ${letter0Z}`)
+
+        let letterPosition = letters[0].scene.position.clone()
+        letterPosition.project(camera)
+
+        let translateX = letterPosition.x * sizes.width * 0.5
+        let translateY = -letterPosition.y * sizes.height * 0.5
+
+        testButton.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
+        // console.log(letterPosition)
+        console.log(translateY)
+        // console.log(`X: ${letter0X} | Y: ${letter0Y} | Z: ${letter0Z}`)
 
         // Setting X again for random position
         let letterRandomPositionX = null
@@ -399,14 +419,15 @@ const tick = () => {
         }
 
 
-        if (letter.position.y > 3.5) {
-            letter.position.y = -5
+        if (letter.position.y > 3.95) {
+            letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
-        } else if (letter.position.y < - 5) {
-            letter.position.y = 3.5
-            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
+        } else if (letter.position.y < -3.95) {
+            letter.position.y = 3.95
+            // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
         }
     }
+
 
 
     // Update controls 

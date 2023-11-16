@@ -13,6 +13,11 @@ html
     overflow: hide;
 }
 
+.test-button {
+    border: 3px solid red;
+    position: fixed;
+}
+
 .sections {
     z-index: 1;
     border: 3px solid white;
