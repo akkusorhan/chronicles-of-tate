@@ -25,12 +25,21 @@ html
 .section-2011 {
     height: 555vh;
     border: 3px solid red;
-    display: flex;
-    justify-content: center;
-    padding-top: 15vh;
+    /* display: flex;
+    justify-content: center; */
+    /* padding-top: 15vh; */
 }
 
-.section-2011 h1 {
+.section-2011-text {
+    border: 3px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+
+}
+
+.section-2011-text h1 {
     color: white;
     font-size: 134px;
     font-weight: 400;

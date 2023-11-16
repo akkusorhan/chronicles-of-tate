@@ -69,9 +69,9 @@ for(let i = 0; i < 10; i++) {
             action.play()
 
             // size
-            letter.scale.x = 1.5
-            letter.scale.y = 1.5
-            letter.scale.z = 1.5
+            letter.scale.x = 1.30
+            letter.scale.y = 1.30
+            letter.scale.z = 1.30
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
@@ -88,14 +88,14 @@ for(let i = 0; i < 10; i++) {
             // Setting a random X, Y, Z value for position
             // letter.position.y = ((Math.random() - 0.6) * 5) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle (0.5)
 
-            window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = ((Math.random() - 0.6) * 10) : letter.position.y = ((Math.random() - 0.6) * 7)
+            window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = Math.round((Math.random() - 0.6) * 10) : letter.position.y = Math.round((Math.random() - 0.6) * 7)
             letter.position.z = ((Math.random() - 0.5) * 3) 
-            letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
+            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
             letter.rotation.x = 0.5 
-            letter.rotation.x = Math.random() - 0.5
-            letter.rotation.y = Math.random() - 0.5
-            letter.rotation.z = Math.random() - 0.5
+            letter.rotation.x = Math.random() - 0.5 * 1.5
+            letter.rotation.y = Math.random() - 0.5 * 1.5
+            letter.rotation.z = Math.random() - 0.5 * 1.5
 
             scene.add(gltf.scene)
             letters.push(gltf)
@@ -380,14 +380,31 @@ const tick = () => {
     // Update mesh position based on scroll
     for(let i = 0; i < letters.length; i++) {
         let letter = letters[i].scene
+
+        // Tracking position
         let letter0X = letters[0].scene.position.x
         let letter0Y = letters[0].scene.position.y
         let letter0Z = letters[0].scene.position.z
         console.log(`X: ${letter0X} | Y: ${letter0Y} | Z: ${letter0Z}`)
+
+        // Setting X again for random position
+        let letterRandomPositionX = null
+
+        if (window.innerHeight / window.innerWidth < 0.45) {
+            letterRandomPositionX = 15
+        } else if (window.innerHeight / window.innerWidth > 0.9) {
+            letterRandomPositionX = 5
+        } else if (!window.innerHeight / window.innerWidth < 0.45) {
+            letterRandomPositionX = 10
+        }
+
+
         if (letter.position.y > 3.5) {
             letter.position.y = -5
+            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
         } else if (letter.position.y < - 5) {
             letter.position.y = 3.5
+            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
         }
     }
 
