@@ -4,18 +4,13 @@
 {
     margin: 0;
     padding: 0;
-    font-family: "Give You Glory";
+    font-family: 'Give You Glory', cursive;
 }
 
 html
 {
     background: #0e0e0e;
     overflow: hide;
-}
-
-.test-button {
-    border: 3px solid red;
-    /* position: absolute; */
 }
 
 .sections {
@@ -28,7 +23,7 @@ html
 }
 
 .section-2011 {
-    height: 110vh;
+    height: 510vh;
     border: 3px solid red;
     display: flex;
     flex-direction: column;
@@ -50,6 +45,23 @@ html
     color: white;
     font-size: 134px;
     font-weight: 400;
+}
+
+.section-2011-quote {
+    border: 3px solid blueviolet;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 35px;
+    font-weight: 100;
+}
+
+.section-2011-quote img {
+}
+
+.section-2011-quote h3 {
+    width: 35vw;
 }
 
 .section-2011-end {
