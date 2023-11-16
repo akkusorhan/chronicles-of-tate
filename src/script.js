@@ -29,6 +29,7 @@ const gltfLoader = new GLTFLoader()
 
 const letters = []
 const mixers = []
+let letterCount = []
 
 let letterGenerationVariable
 if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
@@ -103,6 +104,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
 
             scene.add(gltf.scene)
             letters.push(gltf)
+            letterCount.push(i)
 
         }
     )
@@ -153,6 +155,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
 
 console.log(letters)
 console.log(mixers)
+console.log(letterCount)
 
 /**
  * Lights
@@ -272,6 +275,19 @@ renderer.render(scene, camera)
 /**
  * Animate
  */
+// Function to check if the element is in the viewport
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+    );
+}
+
+
+// Scroll animation
 let scrollY = window.scrollY
 let lastScrollPosition = window.scrollY
 
@@ -342,6 +358,15 @@ function handleScroll() {
 
     lastScrollPosition = currentScrollPosition
     // console.log(lastScrollPosition)
+
+    // Extend section-2011 height
+    // Check for target div in viewport
+    const section2011End = document.querySelector('.section-2011-end');
+
+    if (isInViewport(section2011End) && letterCount.length < 58) {
+        // console.log("extend...")
+    }
+
 }
 
 function debounce(func, wait, immediate) {
@@ -368,12 +393,6 @@ window.addEventListener("scroll", debouceScroll)
 const clock = new THREE.Clock()
 let previousTime = 0
 
-// test button
-const testButton = document.createElement("button")
-testButton.classList.add("test-button")
-testButton.innerHTML = "test-button"
-document.querySelector(".sections").appendChild(testButton)
-
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
@@ -391,22 +410,6 @@ const tick = () => {
     for(let i = 0; i < letters.length; i++) {
         let letter = letters[i].scene
 
-        // Tracking position
-        let letter0X = letters[0].scene.position.x
-        let letter0Y = letters[0].scene.position.y
-        let letter0Z = letters[0].scene.position.z
-
-        let letterPosition = letters[0].scene.position.clone()
-        letterPosition.project(camera)
-
-        let translateX = letterPosition.x * sizes.width * 0.5
-        let translateY = -letterPosition.y * sizes.height * 0.5
-
-        testButton.style.transform = `translateX(${translateX}px) translateY(${translateY}px)`
-        // console.log(letterPosition)
-        console.log(translateY)
-        // console.log(`X: ${letter0X} | Y: ${letter0Y} | Z: ${letter0Z}`)
-
         // Setting X again for random position
         let letterRandomPositionX = null
 
@@ -418,13 +421,16 @@ const tick = () => {
             letterRandomPositionX = 10
         }
 
-
         if (letter.position.y > 3.95) {
             letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
+            letterCount.push(letterCount.length)
+            console.log(letterCount)
         } else if (letter.position.y < -3.95) {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
+            letterCount.pop()
+            console.log(letterCount)
         }
     }
 

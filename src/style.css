@@ -15,7 +15,7 @@ html
 
 .test-button {
     border: 3px solid red;
-    position: fixed;
+    /* position: absolute; */
 }
 
 .sections {
@@ -28,10 +28,12 @@ html
 }
 
 .section-2011 {
-    height: 555vh;
+    height: 110vh;
     border: 3px solid red;
-    /* display: flex;
-    justify-content: center; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* justify-content: center; */
     /* padding-top: 15vh; */
 }
 
@@ -48,6 +50,11 @@ html
     color: white;
     font-size: 134px;
     font-weight: 400;
+}
+
+.section-2011-end {
+    border: 3px solid orange;
+    height: 1vh;
 }
 
 .section-2012 {
