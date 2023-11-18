@@ -23,7 +23,7 @@ html
 }
 
 .section-2011 {
-    height: 510vh;
+    height: 400vh;
     border: 3px solid red;
     display: flex;
     flex-direction: column;
@@ -58,15 +58,37 @@ html
 }
 
 .section-2011-quote img {
+    border: 1px solid orange;
 }
 
 .section-2011-quote h3 {
     width: 35vw;
+    border: 1px solid orange;
+    margin: 10px;
 }
 
 .section-2011-end {
     border: 3px solid orange;
     height: 1vh;
+}
+
+@media (max-width: 1000px) {
+    .section-2011-quote {
+        flex-direction: column;
+    }
+
+    .reverse {
+        flex-direction: column-reverse;
+    }
+
+    .section-2011-quote img {
+        width: 75vw;
+    }
+
+    .section-2011-quote h3 {
+        width: 75vw;
+    }
+    
 }
 
 .section-2012 {

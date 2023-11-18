@@ -33,7 +33,7 @@ let letterCount = []
 
 let letterGenerationVariable
 if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
-    letterGenerationVariable = 20
+    letterGenerationVariable = 15
 } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
     letterGenerationVariable = 10
 } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
@@ -54,6 +54,9 @@ for(let i = 0; i < letterGenerationVariable; i++) {
 
             mesh2.castShadow = true
             mesh2.receiveShadow = true
+
+            gltf.scene.castShadow = true
+            gltf.scene.receiveShadow = true
 
             // Applying texture
             mesh1.material.map = letterTexture
@@ -306,6 +309,7 @@ window.addEventListener("touchstart", () => {
 let initialScrollPosition = 0
 let scrollInteration
 let deltaScrollPosition = null
+let section2011Vh = 400
 
 function handleScroll() {
     scrollY = window.scrollY 
@@ -340,6 +344,10 @@ function handleScroll() {
         scrollDamp = 0.05
     }
 
+    if(window.innerHeight / window.innerWidth > 1.34 && window.innerHeight / window.innerWidth < 1.45 && isTouchScreen == true) {
+        scrollDamp = 0.8
+    }
+
 
     if (currentScrollPosition < lastScrollPosition) {
         // console.log("Scrolled up")
@@ -364,7 +372,9 @@ function handleScroll() {
     const section2011End = document.querySelector('.section-2011-end');
 
     if (isInViewport(section2011End) && letterCount.length < 58) {
-        // console.log("extend...")
+        section2011Vh += 10
+        document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
+        console.log("extend...")
     }
 
 }
@@ -425,12 +435,12 @@ const tick = () => {
             letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
             letterCount.push(letterCount.length)
-            console.log(letterCount)
+            // console.log(letterCount)
         } else if (letter.position.y < -3.95) {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
             letterCount.pop()
-            console.log(letterCount)
+            // console.log(letterCount)
         }
     }
 
