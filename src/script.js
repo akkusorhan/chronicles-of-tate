@@ -30,6 +30,10 @@ const gltfLoader = new GLTFLoader()
 const letters = []
 const mixers = []
 let letterCount = []
+const chessPieces = [
+    "king", 
+    "queen"
+]
 
 let letterGenerationVariable
 if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
@@ -37,49 +41,60 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
 } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
     letterGenerationVariable = 10
 } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
-    letterGenerationVariable = 15
+    letterGenerationVariable = 10
 }
 
 for(let i = 0; i < letterGenerationVariable; i++) {
+    const randomIndex = Math.floor(Math.random() * chessPieces.length)
     gltfLoader.load(
-        "./letter.glb",
+        `./${chessPieces[randomIndex]}.glb`,
         function (gltf) {
             let letter = gltf.scene
+            // letter.children[0].material.map = textureLoader.load("./textures/chess-texture.png")
+            // letter.children[0].castShadow = true
+            // letter.children[0].receiveShadow = true
 
-            let mesh1 = gltf.scene.children[0].children[0]
-            let mesh2 = gltf.scene.children[0].children[1]
+            // letter.children[0].material.map = textureLoader.load("./textures/chess-texture.png")
+            // letter.children[0].material.color = "white"
 
-            mesh1.castShadow = true
-            mesh1.receiveShadow = true
+            // let mesh1 = gltf.scene.children[0].children[0]
+            // let mesh2 = gltf.scene.children[0].children[1]
 
-            mesh2.castShadow = true
-            mesh2.receiveShadow = true
+            // mesh1.castShadow = true
+            // mesh1.receiveShadow = true
 
-            gltf.scene.castShadow = true
-            gltf.scene.receiveShadow = true
+            // mesh2.castShadow = true
+            // mesh2.receiveShadow = true
 
-            // Applying texture
-            mesh1.material.map = letterTexture
-            mesh1.material.color = null
+            // gltf.scene.castShadow = true
+            // gltf.scene.receiveShadow = true
 
-            mesh2.material.map = letterTexture
-            mesh2.material.color = null
+            // // Applying texture
+            // mesh1.material.map = letterTexture
+            // mesh1.material.color = null
 
-            // Animations
-            const randomDecimal = Math.random()
-            const randomNumber = Math.floor(randomDecimal * 3) + 1
+            // mesh2.material.map = letterTexture
+            // mesh2.material.color = null
 
-            const animations = gltf.animations
-            const mixer = new THREE.AnimationMixer(gltf.scene)
-            const clip = THREE.AnimationClip.findByName(animations, `LetterAnimation${randomNumber}`)
-            const action = mixer.clipAction(clip)
-            mixers.push(mixer)
-            action.play()
+            // // Animations
+            // const randomDecimal = Math.random()
+            // const randomNumber = Math.floor(randomDecimal * 3) + 1
+
+            // const animations = gltf.animations
+            // const mixer = new THREE.AnimationMixer(gltf.scene)
+            // const clip = THREE.AnimationClip.findByName(animations, `${chessPieces[randomIndex]}${randomNumber}`)
+            // const action = mixer.clipAction(clip)
+            // mixers.push(mixer)
+            // action.play()
 
             // size
-            letter.scale.x = 1.30
-            letter.scale.y = 1.30
-            letter.scale.z = 1.30
+            // letter.scale.x = 1.30
+            // letter.scale.y = 1.30
+            // letter.scale.z = 1.30
+
+            letter.scale.x = .10
+            letter.scale.y = .10
+            letter.scale.z = .10
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
@@ -90,7 +105,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
                 letterRandomPositionX = 5
             } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
-                letterRandomPositionX = 10
+                letterRandomPositionX = 10 
             }
 
             // Setting a random X, Y, Z value for position
@@ -100,7 +115,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letter.position.z = ((Math.random() - 0.5) * 3) 
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
-            letter.rotation.x = 0.5 
+            // letter.rotation.x = 0.5 
             letter.rotation.x = Math.random() - 0.5 * 1.2
             letter.rotation.y = Math.random() - 0.5 * 1.2
             letter.rotation.z = Math.random() - 0.5 * 1.2
@@ -173,29 +188,29 @@ gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
-// // Point Light (assigned to mouse position)
-// const pointLight = new THREE.PointLight("white", 10)
-// pointLight.position.z = 3
-// pointLight.castShadow = true
-// scene.add(pointLight)
+// Point Light (assigned to mouse position)
+const pointLight = new THREE.PointLight("white", 40) // regular 50
+pointLight.position.z = 3
+pointLight.castShadow = true
+scene.add(pointLight)
 
-// const pointLightHelper = new THREE.PointLightHelper(pointLight)
+const pointLightHelper = new THREE.PointLightHelper(pointLight)
 // scene.add(pointLightHelper)
 
-// const mouse = new THREE.Vector2()
+const mouse = new THREE.Vector2()
 
-// document.addEventListener("mousemove", (event) => {
-//     // Convert mouse coordinates to a normalized value between -1 and 1
-//     mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-//     mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+document.addEventListener("mousemove", (event) => {
+    // Convert mouse coordinates to a normalized value between -1 and 1
+    mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
 
-//     console.log(mouse.x)
-//     console.log(mouse.y)
+    console.log(mouse.x)
+    console.log(mouse.y)
 
-//     // Update light position based on mouse position
-//     pointLight.position.x = mouse.x * 5
-//     pointLight.position.y = mouse.y * 5
-// })
+    // Update light position based on mouse position
+    pointLight.position.x = mouse.x * 5
+    pointLight.position.y = mouse.y * 5
+})
 
 /**
  * Sizes

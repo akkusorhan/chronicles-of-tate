@@ -9,7 +9,8 @@
 
 html
 {
-    background: #0e0e0e;
+    /* background: #0e0e0e; */
+    background: black;
     overflow: hide;
 }
 
