@@ -32,7 +32,8 @@ const mixers = []
 let letterCount = []
 const chessPieces = [
     "king", 
-    "bishop"
+    "bishop", 
+    "rook"
 ]
 
 let letterGenerationVariable
