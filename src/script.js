@@ -32,7 +32,7 @@ const mixers = []
 let letterCount = []
 const chessPieces = [
     "king", 
-    "queen"
+    "bishop"
 ]
 
 let letterGenerationVariable
@@ -77,15 +77,15 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             // mesh2.material.color = null
 
             // // Animations
-            // const randomDecimal = Math.random()
-            // const randomNumber = Math.floor(randomDecimal * 3) + 1
+            const randomDecimal = Math.random()
+            const randomNumber = Math.floor(randomDecimal * 3) + 1
 
-            // const animations = gltf.animations
-            // const mixer = new THREE.AnimationMixer(gltf.scene)
-            // const clip = THREE.AnimationClip.findByName(animations, `${chessPieces[randomIndex]}${randomNumber}`)
-            // const action = mixer.clipAction(clip)
-            // mixers.push(mixer)
-            // action.play()
+            const animations = gltf.animations
+            const mixer = new THREE.AnimationMixer(gltf.scene)
+            const clip = THREE.AnimationClip.findByName(animations, `${chessPieces[randomIndex]}${randomNumber}`)
+            const action = mixer.clipAction(clip)
+            mixers.push(mixer)
+            action.play()
 
             // size
             // letter.scale.x = 1.30
@@ -179,17 +179,17 @@ console.log(letterCount)
  * Lights
  */
 // Ambient Light
-const ambientLightColor = new THREE.Color("#ffe7d6")
-const ambientLight = new THREE.AmbientLight(ambientLightColor)
-ambientLight.intensity = 0.3
+// const ambientLightColor = new THREE.Color("#ffe7d6")
+// const ambientLight = new THREE.AmbientLight(ambientLightColor)
+// ambientLight.intensity = 0.3
 
-gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-gui.addColor(ambientLight, "color").name("ambientLightColor")
+// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+// gui.addColor(ambientLight, "color").name("ambientLightColor")
 
-scene.add(ambientLight)
+// scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("white", 40) // regular 50
+const pointLight = new THREE.PointLight("white", 30) // regular 50
 pointLight.position.z = 3
 pointLight.castShadow = true
 scene.add(pointLight)
@@ -200,16 +200,21 @@ const pointLightHelper = new THREE.PointLightHelper(pointLight)
 const mouse = new THREE.Vector2()
 
 document.addEventListener("mousemove", (event) => {
-    // Convert mouse coordinates to a normalized value between -1 and 1
-    mouse.x = (event.clientX / window.innerWidth) * 2 - 1
-    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
+    if(!isTouchScreen) {
+        // Convert mouse coordinates to a normalized value between -1 and 1
+        mouse.x = (event.clientX / window.innerWidth) * 2 - 1
+        mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
 
-    console.log(mouse.x)
-    console.log(mouse.y)
+        console.log(mouse.x)
+        console.log(mouse.y)
 
-    // Update light position based on mouse position
-    pointLight.position.x = mouse.x * 5
-    pointLight.position.y = mouse.y * 5
+        // Update light position based on mouse position
+        pointLight.position.x = mouse.x * 5
+        pointLight.position.y = mouse.y * 5
+    } else {
+        pointLight.position.x = 0
+        pointLight.position.y = 0
+    }
 })
 
 /**
