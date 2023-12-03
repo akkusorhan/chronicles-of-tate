@@ -21,6 +21,7 @@ const pixelsPerUnit = 100
  */
 const textureLoader = new THREE.TextureLoader()
 const letterTexture = textureLoader.load("./textures/letter-texture.png")
+const chessTexture = textureLoader.load("./textures/chess-texture.png")
 
 /**
  * Models
@@ -31,9 +32,12 @@ const letters = []
 const mixers = []
 let letterCount = []
 const chessPieces = [
-    "king", 
+    "king",
+    "queen",
     "bishop", 
-    "rook"
+    "rook", 
+    "knight",
+    "pawn"
 ]
 
 let letterGenerationVariable
@@ -96,6 +100,12 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letter.scale.x = .10
             letter.scale.y = .10
             letter.scale.z = .10
+
+            if(chessPieces[randomIndex] == "rook") {
+                letter.scale.x = .16
+                letter.scale.y = .16
+                letter.scale.z = .16
+            }
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
