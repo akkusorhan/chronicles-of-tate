@@ -58,6 +58,17 @@ html
     font-weight: 100;
 }
 
+.viewport-enter {
+    border: 3px solid yellow;
+    height: 1vh;
+}
+
+.viewport-exit {
+    border: 3px solid yellow;
+    height: 1vh;
+    margin-bottom: 100vh;
+}
+
 .section-2011-quote img {
     border: 1px solid orange;
 }
@@ -88,21 +99,36 @@ html
 
     .section-2011-quote h3 {
         width: 75vw;
+        font-size: 22px;
     }
     
 }
 
 .section-2012 {
-    height: 555vh;
+    height: 600vh;
     border: 3px solid green;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section-2012-text {
+    border: 3px solid orange;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 .section-2012 h1 {
     color: white;
     font-size: 134px;
     font-weight: 400;
+}
+
+.section-2012-end {
+    border: 3px solid orange;
+    height: 1vh;
 }
 
 .section-2013 {

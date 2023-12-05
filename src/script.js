@@ -341,6 +341,7 @@ let initialScrollPosition = 0
 let scrollInteration
 let deltaScrollPosition = null
 let section2011Vh = 400
+let section2012Vh = 400
 
 function handleScroll() {
     scrollY = window.scrollY 
@@ -401,10 +402,15 @@ function handleScroll() {
     // Extend section-2011 height
     // Check for target div in viewport
     const section2011End = document.querySelector('.section-2011-end');
+    const section2012End = document.querySelector('.section-2012-end');
 
     if (isInViewport(section2011End) && letterCount.length < 58) {
         section2011Vh += 10
         document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
+        console.log("extend...")
+    } else if (isInViewport(section2012End) && letterCount.length < 146) {
+        section2012Vh += 10
+        document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
         console.log("extend...")
     }
 
@@ -462,17 +468,33 @@ const tick = () => {
             letterRandomPositionX = 10
         }
 
-        if (letter.position.y > 3.95) {
+        function scrollDown() {
             letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
             letterCount.push(letterCount.length)
             // console.log(letterCount)
-        } else if (letter.position.y < -3.95) {
+        }
+
+        function scrollUp() {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
             letterCount.pop()
             // console.log(letterCount)
         }
+
+        function scroll() {
+            if (letter.position.y > 3.95) {
+                scrollDown()
+    
+            } else if (letter.position.y < -3.95) {
+                scrollUp()
+            }
+        }
+
+        scroll()
+
+        let viewportEnter = document.querySelector(".viewport-enter")
+        let viewportExit = document.querySelector(".viewport-enter")
     }
 
 
