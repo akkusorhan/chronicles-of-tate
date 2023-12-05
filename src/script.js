@@ -216,8 +216,8 @@ document.addEventListener("mousemove", (event) => {
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
 
-        console.log(mouse.x)
-        console.log(mouse.y)
+        // console.log(mouse.x)
+        // console.log(mouse.y)
 
         // Update light position based on mouse position
         pointLight.position.x = mouse.x * 5
@@ -340,8 +340,8 @@ window.addEventListener("touchstart", () => {
 let initialScrollPosition = 0
 let scrollInteration
 let deltaScrollPosition = null
-let section2011Vh = 400
-let section2012Vh = 400
+let section2011Vh = 700
+let section2012Vh = 1000
 
 function handleScroll() {
     scrollY = window.scrollY 
@@ -472,15 +472,18 @@ const tick = () => {
             letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
             letterCount.push(letterCount.length)
-            // console.log(letterCount)
+            console.log(letterCount)
         }
 
         function scrollUp() {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
             letterCount.pop()
-            // console.log(letterCount)
+            console.log(letterCount)
         }
+
+        let viewportEnter = document.querySelector(".viewport-enter")
+        let viewportExit = document.querySelector(".viewport-enter")
 
         function scroll() {
             if (letter.position.y > 3.95) {
@@ -492,9 +495,6 @@ const tick = () => {
         }
 
         scroll()
-
-        let viewportEnter = document.querySelector(".viewport-enter")
-        let viewportExit = document.querySelector(".viewport-enter")
     }
 
 

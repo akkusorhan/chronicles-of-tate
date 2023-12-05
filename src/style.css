@@ -24,7 +24,7 @@ html
 }
 
 .section-2011 {
-    height: 400vh;
+    height: 700vh;
     border: 3px solid red;
     display: flex;
     flex-direction: column;
@@ -39,6 +39,7 @@ html
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-bottom: 140vh;
 
 }
 
@@ -66,7 +67,7 @@ html
 .viewport-exit {
     border: 3px solid yellow;
     height: 1vh;
-    margin-bottom: 100vh;
+    margin-bottom: 140vh;
 }
 
 .section-2011-quote img {
@@ -105,7 +106,7 @@ html
 }
 
 .section-2012 {
-    height: 600vh;
+    height: 1000vh;
     border: 3px solid green;
     display: flex;
     flex-direction: column;
@@ -118,6 +119,7 @@ html
     justify-content: center;
     align-items: center;
     height: 100vh;
+    margin-bottom: 140vh;
 }
 
 .section-2012 h1 {
@@ -132,16 +134,32 @@ html
 }
 
 .section-2013 {
-    height: 555vh;
+    height: vh;
     border: 3px solid blue;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
 }
+
+.section-2013-text {
+    border: 3px solid orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75vh;
+
+}
+
 
 .section-2013 h1 {
     color: white;
     font-size: 134px;
     font-weight: 400;
+}
+
+.section-2013-end {
+    border: 3px solid orange;
+    height: 1vh;
 }
 
 .webgl
