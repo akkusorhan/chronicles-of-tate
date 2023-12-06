@@ -203,9 +203,10 @@ console.log(letterCount)
 const pointLight = new THREE.PointLight("white", 30) // regular 50
 pointLight.position.z = 3
 pointLight.castShadow = true
+pointLight.decay = 1.8
 scene.add(pointLight)
 
-const pointLightHelper = new THREE.PointLightHelper(pointLight)
+// const pointLightHelper = new THREE.PointLightHelper(pointLight)
 // scene.add(pointLightHelper)
 
 const mouse = new THREE.Vector2()
@@ -220,8 +221,8 @@ document.addEventListener("mousemove", (event) => {
         // console.log(mouse.y)
 
         // Update light position based on mouse position
-        pointLight.position.x = mouse.x * 5
-        pointLight.position.y = mouse.y * 5
+        pointLight.position.x = mouse.x * 3.5
+        pointLight.position.y = mouse.y * 3.5
     } else {
         pointLight.position.x = 0
         pointLight.position.y = 0
