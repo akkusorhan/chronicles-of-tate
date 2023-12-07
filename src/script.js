@@ -49,6 +49,8 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
     letterGenerationVariable = 10
 }
 
+let nthItem = []
+
 for(let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
     gltfLoader.load(
@@ -135,6 +137,8 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letters.push(gltf)
             letterCount.push(i)
 
+            nthItem.push(i)
+
         }
     )
 }
@@ -186,6 +190,9 @@ console.log(letters)
 console.log(mixers)
 console.log(letterCount)
 
+let nthItemNum = nthItem.length - nthItem.length + 1
+console.log(`Displaying items ${nthItemNum} to ${nthItem.length}`)
+
 /**
  * Lights
  */
@@ -209,8 +216,13 @@ scene.add(pointLight)
 // const pointLightHelper = new THREE.PointLightHelper(pointLight)
 // scene.add(pointLightHelper)
 
+// Set up raycaster
+var raycaster = new THREE.Raycaster();
+var intersects = []; // Array to store intersected objects
+
 const mouse = new THREE.Vector2()
 
+// Handle mousemove events
 document.addEventListener("mousemove", (event) => {
     if(!isTouchScreen) {
         // Convert mouse coordinates to a normalized value between -1 and 1
@@ -223,11 +235,42 @@ document.addEventListener("mousemove", (event) => {
         // Update light position based on mouse position
         pointLight.position.x = mouse.x * 3.5
         pointLight.position.y = mouse.y * 3.5
+
+        // Update the raycaster's origin and direction
+        raycaster.setFromCamera(mouse, camera);
+
+        // Check for intersections
+        intersects = raycaster.intersectObjects(scene.children);
+
+        // If there are intersections, change object color
+        intersects.length > 0 ? console.log("intersect detected") : null
+
     } else {
         pointLight.position.x = 0
         pointLight.position.y = 0
+
+        // Update the raycaster's origin and direction
+        raycaster.setFromCamera(mouse, camera);
+
+        // Check for intersections
+        intersects = raycaster.intersectObjects(scene.children);
+
+        // If there are intersections, change object color
+        intersects.length > 0 ? console.log("intersect detected") : null
     }
 })
+
+// Handle mouse click events
+document.addEventListener('click', () => {
+    // Check for intersections
+    var intersects = raycaster.intersectObjects(scene.children);
+
+    // If there are intersections, perform an action
+    if (intersects.length > 0) {
+        // For example, log the object that was clicked
+        console.log('Object clicked');
+    }
+}, false);
 
 /**
  * Sizes
@@ -473,14 +516,14 @@ const tick = () => {
             letter.position.y = -3.95 // random number between -5 and -6.5
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
             letterCount.push(letterCount.length)
-            console.log(letterCount)
+            // console.log(letterCount)
         }
 
         function scrollUp() {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
             letterCount.pop()
-            console.log(letterCount)
+            // console.log(letterCount)
         }
 
         let viewportEnter = document.querySelector(".viewport-enter")
