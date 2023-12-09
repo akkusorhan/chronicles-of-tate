@@ -50,6 +50,8 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
 }
 
 let nthItem = []
+let nthItemStart = 0
+let nthItemEnd
 
 for(let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
@@ -116,7 +118,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
                 letterRandomPositionX = 15
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
-                letterRandomPositionX = 5
+                letterRandomPositionX = 3
             } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
                 letterRandomPositionX = 10 
             }
@@ -138,7 +140,9 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letterCount.push(i)
 
             nthItem.push(i)
+            nthItemEnd = nthItem.length
 
+            i <= letterGenerationVariable ? console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
         }
     )
 }
@@ -190,8 +194,7 @@ console.log(letters)
 console.log(mixers)
 console.log(letterCount)
 
-let nthItemNum = nthItem.length - nthItem.length + 1
-console.log(`Displaying items ${nthItemNum} to ${nthItem.length}`)
+// console.log(`Displaying items ${nthItemStart} to ${nthItem.length}`)
 
 /**
  * Lights
@@ -207,14 +210,19 @@ console.log(`Displaying items ${nthItemNum} to ${nthItem.length}`)
 // scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("white", 30) // regular 50
+const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 50
 pointLight.position.z = 3
 pointLight.castShadow = true
-pointLight.decay = 1.8
+// pointLight.decay = 1.8
+pointLight.distance = 1000
 scene.add(pointLight)
 
 // const pointLightHelper = new THREE.PointLightHelper(pointLight)
 // scene.add(pointLightHelper)
+
+/**
+ * Raycaster
+ */
 
 // Set up raycaster
 var raycaster = new THREE.Raycaster();
@@ -242,8 +250,8 @@ document.addEventListener("mousemove", (event) => {
         // Check for intersections
         intersects = raycaster.intersectObjects(scene.children);
 
-        // If there are intersections, change object color
-        intersects.length > 0 ? console.log("intersect detected") : null
+        // intersect detected
+        intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
 
     } else {
         pointLight.position.x = 0
@@ -255,7 +263,7 @@ document.addEventListener("mousemove", (event) => {
         // Check for intersections
         intersects = raycaster.intersectObjects(scene.children);
 
-        // If there are intersections, change object color
+        // intersect detected
         intersects.length > 0 ? console.log("intersect detected") : null
     }
 })
@@ -263,13 +271,37 @@ document.addEventListener("mousemove", (event) => {
 // Handle mouse click events
 document.addEventListener('click', () => {
     // Check for intersections
-    var intersects = raycaster.intersectObjects(scene.children);
+    let intersects = raycaster.intersectObjects(scene.children);
 
-    // If there are intersections, perform an action
-    if (intersects.length > 0) {
-        // For example, log the object that was clicked
-        console.log('Object clicked');
-    }
+    if (intersects.length > 0 && isTouchScreen == false) {
+        // log the object that was clicked
+        console.log('Object clicked:', intersects[0].object);
+
+        const startTime = performance.now()
+        const duration = 1500
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = 10 + easedProgress * 5
+
+            camera.position.z = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+    } 
+
 }, false);
 
 /**
@@ -377,8 +409,58 @@ const verticalScrollDistance = window.scrollY;
 
 let isTouchScreen = false
 
-window.addEventListener("touchstart", () => {
+window.addEventListener("touchstart", (event) => {
     isTouchScreen = true
+    console.log("touched")
+
+    const touches = event.touches;
+    if (touches.length === 1) {
+        // Get normalized device coordinates from the touch position
+        mouse.x = (touches[0].clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(touches[0].clientY / window.innerHeight) * 2 + 1;
+
+        // Update the raycaster with the new touch coordinates
+        raycaster.setFromCamera(mouse, camera);
+
+        // Check for intersections
+        const intersects = raycaster.intersectObjects(scene.children);
+    }
+
+    // imported line (update at some point)
+
+    // Check for intersections
+    var intersects = raycaster.intersectObjects(scene.children);
+
+    if (intersects.length > 0) {
+        // log the object that was clicked
+        console.log('Object touched on mobile:', intersects[0].object);
+
+        const startTime = performance.now()
+        const duration = 1500
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = 10 + easedProgress * 5
+
+            camera.position.z = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+    }
+
+    // end of imported line
 })
 
 let initialScrollPosition = 0
@@ -532,9 +614,15 @@ const tick = () => {
         function scroll() {
             if (letter.position.y > 3.95) {
                 scrollDown()
+                nthItemStart = nthItemStart + 1
+                nthItemEnd = nthItemEnd + 1
+                console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
     
             } else if (letter.position.y < -3.95) {
                 scrollUp()
+                nthItemStart = nthItemStart - 1
+                nthItemEnd = nthItemEnd - 1
+                console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
             }
         }
 
