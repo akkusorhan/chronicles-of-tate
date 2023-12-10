@@ -90,21 +90,21 @@ html
 .chronicle-content button {
     /* display: inline-block; */
     padding: 10px 20px;
-    /* border: 2px solid white; */
+    border: none;
     /* border-radius: 50%; */
     color: white;
     background-color: transparent;
     /* text-decoration: none; */
     text-align: center;
-    font-size: 16px;
+    font-size: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     width: fit-content;
 }
 
 .chronicle-content button:hover {
-    background-color: white;
-    color: black;
+    /* background-color: white; */
+    color: rgb(174, 174, 174);
 }
 
 @media (max-width: 1000px) {

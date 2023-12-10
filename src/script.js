@@ -51,7 +51,7 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
 
 let nthItem = []
 let nthItemStart = 0
-let nthItemEnd
+let nthItemEnd = 0
 
 for(let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
@@ -142,7 +142,12 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             nthItem.push(i)
             nthItemEnd = nthItem.length
 
-            i <= letterGenerationVariable ? console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
+            i = letterGenerationVariable ? console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
+
+            if(i = letterGenerationVariable) {
+                let amountOfChroniclesGenerated = nthItemEnd - nthItemStart
+                console.log(`Amount of chronicles generated: ${amountOfChroniclesGenerated}`)
+            }
         }
     )
 }
@@ -200,14 +205,14 @@ console.log(letterCount)
  * Lights
  */
 // Ambient Light
-// const ambientLightColor = new THREE.Color("#ffe7d6")
-// const ambientLight = new THREE.AmbientLight(ambientLightColor)
-// ambientLight.intensity = 0.3
+const ambientLightColor = new THREE.Color("#ffe7d6")
+const ambientLight = new THREE.AmbientLight(ambientLightColor)
+ambientLight.intensity = 0.3
 
-// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-// gui.addColor(ambientLight, "color").name("ambientLightColor")
+gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+gui.addColor(ambientLight, "color").name("ambientLightColor")
 
-// scene.add(ambientLight)
+scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
 const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 50
@@ -618,9 +623,14 @@ const tick = () => {
     for(const mixer of mixers) {
         mixer.update(deltaTime)
     }
+    
+    
+    let initialScrollUpTriggered = false
+
 
     // Update mesh position based on scroll
     for(let i = 0; i < letters.length; i++) {
+
         let letter = letters[i].scene
 
         // Setting X again for random position
@@ -645,7 +655,7 @@ const tick = () => {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
             letterCount.pop()
-            // console.log(letterCount)
+            // console.log(letterCount)                
         }
 
         let viewportEnter = document.querySelector(".viewport-enter")
@@ -654,11 +664,12 @@ const tick = () => {
         function scroll() {
             if (letter.position.y > 3.95) {
                 scrollDown()
+
                 nthItemStart = nthItemStart + 1
                 nthItemEnd = nthItemEnd + 1
                 console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
     
-            } else if (letter.position.y < -3.95) {
+            } else if (letter.position.y < -4.05) {
                 scrollUp()
                 nthItemStart = nthItemStart - 1
                 nthItemEnd = nthItemEnd - 1
