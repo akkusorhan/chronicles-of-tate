@@ -269,11 +269,17 @@ document.addEventListener("mousemove", (event) => {
 })
 
 // Handle mouse click events
+let chroniclePopUp = document.querySelector(".chronicle")
+
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
     if (intersects.length > 0 && isTouchScreen == false) {
+        chroniclePopUp.style.display = 'flex'
+        chroniclePopUp.style.opacity = '1'
+        // chroniclePopUp.classList.remove("show")
+
         // log the object that was clicked
         console.log('Object clicked:', intersects[0].object);
 
@@ -303,6 +309,36 @@ document.addEventListener('click', () => {
     } 
 
 }, false);
+
+document.querySelector(".close-chronicle-btn").addEventListener('click', () => {   
+    chroniclePopUp.style.display = 'none'
+    chroniclePopUp.style.opacity = "0"
+    // chroniclePopUp.classList.add("hide")
+
+    const startTime = performance.now()
+        const duration = 1500
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = 15 - easedProgress * 5
+
+            camera.position.z = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+})
 
 /**
  * Sizes
@@ -447,6 +483,9 @@ window.addEventListener("touchstart", (event) => {
             const value = 10 + easedProgress * 5
 
             camera.position.z = value
+
+            chroniclePopUp.style.display = 'flex'
+            chroniclePopUp.style.opacity = '1'
 
             if (elapsed < duration) {
                 requestAnimationFrame(animate)
