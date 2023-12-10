@@ -252,6 +252,7 @@ document.addEventListener("mousemove", (event) => {
 
         // intersect detected
         intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
+        intersects.length > 0 ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
 
     } else {
         pointLight.position.x = 0
