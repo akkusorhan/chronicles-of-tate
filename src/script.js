@@ -29,6 +29,7 @@ const chessTexture = textureLoader.load("./textures/chess-texture.png")
 const gltfLoader = new GLTFLoader()
 
 const letters = []
+
 const mixers = []
 let letterCount = []
 const chessPieces = [
@@ -52,6 +53,8 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
 let nthItem = []
 let nthItemStart = 0
 let nthItemEnd = 0
+
+let amountOfChroniclesGenerated
 
 for(let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
@@ -136,16 +139,19 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letter.rotation.z = Math.random() - 0.5 * 1.2
 
             scene.add(gltf.scene)
+
+            gltf.scene.children[0].chronicleNumber = i
+
             letters.push(gltf)
             letterCount.push(i)
 
             nthItem.push(i)
             nthItemEnd = nthItem.length
 
-            i = letterGenerationVariable ? console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
+            i = letterGenerationVariable ? console.log(`displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
 
             if(i = letterGenerationVariable) {
-                let amountOfChroniclesGenerated = nthItemEnd - nthItemStart
+                amountOfChroniclesGenerated = nthItemEnd - nthItemStart
                 console.log(`Amount of chronicles generated: ${amountOfChroniclesGenerated}`)
             }
         }
@@ -282,12 +288,12 @@ document.addEventListener('click', () => {
     let intersects = raycaster.intersectObjects(scene.children);
 
     if (intersects.length > 0 && isTouchScreen == false) {
-        chroniclePopUp.style.display = 'flex'
-        chroniclePopUp.style.opacity = '1'
+        // chroniclePopUp.style.display = 'flex'
+        // chroniclePopUp.style.opacity = '1'
         // chroniclePopUp.classList.remove("show")
 
         // log the object that was clicked
-        console.log('Object clicked:', intersects[0].object);
+        console.log('Object clicked:', intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber);
 
         const startTime = performance.now()
         const duration = 1500
@@ -311,7 +317,7 @@ document.addEventListener('click', () => {
             return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
 
-        requestAnimationFrame(animate)
+        // requestAnimationFrame(animate)
     } 
 
 }, false);
@@ -667,6 +673,8 @@ const tick = () => {
 
                 nthItemStart = nthItemStart + 1
                 nthItemEnd = nthItemEnd + 1
+
+                console.log(letter)
                 console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
     
             } else if (letter.position.y < -4.05) {
