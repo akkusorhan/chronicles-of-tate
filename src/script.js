@@ -3,6 +3,27 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as dat from "lil-gui"
 
+const chroniclesOfEmoryTate2011 = [
+    {
+        quote: "Cowards die a thousand deaths, a brave man only one.  Stand against mediocrity.  Fight brainwashing.",
+        display: true
+    },
+    {
+        quote: "Andrew is now the Cobra, but he was born a Tiger.  Such a combination will never be beat!!!  Go team Cobra",
+        display: true
+    },
+    {
+        quote: "Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?",
+        display: true
+    },
+    {
+        quote: "The orange TV link is a bust so far.",
+        display: true
+    },
+    
+]
+console.log(chroniclesOfEmoryTate2011)
+
 /**
  * Debug
  */
@@ -282,14 +303,16 @@ document.addEventListener("mousemove", (event) => {
 
 // Handle mouse click events
 let chroniclePopUp = document.querySelector(".chronicle")
+let chronicleTextContent = document.querySelector(".chronicle-text-content")
 
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
     if (intersects.length > 0 && isTouchScreen == false) {
-        // chroniclePopUp.style.display = 'flex'
-        // chroniclePopUp.style.opacity = '1'
+        chroniclePopUp.style.display = 'flex'
+        chroniclePopUp.style.opacity = '1'
+        chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber]}`
         // chroniclePopUp.classList.remove("show")
 
         // log the object that was clicked
@@ -674,13 +697,17 @@ const tick = () => {
                 nthItemStart = nthItemStart + 1
                 nthItemEnd = nthItemEnd + 1
 
-                console.log(letter)
+                letter.children[0].chronicleNumber = nthItemEnd - 1
+                console.log(letter.children[0].chronicleNumber)
                 console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
     
             } else if (letter.position.y < -4.05) {
                 scrollUp()
                 nthItemStart = nthItemStart - 1
                 nthItemEnd = nthItemEnd - 1
+
+                letter.children[0].chronicleNumber = nthItemStart
+                console.log(letter.children[0].chronicleNumber)
                 console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
             }
         }
