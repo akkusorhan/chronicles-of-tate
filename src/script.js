@@ -3,14 +3,33 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as dat from "lil-gui"
 
+const images = [
+    "/images/tateism.png" ,
+    "/images/emory-tate-chess.png",
+    "/images/emory-tate.png",
+    "/images/the-tate-pride.png",
+    "/images/emory-tate-with-mom.png",
+]
+
+function preloadImages(imageArray) {
+    for (var i = 0; i < imageArray.length; i++) {
+        var img = new Image();
+        img.src = imageArray[i];
+    }
+}
+
+preloadImages(images);
+
 const chroniclesOfEmoryTate2011 = [
     {
         quote: "Cowards die a thousand deaths, a brave man only one.  Stand against mediocrity.  Fight brainwashing.",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "Andrew is now the Cobra, but he was born a Tiger.  Such a combination will never be beat!!!  Go team Cobra",
-        display: true
+        display: true,
+        image: "/images/emory-tate-with-mom.png"
     },
     {
         quote: "Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?",
@@ -18,6 +37,30 @@ const chroniclesOfEmoryTate2011 = [
     },
     {
         quote: "The orange TV link is a bust so far.",
+        display: true
+    },
+    {
+        quote: ".Fighting  demands guts.  Cobra fought, to win, for the contract.  Even a loss on his record was not worth his integrity as a superstar",
+        display: true
+    },
+    {
+        quote: "And so we find time marches on.  Miracles happen  I am happy and I am sad that my son fought so hard.  All 7 rounds What a tough guy. Always",
+        display: true
+    },
+    {
+        quote: "Tristan is unleashed upon the world.... Love him or hate him.  he probly dont care.",
+        display: true
+    },
+    {
+        quote: "Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!",
+        display: true
+    },
+    {
+        quote: "Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate",
+        display: true
+    },
+    {
+        quote: "Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!",
         display: true
     },
     
@@ -304,19 +347,26 @@ document.addEventListener("mousemove", (event) => {
 // Handle mouse click events
 let chroniclePopUp = document.querySelector(".chronicle")
 let chronicleTextContent = document.querySelector(".chronicle-text-content")
+let chronicleImageContent = document.querySelector(".chronicle-image-content")
 
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
     if (intersects.length > 0 && isTouchScreen == false) {
+        let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
+
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
-        chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber]}`
+        chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
+
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 6)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+
+        chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
 
         // log the object that was clicked
-        console.log('Object clicked:', intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber);
+        console.log('Object clicked:', chronicleIteration);
 
         const startTime = performance.now()
         const duration = 1500
@@ -340,7 +390,7 @@ document.addEventListener('click', () => {
             return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
         }
 
-        // requestAnimationFrame(animate)
+        requestAnimationFrame(animate)
     } 
 
 }, false);
