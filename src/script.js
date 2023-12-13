@@ -3,6 +3,52 @@ import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import * as dat from "lil-gui"
 
+/**
+ * Creating Home Page
+ */
+let homePageEnabled = true
+let homePage = document.querySelector(".home-page")
+let launchExperienceButton = document.querySelector(".launch-experience-btn")
+
+let quotePreloaderEnabled = true
+let quotePreloader = document.querySelector(".quote-preloader")
+
+let sectionsEnabled = false
+let chhronicleSections = document.querySelector(".sections")
+
+document.body.style.overflow = "hidden"
+
+launchExperienceButton.addEventListener("click", () => {
+    homePageEnabled = false
+    homePage.style.opacity = 0
+    
+    setTimeout(() => {
+        quotePreloaderEnabled = true
+        quotePreloader.style.opacity = 1
+    }, 3500);
+
+    setTimeout(() => {
+        quotePreloaderEnabled = false
+        quotePreloader.style.opacity = 0
+
+        setTimeout(() => {
+            homePage.remove()
+            quotePreloader.remove()
+
+            sections.style.opacity = 1
+            sectionsEnabled = true
+
+            document.body.style.overflow = ""
+
+            ambientLight.intensity = 0.3
+            pointLight.intensity = 75
+        }, 3500);
+    }, 10000);
+})
+
+
+
+
 const images = [
     "/images/tateism.png" ,
     "/images/emory-tate-chess.png",
@@ -437,7 +483,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
                 letterRandomPositionX = 15
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
-                letterRandomPositionX = 3
+                letterRandomPositionX = 2
             } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
                 letterRandomPositionX = 10 
             }
@@ -529,7 +575,7 @@ console.log(letterCount)
 // Ambient Light
 const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
-ambientLight.intensity = 0.3
+ambientLight.intensity = 0
 
 gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 gui.addColor(ambientLight, "color").name("ambientLightColor")
@@ -537,7 +583,7 @@ gui.addColor(ambientLight, "color").name("ambientLightColor")
 scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 50
+const pointLight = new THREE.PointLight("#FFF7DD", 0) // regular 50
 pointLight.position.z = 3
 pointLight.castShadow = true
 // pointLight.decay = 1.8
@@ -992,7 +1038,7 @@ const tick = () => {
         if (window.innerHeight / window.innerWidth < 0.45) {
             letterRandomPositionX = 15
         } else if (window.innerHeight / window.innerWidth > 0.9) {
-            letterRandomPositionX = 5
+            letterRandomPositionX = 2
         } else if (!window.innerHeight / window.innerWidth < 0.45) {
             letterRandomPositionX = 10
         }

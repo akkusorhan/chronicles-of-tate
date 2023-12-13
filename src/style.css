@@ -5,6 +5,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Give You Glory', cursive;
+    font-weight: lighter;
+    color: white;
 }
 
 html
@@ -43,6 +45,68 @@ html
         transform: translateY(0%);
     }
 }  
+
+.home-page {
+    position: absolute;
+    /* border: 3px solid yellow; */
+    height: 98vh;
+    width: 97.5vw;
+    font-size: 40px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    transition: opacity ease-out 2500ms;
+    z-index: 17;
+}
+
+.home-page-content {
+    /* border: 3px solid red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* margin: 0% 10% 0% 10%; */
+}
+
+.home-page-content img {
+    width: 75%;
+}
+
+.launch-experience-btn {
+        /* display: inline-block; */
+        padding: 10px 20px;
+        border: none;
+        /* border-radius: 50%; */
+        color: white;
+        background-color: transparent;
+        /* text-decoration: none; */
+        text-align: center;
+        font-size: 40px;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        width: fit-content;
+}
+
+.launch-experience-btn:hover {
+    color: rgb(148, 148, 148);
+}
+
+.quote-preloader {
+    position: absolute;
+    /* border: 3px solid orange; */
+    height: 98vh;
+    width: 97.5vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
+    opacity: 0;
+    transition: opacity ease-out 2500ms;
+    z-index: 15;
+}
 
 .chronicle {
     position: fixed;
@@ -121,8 +185,8 @@ html
     justify-content: space-between;
     flex-direction: column;
     height: 1000vh; */
-    opacity: 1;
-    transition: opacity ease-in-out 2500ms;
+    opacity: 0;
+    transition: opacity ease-out 2500ms;
 }
 
 .quote {
@@ -153,7 +217,7 @@ html
 .section-2011-text h1 {
     color: white;
     font-size: 134px;
-    font-weight: 400;
+    font-weight: lighter;
 }
 
 .section-2011-quote {
