@@ -25,7 +25,23 @@ launchExperienceButton.addEventListener("click", () => {
     setTimeout(() => {
         quotePreloaderEnabled = true
         quotePreloader.style.opacity = 1
-    }, 3500);
+
+        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 500);
+        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 1500);
+        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 3000);
+        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 5000);
+        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 7500);
+        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 8500);
+        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 10000);
+        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 12500);
+        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 15000);
+        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 17500);
+        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 21000);
+        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 25000);
+        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 27000);
+        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 29000);
+        setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000);
+    }, 2500);
 
     setTimeout(() => {
         quotePreloaderEnabled = false
@@ -43,7 +59,7 @@ launchExperienceButton.addEventListener("click", () => {
             ambientLight.intensity = 0.3
             pointLight.intensity = 75
         }, 3500);
-    }, 10000);
+    }, 40000);
 })
 
 

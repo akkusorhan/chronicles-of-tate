@@ -108,6 +108,15 @@ html
     z-index: 15;
 }
 
+.quote-preloader h3 span {
+    opacity: 0;
+    transition: opacity ease-out 500ms;
+}
+
+#fourteen {
+    color: rgb(255, 0, 0);
+}
+
 .chronicle {
     position: fixed;
     /* border: 3px solid yellow; */
