@@ -37,31 +37,38 @@ const chroniclesOfEmoryTate2011 = [
     },
     {
         quote: "The orange TV link is a bust so far.",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: ".Fighting  demands guts.  Cobra fought, to win, for the contract.  Even a loss on his record was not worth his integrity as a superstar",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "And so we find time marches on.  Miracles happen  I am happy and I am sad that my son fought so hard.  All 7 rounds What a tough guy. Always",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "Tristan is unleashed upon the world.... Love him or hate him.  he probly dont care.",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate",
-        display: true
+        display: true,
+        image: null
     },
     {
         quote: "Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!",
-        display: true
+        display: true,
+        image: null
     },
     
 ]
