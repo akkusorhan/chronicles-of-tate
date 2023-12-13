@@ -9,6 +9,8 @@ const images = [
     "/images/emory-tate.png",
     "/images/the-tate-pride.png",
     "/images/emory-tate-with-mom.png",
+    "/images/emory-tate-young.png",
+    "/images/tate-pondering.png",
 ]
 
 function preloadImages(imageArray) {
@@ -22,57 +24,300 @@ preloadImages(images);
 
 const chroniclesOfEmoryTate2011 = [
     {
-        quote: "Cowards die a thousand deaths, a brave man only one.  Stand against mediocrity.  Fight brainwashing.",
+        quote: '"Cowards die a thousand deaths, a brave man only one.  Stand against mediocrity.  Fight brainwashing."',
         display: true,
         image: null
     },
     {
-        quote: "Andrew is now the Cobra, but he was born a Tiger.  Such a combination will never be beat!!!  Go team Cobra",
+        quote: '"Andrew is now the Cobra, but he was born a Tiger.  Such a combination will never be beat!!!  Go team Cobra"',
         display: true,
         image: "/images/emory-tate-with-mom.png"
     },
     {
-        quote: "Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?",
+        quote: '"Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?"',
         display: true
     },
     {
-        quote: "The orange TV link is a bust so far.",
+        quote: '"The orange TV link is a bust so far."',
         display: true,
         image: null
     },
     {
-        quote: ".Fighting  demands guts.  Cobra fought, to win, for the contract.  Even a loss on his record was not worth his integrity as a superstar",
+        quote: '".Fighting  demands guts.  Cobra fought, to win, for the contract.  Even a loss on his record was not worth his integrity as a superstar"',
         display: true,
         image: null
     },
     {
-        quote: "And so we find time marches on.  Miracles happen  I am happy and I am sad that my son fought so hard.  All 7 rounds What a tough guy. Always",
+        quote: '"And so we find time marches on.  Miracles happen  I am happy and I am sad that my son fought so hard.  All 7 rounds What a tough guy. Always"',
         display: true,
         image: null
     },
     {
-        quote: "Tristan is unleashed upon the world.... Love him or hate him.  he probly dont care.",
+        quote: '"Tristan is unleashed upon the world.... Love him or hate him.  he probly dont care."',
         display: true,
         image: null
     },
     {
-        quote: "Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!",
+        quote: '"Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!"',
         display: true,
         image: null
     },
     {
-        quote: "Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate",
+        quote: '"Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate"',
         display: true,
         image: null
     },
     {
-        quote: "Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!",
+        quote: '"Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Joining a group protest is not for my Tate personality.  I take it straight to the source of corruption.  And I stay alive!  Walk the walk."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  I refuse to be called afraid."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Every wants to be a tough guy.Which of you have tasted your own blood.  When I was three,busted head.I DRANK my blood.Daddy panicked. not me"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"How has it become that I no longer can tell male thought from female thought.  Yes, I cry... but that does not mean I think like a woman."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"It really is getting so much harder to identify a credible enemy anymore.  Could it be that all these people killed were not hostile at all?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I appears to me that if I concentrate on happy ideas, no one can make me sad.  After all, I am the best that I've ever seen!! So are you."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"These people who know me, know by now they shoulda put me in charge.  I have never seen such a consistent record of failure in my life.  Sad"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"OCCUPY Twitter!!!  How u like me now, mo fo?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Vodka and guava juice at 3am, alone in a hotel room.negro gotta have a screw loose. I say "tighten up".don't lighten up, tighten up.  buzzed"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"It does get a bit tricky when the only two bad ass men who could kick my ass happen to be my two sons.Everybody else better watch the fk out"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Without a baseline for truth, we (humans) are like savage apes, doing dirt in the dark, and smiling by day. Animals.Still, noone is perfect."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"I took a trip to Anhedonia! Do you know what I mean,I mean this place is hard to describe. Google maps places it between ennui and dejection"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Does being imprisoned in America mean free health care?Seems like a good trade-off.Go on a crime-spree then get meds in jail. Some sex too?!"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Chess is somewhat underrated.  A cerebral exercise, for certain,yet the war strategy aspect is often overlooked.  War is everywhere. Believe"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Caught between the longing for love and the struggle for the legal tender (The Pretender) song"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"There is no Kyoto protocol.There is no way to control pollution.I see human pollution.Cant control it. these people think that they matter?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"I am honored to be (humble servant of the future) yet I am myself.  I am honored to be to your. dad.  no kidding.  Who could want more?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I've been a bit remiss by not flexing my vernacular. Now is time to hearken to the brazeness of modern men, hiding their true craven nature"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Anhedonia is a little-known place, far beyond equanimity. Tate
+        A strange place to visit, but I don't wann live there.  Gotta find a new drug"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Inaction is, of itself, an action.  Sun Xu.  Idiots run the world and they are cowards too.  Tate.  Dont fuk with me. Tateism"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"I knew this woul happen.no kidding, my actions forstall the inevitable but, in the end futile.Think how many tweeters dont know futilility"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Liege Belgium in the news (wrong reasons).The train to Maastricht Nederland is quite cheap. Eurolines bus from London is adequate.Back door"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Everybody wants to be a tuf guy, but so few pay the price to get there.  These pretend clones in public make me uneasy.  I abhor cowards."',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The problem with cowards is that they can get you killed when THEY panic!
+        You might have to deal with the primary threat and K O the coward"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"The only way to explain the technical failure, moral and ethical failure and disregard for the truth??  Realize it was deliberate,  They win"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Whereas it seems impossible for one man to be smarter that all the rest put together, One man can be right while everyone else is wrong. I"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"All the inaction and failure I witnessed made angry, I asked my mom why wouldn't people do something.  You cain't do what you cain't think!"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Jealousy drives envy till they imitate, unable to emulate.  After practice, delusion follows and they try to erase the original.  Parasites"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"It appears to me that wisdom is replaced by knowledge. This fact undermines the elder statesman, and threatens all society.  Amateurs."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"These fukkers on the train behind me started loud chat about computer stuff, incomprehensible!Can they be polite? can they stop my fist?fail"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Old people are somehow "funny" All dead mf's who died young must be absolutely hilarious. (group laughter) Is the very meaning of life lost?"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Becoming old means my enemies had to fail... had to hide, had to return to the roots of cowardice.To face me is to lose, Tateism."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Imagine deer, antelope, allowed the adolescent males to break in all the females.Unproven sperm through the bloodline. The alpha dies. Shit."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"No need for debate about Jesus, here at Christmas time. Find the ways that you are crucified.  Seek your enemies, and stop the torture. Tate"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"The envious cowards of my generation have shown me many things. And they talk, talk. I have seen a lot, but I HAVE HEARD IT ALL!!  Silence!"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Today is a good day to evaluate your belief system. Looks like pure christianity is fading away, the priests' true perversions revealed.Damn"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: '"He who hesitates is lost I once hesitated to protect a system. The system is broken What to do now? Cowards,traitors,amateurs.Epic fail. Sad"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"To achieve brilliance is a wonderful thing.To act brilliantly is rare.Take action and where you fit in on the brilliance scale?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"God only knows.  Should I go to Vegas (big chess tournament) or should I wait in fear for another year.  Dammit man....answer me.  Tweeters?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"The point is this.  Can you take the heat?  Fuking then shut up.. sit down.  take whatever comes.  Become a clone.Or choose individualism."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"It is not just that I am better than you.  I am simply superior.  Proven. No question.  You wanna ask questions?  Ask my world-class boys."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"When you no longer care about your family, the psycholgy breaks deep inside.From that point all love becomes a mathematical calculation. Bad"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Brock Lesnar had too much muscle to punch effectively.Bulk, not quick-twitch fiber. When this happens to a man he is called muscle-bound."',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Personally I have spent much of my life staring-down muscle-bound bullies.  Somehow they know, deep inside, to touch a man like me is DEATH"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"How is it that  Nov 12 election 4 prez dominates the news daily?Do these damn narcissists even believe that they will survive till Nov?News?"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"they are teaching gay issues to 7-yr old kids. BY LAW.  A pure homosexual can not reproduce, so they need your children for new partners. OK"',
+        display: true,
+        image: null
+    },
+    {
+        quote: '"Even as New Year approaches West Coast, I seek the correct feeling.  The "E" word.Not ecstasy per se, rather Equanimity.A core professional"',
+        display: true,
+        image: null
+    },
+    {
+        quote: `"2hrs15 min till New Year's yet I am keenly aware that I've not made it yet.No time for mental laziness,enemies are so profuse."`,
         display: true,
         image: null
     },
     
 ]
-console.log(chroniclesOfEmoryTate2011)
+
+console.log(chroniclesOfEmoryTate2011.length)
 
 /**
  * Debug
@@ -313,6 +558,8 @@ var intersects = []; // Array to store intersected objects
 const mouse = new THREE.Vector2()
 
 // Handle mousemove events
+let popupOpened = false
+
 document.addEventListener("mousemove", (event) => {
     if(!isTouchScreen) {
         // Convert mouse coordinates to a normalized value between -1 and 1
@@ -334,7 +581,7 @@ document.addEventListener("mousemove", (event) => {
 
         // intersect detected
         intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
-        intersects.length > 0 ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
+        intersects.length > 0 && !popupOpened ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
 
     } else {
         pointLight.position.x = 0
@@ -355,19 +602,23 @@ document.addEventListener("mousemove", (event) => {
 let chroniclePopUp = document.querySelector(".chronicle")
 let chronicleTextContent = document.querySelector(".chronicle-text-content")
 let chronicleImageContent = document.querySelector(".chronicle-image-content")
+let sections = document.querySelector(".sections")
 
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
-    if (intersects.length > 0 && isTouchScreen == false) {
+    if (intersects.length > 0 && isTouchScreen == false && popupOpened == false) {
+        popupOpened = true
+
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
+        sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
-        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 6)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 7)] : chroniclesOfEmoryTate2011[chronicleIteration].image
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
@@ -403,8 +654,11 @@ document.addEventListener('click', () => {
 }, false);
 
 document.querySelector(".close-chronicle-btn").addEventListener('click', () => {   
+    popupOpened = false
+
     chroniclePopUp.style.display = 'none'
     chroniclePopUp.style.opacity = "0"
+    sections.style.opacity = 1
     // chroniclePopUp.classList.add("hide")
 
     const startTime = performance.now()
@@ -559,9 +813,22 @@ window.addEventListener("touchstart", (event) => {
     // Check for intersections
     var intersects = raycaster.intersectObjects(scene.children);
 
-    if (intersects.length > 0) {
+    if (intersects.length > 0 && popupOpened == false) {
         // log the object that was clicked
         console.log('Object touched on mobile:', intersects[0].object);
+        popupOpened = true
+
+        let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
+
+        chroniclePopUp.style.display = 'flex'
+        chroniclePopUp.style.opacity = '1'
+        sections.style.opacity = 0
+        chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
+
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 7)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+
+        chronicleImageContent.src = `${chronicleImage}`
+        // chroniclePopUp.classList.remove("show")
 
         const startTime = performance.now()
         const duration = 1500

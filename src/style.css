@@ -58,6 +58,7 @@ html
     /* opacity: 10%; */
     animation: fade-in 2500ms;
     transition: opacity ease-out 2500ms;
+    z-index: 13;
 }
 
 .chronicle.hide {
@@ -120,6 +121,8 @@ html
     justify-content: space-between;
     flex-direction: column;
     height: 1000vh; */
+    opacity: 1;
+    transition: opacity ease-in-out 2500ms;
 }
 
 .quote {
@@ -209,7 +212,7 @@ html
 
     .section-2011-quote h3 {
         width: 75vw;
-        font-size: 22px;
+        font-size: 30px;
     }
     
 }
