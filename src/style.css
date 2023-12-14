@@ -181,6 +181,7 @@ html
     animation: fade-in 2500ms;
     transition: opacity ease-out 2500ms;
     z-index: 13;
+    overflow-y: scroll;
 }
 
 .chronicle.hide {
@@ -210,7 +211,7 @@ html
     text-align: center;
 }
 
-.chronicle-content button {
+.close-chronicle-btn {
     /* display: inline-block; */
     padding: 10px 20px;
     border: none;
@@ -233,6 +234,10 @@ html
 @media (max-width: 1000px) {
     .chronicle-content h3 {
         font-size: 27px;
+    }
+
+    .close-chronicle-btn {
+        margin-top: 50%;
     }
 }
 

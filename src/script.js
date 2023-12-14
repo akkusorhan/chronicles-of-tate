@@ -464,7 +464,22 @@ let nthItemEnd = 0
 
 let amountOfChroniclesGenerated
 
-for(let i = 0; i < letterGenerationVariable; i++) {
+// gltfLoader.load(
+//     "./chess-board.glb",
+//     (gltf) => {
+//         let chessBoard = gltf.scene
+//         console.log(gltf)
+
+//         gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
+//         gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
+//         gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
+        
+//         scene.add(chessBoard)
+//     }
+// )
+
+
+for (let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
     gltfLoader.load(
         `./${chessPieces[randomIndex]}.glb`,
@@ -516,7 +531,7 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             letter.scale.y = .10
             letter.scale.z = .10
 
-            if(chessPieces[randomIndex] == "rook") {
+            if (chessPieces[randomIndex] == "rook") {
                 letter.scale.x = .16
                 letter.scale.y = .16
                 letter.scale.z = .16
@@ -526,19 +541,19 @@ for(let i = 0; i < letterGenerationVariable; i++) {
             // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
             let letterRandomPositionX = null
 
-            if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
+            if (window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
                 letterRandomPositionX = 15
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
                 letterRandomPositionX = 2
             } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
-                letterRandomPositionX = 10 
+                letterRandomPositionX = 10
             }
 
             // Setting a random X, Y, Z value for position
             // letter.position.y = ((Math.random() - 0.6) * 5) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle (0.5)
 
             window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = Math.round((Math.random() - 0.6) * 10) : letter.position.y = Math.round((Math.random() - 0.6) * 7)
-            letter.position.z = ((Math.random() - 0.5) * 3) 
+            letter.position.z = ((Math.random() - 0.5) * 3)
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
             // letter.rotation.x = 0.5 
@@ -558,13 +573,14 @@ for(let i = 0; i < letterGenerationVariable; i++) {
 
             i = letterGenerationVariable ? console.log(`displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
 
-            if(i = letterGenerationVariable) {
+            if (i = letterGenerationVariable) {
                 amountOfChroniclesGenerated = nthItemEnd - nthItemStart
                 console.log(`Amount of chronicles generated: ${amountOfChroniclesGenerated}`)
             }
         }
     )
 }
+
 
 // for(let i = 0; i < 189; i++) {
 //     gltfLoader.load(
