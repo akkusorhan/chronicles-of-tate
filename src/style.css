@@ -51,15 +51,18 @@ html
     /* border: 3px solid yellow; */
     height: 98vh;
     width: 97.5vw;
-    font-size: 40px;
+    font-size: 30px;
     text-align: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    /* justify-content: flex-start; */
     align-items: center;
     opacity: 1;
     transition: opacity ease-out 2500ms;
     z-index: 17;
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 .home-page-content {
@@ -69,10 +72,14 @@ html
     justify-content: center;
     align-items: center;
     /* margin: 0% 10% 0% 10%; */
+    margin-top: 0px;
+    padding-top: 0px;
 }
 
 .home-page-content img {
     width: 75%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 
 .launch-experience-btn {
@@ -115,6 +122,48 @@ html
 
 #fourteen {
     color: rgb(255, 0, 0);
+}
+
+@media (max-width: 1400px) {
+    .quote-preloader h3 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .home-page-content {
+        font-size: 20px;
+    }
+
+    .launch-experience-btn {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .quote-preloader h3 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 540px) {
+    .quote-preloader h3 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 450px) {
+    .home-page-content {
+        font-size: 12px;
+    }
+
+    .quote-preloader h3 {
+        font-size: 10px;
+    }
+    
+    .launch-experience-btn {
+        font-size: 14px;
+    }
 }
 
 .chronicle {

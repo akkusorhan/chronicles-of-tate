@@ -16,11 +16,14 @@ let quotePreloader = document.querySelector(".quote-preloader")
 let sectionsEnabled = false
 let chhronicleSections = document.querySelector(".sections")
 
+let chroniclesOfTateSoundtrack = new Audio("./chronicles-of-tate-soundtrack.mp3")
+
 document.body.style.overflow = "hidden"
 
 launchExperienceButton.addEventListener("click", () => {
     homePageEnabled = false
     homePage.style.opacity = 0
+    chroniclesOfTateSoundtrack.play()
     
     setTimeout(() => {
         quotePreloaderEnabled = true
@@ -56,10 +59,37 @@ launchExperienceButton.addEventListener("click", () => {
 
             document.body.style.overflow = ""
 
-            ambientLight.intensity = 0.3
-            pointLight.intensity = 75
+            function animateLightIntensity(light, targetIntensity, duration) {
+                const startIntensity = light.intensity;
+                let startTime;
+
+                function update() {
+                    const currentTime = performance.now();
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(1, elapsed / duration);
+
+                    const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+                    light.intensity = newIntensity;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(update);
+                    }
+                }
+
+                function startAnimation() {
+                    startTime = performance.now();
+                    update();
+                }
+
+                startAnimation();
+            }
+
+            animateLightIntensity(ambientLight, 0.3, 4500)
+            animateLightIntensity(pointLight, 75, 4500)
+            // ambientLight.intensity = 0.3
+            // pointLight.intensity = 75
         }, 3500);
-    }, 40000);
+    }, 40500);
 })
 
 
@@ -643,7 +673,7 @@ document.addEventListener("mousemove", (event) => {
 
         // intersect detected
         intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
-        intersects.length > 0 && !popupOpened ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
+        intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
 
     } else {
         pointLight.position.x = 0
@@ -656,7 +686,7 @@ document.addEventListener("mousemove", (event) => {
         intersects = raycaster.intersectObjects(scene.children);
 
         // intersect detected
-        intersects.length > 0 ? console.log("intersect detected") : null
+        intersects.length > 0 && sectionsEnabled ? console.log("intersect detected") : null
     }
 })
 
@@ -670,7 +700,7 @@ document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
-    if (intersects.length > 0 && isTouchScreen == false && popupOpened == false) {
+    if (intersects.length > 0 && isTouchScreen == false && popupOpened == false && sectionsEnabled) {
         popupOpened = true
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
@@ -875,7 +905,7 @@ window.addEventListener("touchstart", (event) => {
     // Check for intersections
     var intersects = raycaster.intersectObjects(scene.children);
 
-    if (intersects.length > 0 && popupOpened == false) {
+    if (intersects.length > 0 && popupOpened == false && sectionsEnabled) {
         // log the object that was clicked
         console.log('Object touched on mobile:', intersects[0].object);
         popupOpened = true
