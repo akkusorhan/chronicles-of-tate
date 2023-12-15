@@ -16,7 +16,7 @@ let quotePreloader = document.querySelector(".quote-preloader")
 let sectionsEnabled = false
 let chhronicleSections = document.querySelector(".sections")
 
-let chroniclesOfTateSoundtrack = new Audio("./chronicles-of-tate-soundtrack.mp3")
+let chroniclesOfTateSoundtrack = new Audio("./tate-chronicles-soundtrack.mp3")
 
 document.body.style.overflow = "hidden"
 

@@ -237,6 +237,12 @@ html
     }
 
     .close-chronicle-btn {
+        margin-top: 25%;
+    }
+}
+
+@media (max-width: 500px) {
+    .close-chronicle-btn {
         margin-top: 50%;
     }
 }
