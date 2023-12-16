@@ -406,6 +406,542 @@ const chroniclesOfEmoryTate2011 = [
         display: true,
         image: null
     },
+    {
+        quote: `"He who hesitates is lost I once hesitated to protect a system. The system is broken What to do now? Cowards,traitors,amateurs.Epic fail.Sad"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Old people are somehow "funny" All dead mf's who died young must be absolutely hilarious.(group laughter) Is the very meaning of life lost?"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"An old man told me(I was 20 yrs) Never scare a coward.I told him"I aint scary".YES YOU ARE Now a generation of cowards are afraid of me.OOPS"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I watch the most capable athletes in the world,but feel no envy.When it was my turn(as a man) I conquered. Find achievement and be capable."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"It appears to me that many Chinese live without that common feeling of human ENVY. They seem to be so driven.They are just being themselves."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"A highly-educated (formal education) PHD quips (to me) maybe I could have been you and you could have been the phd.He doesn't get it.No tks."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"WORDGAME.  BRIGADOON.Why would groups of morons assume that I seek and live in brigadoon. Are they not the ones divorced from reality? Hell"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Their children struggle with the chasm between the real and the farcical.  Psychologies break and harsh drugs try to "fix" the problem. Hell"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"AND SO,young man with big hair smiles a death-smile,athletic. White dude flips me the middle finger.I'm in my 50's.Can you believe it?weak."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"BIG AD CAMPAIGN ! To protect you from MAYHEM, like ALLSTATE.  Is that not a dangling modifier?  What?  Allstate become the mayhem.  Idiots."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"We must protect you from terror like the American government. Must be, "We can protect you like the govt DOES.  Perhaps the semantics fail."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"With children like mine, Janine Tristan and Andrew, it is easy to be proud. Then I remember that I am the Man.  Not narcissistic.  Fact."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I must admit, the clowns who perpetrate their "games" on free society are no longer funny."funny?" .Not out here on the sharp end.  Shut up"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Physical force is underrated,S.Do something more effective than "walking off" and pretending.He must learn his place in life"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Confusing knowledge with wisdom is a dangerous trend. Life may seem like a game,but in fact is deadly serious. Wisdom breeds action, Tateism"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"He who shuns the dust of the arena, shall not sit in the shade of the olive tree.  Fight! or live in the shadow of one's own cowardice. Fail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Caught between the longing for love and the struggle for the legal tender.
+        Was this a doub entendre all along?  "The Pretender" Classic song"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I now think of our men at war and we veterans and wonder.  Did we sacrifice to protect a greedy super-elite? That would be a life-changer."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Again I worry, if gays can not have children,all they need is YOUR children to continue their sex lives.How could this logic be flawed? Tate"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Turning a "blind eye" does not make you cool. A non-reaction isnt "smooth"  It makes you weak,unaware and a walking target for hostile acts"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"When you are sharing important matters with a friend,and they make inane jokes while you try to share.They are your enemy. Poisoning the air"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"These politicians are funny.Curiously so. We must stop selling our factories and jobs NOW. Bring back our stuff.Stop bleeding, then fix it."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Never slowin down and I shoulda started runnin' a long time ago...."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The first human reaction to FEAR, is SILENCE. Learned helplessness. Difficult to induce, Impossible to maintain. Tateism. I TWITTER. chirp?"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"How is it nobody ever talks about the future act of having a family.  Sure the world is rough, but somebody brought YOU here.  Sell Fish!!"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I visited Anhedonia! Can you find its location?? Google maps places it midway between Ennui and Dejection.
+        WTF you say!? Speak English pls"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Rape in the military terrible. But when a fem soldier foreplays on some dude's face and leaves a dude with blue-balls, did she rape him? yes"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"When your name is Tristan Tate, the people love to hate. They can't duplicate, nor even emulate. It's sad to imitate. Silence all debate."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Tristan is champ in the ring 
+        On Shipwrecked he was Fire King
+        He has a REAL skill
+        You'll not break his will
+        A kick and the bell will go DING"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"If one thing I have learned, cowards hunt in packs.  Some cowards join gangs or even, , police forces or secret centers of power.  Beware."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Some moron recommends that I "pay attention". For each thing you see there is something else you miss.  I should have told him STFU. #Child"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Lonely housewife tells handsome handyman to paint indoor walls as well as outside.  After that it was inner and outer, inner and outer."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Anhedonia. A place without pleasure, beyond the grasp of pain.Only real events catch the attention.Vision is black + white.  
+        No cure needed"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The Tate problem, conundrum (if you will) is not whether they accept me in their world.  Question is; Do I allow them entrance into MINE."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"One must admit that the racial hatreds have gone "underground".  They don't shout NIGGER anymore, they just quietly discriminate and ignore."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The ability to read minds develops after many decades. Still, it is becoming useless now as empty-headed "cool" people are tuned out. #lost"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"My mind-reading skills are rendered neutral, as the streets fill with empty-headed youth, no goals, and very little self-respect. #PIERCEME"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Living in a state of paranoia and looking is dangerous to one's physical and mental health and also results in poor security. 
+        Rodent-like."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Many animals are immune to their own poison. The toxic HUMAN realizes that his  toxin kills even himself, toxifies his kids, all. #epicfail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Conformity is the touchstone of failed genius.  Show conformist, I will show you average. BTW tattoo and piercing is another way to conform."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Problem with small-minded people is that one can always tell what they are thinking. It is rarely even original, good, or safe. #idiotbuddy"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I allow manipulation to find out where my enemy wants me to go. Then I use my mind to break the trap and punish the perpetrators. #alwayswin"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"No big fan of group causes I admit that killing a young black man in cold blood has me angry.  These mo fo's would kill us all, if they cud"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Few people know the terror of being hunted down by armed assassins. Fewer survive. Ask me. TRAYVON's last scream of "HELP" chills my soul."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The soft underbelly of the "New World Order" is exposed-"CONNECTED" people steal all wealth. Idiots march in lockstep. Mimic then DIE#zombie"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Action remains when we run out of excuses.Contentment is left when we exhaust our lust. Ashes remain from fire, we all return to the dust."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Now the new form of evil scientist has fucked up the behavioural matrix.Parent to child, woman toward man, weak man vs alpha male. #epicfail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"What's the difference between seeing and comprehending?'tween moving, and taking action.'tween focus and distraction, love and satisfaction?"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"difference between seeing and comprehending?' moving, and taking action.'tween focus and distraction, love and satisfaction?
+        @Elena_Petreska"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The former taste of love, of feelings shared, of feeling lost, A faded memory now, our passion cold beneath the frost.  #exlover"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The truth is underestimated, often is manipulated, oft-times unanticipated,rarely unappreciated,never to be mitigated,often to be celebrated"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Enemies of Alpha males are weak.They hunt in packs.They invent motives to harm. Mostly, they pretend to be the alpha's friends, to get close"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Honestly. There is a problem with the hoodie. Just like the burkha or the assassin's balaclava. It is not a racial thing, it is a disguise."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Intelligence wins against cunning! Not that some fk can't bash your head with a rock  Even if it kills you he can't say "I am smarter!"#fail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Can cowards tell you to "have courage" Can athiests say "God help me" Can narcissists say "I love you" Can dictators say "Freedom" #puzzling"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Zimmerman has had enough time to detox from the crystal meth and alcohol from the night of the shooting. A fresh haircut kills the hair test"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Get the fk out of Afghanistan.  This is a  killing ground, and is built for the task.If the bad guy dont getchya you still die.
+        #commonsense"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The real question about legal drugs and prostitution is this.  Will those in power ever take the bootheel off the little man's neck. #prison"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Being real means NOT being a reflection of pop culture.  How can you be an individual when your very thoughts are cloned. Be urself. #fake"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Game? The Russians are playing Chess, the Americans - checkers/drafts The Chinese play Go, and the E U - tic-tac-dough. #wtf
+        #winthefuture"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"After America's double-jump in checkers, they were checkmated by Russia, who was surrounded by Go stones from China. The EU lost money #fail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Does no one realize that Killing Bin Laden was the coward's way?  Take him alive, and trace the Pakistani networks. Brave. #idiots #oldman"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"One wonders what they might sell off next?  We sold our manufacturing base and we even sold out some special people. It is a National shame"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Watching cobraacademy of martial arts http://livestre.am/D5Iu via 
+        @livestream"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"livestream.com/cobraacademy
+        Watch TRISTAN Tate fight.  Live now.  Coming soon.... European TITLE Belt"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"livestream.com/cobraacademy  Watch my son fight.  Check his older brother (my namesake) King Cobra Tate. World Champ now.  They idolize you."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"TRISTAN HAS NOT FOUGHT YET... I had bad info.  TRISTAN must WIN.  Tweeters, tune in NOW NOW http://livestream.com/cobraacademy
+        The truth shall be revealed"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Beyond betrayal and treason - the fact that They are proud of it.Billions tax-free. Heroes homeless. Now U S kids say "epic fail". #sadfools"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The comic book killed Superman, Obama stopped NASA space shuttles.Kids nowadays find "epic fail" funny and kill themselves on f/b. #mindfuck"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"I uncover mask of the assassins'.They walk around telling inane jokes,insinuating harmful action. The tone is bored. Ennui.
+        #bland #disfunct"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Money on the line, fight judges cheat.  Pacquio judges - one million cash while Kotrijk judges had to split 1000 euros to cheat Andrew.#fkme"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"FAILURE tastes like a thick,bitter liquid  hard to swallow. With an aftertaste of unmentionable rankness. This is what I am told.#neverfail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Why do inferior males always have something smart to say, when with a group or gang.  Alone they are as silent as frightened birds. #coward"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"When you run out of cliche and pop-culture knowledge your real thoughts seem so useless Right?  Look at what they have done to you. #Improve"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Work Consume Die. Good Luck Life goes on Take care Hang in there Nothing lasts forever Does not kill makes you stronger.  Forgive and forget"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"We "congratulate" Ander Cooper when he OUTS himself, or Frankie Ocean. Explain the ACHIEVEMENT of being gay. I made children. #Nobodycares."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The truth is if I could clone myself. I would not.  The better versions of me already walk the planet. Love was my link to the future. kids#"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"As the problem reveals itself I know that people realize that they are their own worst enemy.  As such they turn their hate outward. #fail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Perhaps "we" should arm the all non-white countries. Automatic weapons.  Shooting brings peace. "They" reproduce too much anyway. #genocide"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"A combination of my sheer indefagitability, and my unequalled perspicacity makes me a feared adversary, regardless of field of endeavour"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Anybody who thinks they have children in my kid's league, tell me! I know we all truly love our kids. Still, I am certain mine are "perfect""`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"A dude circulates a list that unsucessful people watch TV but sucessful ones (like him?) dont. In response watch eastenders omnibus.2X"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"All these people talking forgiveness.It is appropriate to get on your knees while begging.  Men should never forget wrongs #perservere"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Ochocino not NFL? Chad Johnson?Got arrested beating a woman? Now, like or not, we got a real brotha.#bleed  they will have ur money!! Tyson"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Life only has 3 categories.  Cause and effect.  Purpose and intent. Action and reaction.  When you master all three realms you begin Tateism"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Obamacare question.. when some family sends a check to cover the mandate, and that check bounces. bank fees, no food, no gas.. what next?"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"When the final mind-game is played, and death awaits, you might wonder.If I did not mind did it matter.  Your moves, sand on the beach.#fear"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"My 83 yr  mom, pulls a stuck mower/tractor out of mud at pond..No motor help. Her reply "If I stop doin' it I won't be able to do it." ninja"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"People say "I am a vegetarian".  No such thing. Human species.  Better stated one  practices vegetarianism.  It is religion, not a reality."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The  average human in the postmodern world works to have leisure  time. Work to sit and relax. We must break the work,consume, die  cycle"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"It appears the insanity of the ruling elite is exposed worldwide now.  They will kill you.  Keep your mouths shut, behave as sheep. #sadlife"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Look in a mirror and ask yourself, who is leading me.Why do I act this way?If you believe the people on Tele =leaders, remain a puppet!#fool"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `""`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"It is curious how the majority of old people seem beaten down.Not in my family. Even a stroke leaves no reminders.  Mom is original Ninja."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The psychological effects of mind-fuck are not understood.We learned nothing from the Nazi failure.Get  into lock-step.Lose ur mind. #puppet"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"A man does not acquire a full skill-set to be told,"Take Care" be careful" by amateurs.  Raw
+        action solves everything. Caution breeds fear."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Some dude is called "cannibal cop" convicted by a jury of panicked Americans to life in prison for internet chat.He never did a thing. #fail"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `""Who chains us.and who holds the key that can  set us free? It's you. You have all the weapons you need. Now fight!" (MOVIE SUCKER PUNCH)"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Gays (esp men) can't reproduce so they need YOUR children.Men will marry men to get tax break/govt benefits.Gay divorce will clog courts.#NO"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"The problem with modern dudes is that their main sex organ is the tongue. Favourite position,head between thighs.I fail and now have 3 kids."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"How can We still fund military biofuel? Result?We burn food and greenage in order to make fuel to wage war! Fuck a starving baby .#killall"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Lack of leadership can kill sure as a bullet. Just ask me (alive) or Ambassador Stevens (RIP).Cries for assistance unanswered, leaders fail."`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Zimmer's whole story was a lie on TV and they played it and entered it as court record.  ZIMM was not sworn in!!!!!!!!!!  Television.  WTF"`,
+        display: true,
+        image: null
+    },
+    {
+        quote: `"Perjury is a zero-sum game. Both can't win. He had the gun or she lied to  911. One must go to jail. Zim in jail or she violates plea deal."`,
+        display: true,
+        image: null
+    },
     
 ]
 
