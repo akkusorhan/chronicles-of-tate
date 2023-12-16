@@ -51,8 +51,8 @@ launchExperienceButton.addEventListener("click", () => {
         quotePreloader.style.opacity = 0
 
         setTimeout(() => {
-            homePage.remove()
-            quotePreloader.remove()
+            homePage.style.display = "none"
+            quotePreloader.style.display = "none"
 
             sections.style.opacity = 1
             sectionsEnabled = true
@@ -974,6 +974,8 @@ const gltfLoader = new GLTFLoader()
 
 const letters = []
 
+const animationDuration = 1500
+
 const mixers = []
 let letterCount = []
 const chessPieces = [
@@ -1047,7 +1049,7 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             // mesh2.material.map = letterTexture
             // mesh2.material.color = null
 
-            // // Animations
+            // Animations
             const randomDecimal = Math.random()
             const randomNumber = Math.floor(randomDecimal * 3) + 1
 
@@ -1181,7 +1183,7 @@ gui.addColor(ambientLight, "color").name("ambientLightColor")
 scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("#FFF7DD", 0) // regular 50
+const pointLight = new THREE.PointLight("#FFF7DD", 0) // regular 75
 pointLight.position.z = 3
 pointLight.castShadow = true
 // pointLight.decay = 1.8
@@ -1271,7 +1273,7 @@ document.addEventListener('click', () => {
         console.log('Object clicked:', chronicleIteration);
 
         const startTime = performance.now()
-        const duration = 1500
+        const duration = animationDuration
 
         function animate(currentTime) {
             const elapsed = currentTime - startTime
@@ -1300,13 +1302,12 @@ document.addEventListener('click', () => {
 document.querySelector(".close-chronicle-btn").addEventListener('click', () => {   
     popupOpened = false
 
-    chroniclePopUp.style.display = 'none'
     chroniclePopUp.style.opacity = "0"
     sections.style.opacity = 1
     // chroniclePopUp.classList.add("hide")
 
     const startTime = performance.now()
-        const duration = 1500
+        const duration = animationDuration
 
         function animate(currentTime) {
             const elapsed = currentTime - startTime
@@ -1328,6 +1329,10 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
         }
 
         requestAnimationFrame(animate)
+
+        setTimeout(() => {
+            chroniclePopUp.style.display = 'none'
+        }, 1600);
 })
 
 /**
@@ -1475,7 +1480,7 @@ window.addEventListener("touchstart", (event) => {
         // chroniclePopUp.classList.remove("show")
 
         const startTime = performance.now()
-        const duration = 1500
+        const duration = animationDuration
 
         function animate(currentTime) {
             const elapsed = currentTime - startTime

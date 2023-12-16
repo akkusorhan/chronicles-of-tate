@@ -178,15 +178,15 @@ html
     align-items: center;
     background-color: black;
     /* opacity: 10%; */
-    animation: fade-in 2500ms;
-    transition: opacity ease-out 2500ms;
+    animation: fade-in 1500ms;
+    transition: opacity ease-out 1500ms;
     z-index: 13;
     overflow-y: scroll;
 }
 
 .chronicle.hide {
     display: none;
-    animation: fade-out 2500ms;
+    animation: fade-out 1500ms;
 }
 
 .chronicle-content {
@@ -255,7 +255,7 @@ html
     flex-direction: column;
     height: 1000vh; */
     opacity: 0;
-    transition: opacity ease-out 2500ms;
+    transition: opacity ease-out 1500ms;
 }
 
 .quote {
