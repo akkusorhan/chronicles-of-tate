@@ -18,7 +18,14 @@ let chhronicleSections = document.querySelector(".sections")
 
 let chroniclesOfTateSoundtrack = new Audio("./tate-chronicles-soundtrack.mp3")
 
-document.body.style.overflow = "hidden"
+window.scrollTo({
+    top: 0, 
+    behavior: "smooth"
+})
+
+setTimeout(() => {
+    document.body.style.overflow = "hidden"
+}, 1000);
 
 launchExperienceButton.addEventListener("click", () => {
     homePageEnabled = false
@@ -89,7 +96,7 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 40500);
+    }, 40500); //40500
 })
 
 
@@ -103,6 +110,75 @@ const images = [
     "/images/emory-tate-with-mom.png",
     "/images/emory-tate-young.png",
     "/images/tate-pondering.png",
+    "/images/emory1.png",
+    "/images/emory2.png",
+    "/images/emory3.png",
+    "/images/emory4.png",
+    "/images/emory5.png",
+    "/images/emory6.png",
+    "/images/emory7.png",
+    "/images/emory8.png",
+    "/images/emory9.png",
+    "/images/emory10.png",
+    "/images/emory11.png",
+    "/images/emory12.png",
+    "/images/emory13.png",
+    "/images/emory14.png",
+    "/images/emory15.png",
+    "/images/emory16.png",
+    "/images/emory17.png",
+    "/images/emory18.png",
+    "/images/emory19.png",
+    "/images/emory20.png",
+    "/images/emory21.png",
+    "/images/emory22.png",
+    "/images/emory23.png",
+    "/images/emory24.png",
+    "/images/emory25.png",
+    "/images/emory26.png",
+    "/images/emory27.png",
+    "/images/emory28.png",
+    "/images/emory29.png",
+    "/images/emory30.png",
+    "/images/emory31.png",
+    "/images/emory32.png",
+    "/images/emory33.png",
+    "/images/emory34.png",
+    "/images/emory35.png",
+    "/images/emory36.png",
+    "/images/emory37.png",
+    "/images/emory38.png",
+    "/images/emory39.png",
+    "/images/emory40.png",
+    "/images/emory41.png",
+    "/images/emory42.png",
+    "/images/emory43.png",
+    "/images/emory44.png",
+    "/images/emory45.png",
+    "/images/emory46.png",
+    "/images/emory47.png",
+    "/images/emory48.png",
+    "/images/emory49.png",
+    "/images/emory50.png",
+    "/images/emory51.png",
+    "/images/emory52.png",
+    "/images/emory53.png",
+    "/images/emory54.png",
+    "/images/emory55.png",
+    "/images/emory56.png",
+    "/images/emory57.png",
+    "/images/emory58.png",
+    "/images/emory59.png",
+    "/images/emory60.png",
+    "/images/emory61.png",
+    "/images/emory62.png",
+    "/images/emory63.png",
+    "/images/emory64.png",
+    "/images/emory65.png",
+    "/images/emory66.png",
+    "/images/emory67.png",
+    "/images/emory68.png",
+    "/images/emory69.png"
 ]
 
 function preloadImages(imageArray) {
@@ -113,6 +189,7 @@ function preloadImages(imageArray) {
 }
 
 preloadImages(images);
+console.log(images.length)
 
 const chroniclesOfEmoryTate2011 = [
     {
@@ -950,7 +1027,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1058,6 +1135,7 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             const clip = THREE.AnimationClip.findByName(animations, `${chessPieces[randomIndex]}${randomNumber}`)
             const action = mixer.clipAction(clip)
             mixers.push(mixer)
+            gltf.mixer = mixer
             action.play()
 
             // size
@@ -1084,7 +1162,7 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
                 letterRandomPositionX = 2
             } else if (!window.innerHeight / window.innerWidth < 0.45) { //normal viewport
-                letterRandomPositionX = 10
+                letterRandomPositionX = 8
             }
 
             // Setting a random X, Y, Z value for position
@@ -1177,8 +1255,8 @@ const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 0
 
-gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-gui.addColor(ambientLight, "color").name("ambientLightColor")
+// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+// gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
@@ -1264,7 +1342,7 @@ document.addEventListener('click', () => {
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
-        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 7)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 77)] : chroniclesOfEmoryTate2011[chronicleIteration].image
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
@@ -1392,9 +1470,9 @@ camera.position.z = 10
 
 scene.add(camera)
 
-gui.add(camera.position, "x").min(-15).max(15).step(.01)
-gui.add(camera.position, "y").min(-120).max(60).step(.01)
-gui.add(camera.position, "z").min(-15).max(45).step(.01)
+// gui.add(camera.position, "x").min(-15).max(15).step(.01)
+// gui.add(camera.position, "y").min(-120).max(60).step(.01)
+// gui.add(camera.position, "z").min(-15).max(45).step(.01)
 
 
 /**
@@ -1474,7 +1552,7 @@ window.addEventListener("touchstart", (event) => {
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
-        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 7)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 77)] : chroniclesOfEmoryTate2011[chronicleIteration].image
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
@@ -1607,7 +1685,9 @@ function debounce(func, wait, immediate) {
 
 const debouceScroll = debounce(handleScroll, 0.1 )
 
-window.addEventListener("scroll", debouceScroll)
+setTimeout(() => {
+    window.addEventListener("scroll", debouceScroll)
+}, 2500);
 
 // Canvas scene animation (tick function)
 const clock = new THREE.Clock()
@@ -1643,7 +1723,7 @@ const tick = () => {
         } else if (window.innerHeight / window.innerWidth > 0.9) {
             letterRandomPositionX = 2
         } else if (!window.innerHeight / window.innerWidth < 0.45) {
-            letterRandomPositionX = 10
+            letterRandomPositionX = 8
         }
 
         function scrollDown() {
@@ -1664,7 +1744,7 @@ const tick = () => {
         let viewportExit = document.querySelector(".viewport-enter")
 
         function scroll() {
-            if (letter.position.y > 3.95) {
+            if (letter.position.y > 3.95 && nthItemEnd < chroniclesOfEmoryTate2011.length) {
                 scrollDown()
 
                 nthItemStart = nthItemStart + 1

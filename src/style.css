@@ -181,7 +181,9 @@ html
     animation: fade-in 1500ms;
     transition: opacity ease-out 1500ms;
     z-index: 13;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    margin: 0px;
+    padding: 0px;
 }
 
 .chronicle.hide {
@@ -194,15 +196,17 @@ html
     display: flex;
     justify-content: center;
     flex-direction: column;
-    width: 75%;
-    height: 75%;
+    width: 80%;
+    height: 95%;
+    margin-top: 25%;
+    margin-bottom: 25%;
 }
 
 .chronicle-content img {
     max-width: 100%;
-    height: auto; 
-    display: block; 
-    margin: auto; 
+    object-fit: contain;
+    max-height: 35%;
+    margin: 5%; 
 
 }
 
@@ -231,9 +235,20 @@ html
     color: rgb(174, 174, 174);
 }
 
+@media(min-width: 1000px) {
+    .chronicle-content img {
+        max-height: 50%;
+        min-height: 50%;
+    }
+}
+
 @media (max-width: 1000px) {
     .chronicle-content h3 {
         font-size: 27px;
+    }
+
+    .chronicle-content img {
+
     }
 
     .close-chronicle-btn {
@@ -243,7 +258,7 @@ html
 
 @media (max-width: 500px) {
     .close-chronicle-btn {
-        margin-top: 50%;
+        margin-top: 10%;
     }
 }
 
@@ -379,7 +394,7 @@ html
 }
 
 .section-2013 {
-    height: vh;
+    height: 400vh;
     /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;
