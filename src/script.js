@@ -1593,6 +1593,7 @@ let scrollInteration
 let deltaScrollPosition = null
 let section2011Vh = 700
 let section2012Vh = 1000
+let section2013vh = 600
 
 function handleScroll() {
     scrollY = window.scrollY 
@@ -1653,7 +1654,9 @@ function handleScroll() {
     // Extend section-2011 height
     // Check for target div in viewport
     const section2011End = document.querySelector('.section-2011-end');
-    const section2012End = document.querySelector('.section-2012-end');
+    const section2012End = document.querySelector('.section-2012-end')
+    const section2013End = document.querySelector('.section-2013-end')
+
 
     if (isInViewport(section2011End) && letterCount.length < 58) {
         section2011Vh += 10
@@ -1662,6 +1665,10 @@ function handleScroll() {
     } else if (isInViewport(section2012End) && letterCount.length < 146) {
         section2012Vh += 10
         document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
+        console.log("extend...")
+    } else if (isInViewport(section2013End) && letterCount.length < 162) {
+        section2013vh += 10
+        document.querySelector(".section-2013").style.height = `${section2013vh}vh`
         console.log("extend...")
     }
 
