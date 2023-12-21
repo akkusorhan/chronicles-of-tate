@@ -278,6 +278,16 @@ html
 .quote {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+#quote-2011-1 {
+    margin-bottom: 100vh;
+}
+
+#quote-2011-2 {
+    margin-bottom: 100vh;
 }
 
 .section-2011 {
@@ -320,12 +330,18 @@ html
 .viewport-enter {
     /* border: 3px solid yellow; */
     height: 1vh;
+    width: 95%;
+    margin-top: 15vh;
+    margin-bottom: 15vh;
 }
 
 .viewport-exit {
     /* border: 3px solid yellow; */
     height: 1vh;
     margin-bottom: 140vh;
+    width: 95%;
+    margin-top: 0vh;
+    margin-bottom: 15vh;
 }
 
 .section-2011-quote img {
@@ -337,8 +353,9 @@ html
     /* border: 1px solid orange; */
     margin: 10px;
 
-    background: black;
-    opacity: 70%;
+    /* background: black; */
+    /* opacity: 70%; */
+    opacity: 100%;
     padding: 10px;
 }
 
@@ -354,6 +371,16 @@ html
 
     .reverse {
         flex-direction: column-reverse;
+    }
+
+    .viewport-enter {
+        margin-top: 5vh;
+        margin-bottom: 5vh;
+    }
+
+    .viewport-exit {
+        margin-top: 0vh;
+        margin-bottom: 5vh;
     }
 
     .section-2011-quote img {
@@ -396,7 +423,7 @@ html
 }
 
 .section-2013 {
-    height: 600vh;
+    height: 400vh;
     /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;

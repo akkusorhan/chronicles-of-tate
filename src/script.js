@@ -16,7 +16,7 @@ let quotePreloader = document.querySelector(".quote-preloader")
 let sectionsEnabled = false
 let chhronicleSections = document.querySelector(".sections")
 
-let chroniclesOfTateSoundtrack = new Audio("./chronicles-of-tate-soundtrack.mp3")
+let chroniclesOfTateSoundtrack = new Audio("./tate-chronicles-soundtrack.mp3")
 
 window.scrollTo({
     top: 0, 
@@ -1593,7 +1593,22 @@ let scrollInteration
 let deltaScrollPosition = null
 let section2011Vh = 700
 let section2012Vh = 1000
-let section2013vh = 600
+let section2013vh = 400
+
+let scrollChessPieces = true
+const viewportEnter1 = document.querySelector(".viewport-enter1")
+const viewportExit1 = document.querySelector(".viewport-exit1")
+const viewportEnter2 = document.querySelector(".viewport-enter2")
+const viewportExit2 = document.querySelector(".viewport-exit2")
+const viewportEnter3 = document.querySelector(".viewport-enter3")
+const viewportExit3 = document.querySelector(".viewport-exit3")
+const viewportEnter4 = document.querySelector(".viewport-enter4")
+const viewportExit4 = document.querySelector(".viewport-exit4")
+const viewportEnter5 = document.querySelector(".viewport-enter5")
+const viewportExit5 = document.querySelector(".viewport-exit5")
+const viewportEnter6 = document.querySelector(".viewport-enter6")
+const viewportExit6 = document.querySelector(".viewport-exit6")
+
 
 function handleScroll() {
     scrollY = window.scrollY 
@@ -1651,12 +1666,75 @@ function handleScroll() {
     lastScrollPosition = currentScrollPosition
     // console.log(lastScrollPosition)
 
+    // Check if chess pieces overlap with quote
+    function scrollDownCheck() {
+        if (isInViewport(viewportEnter1)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit1)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    
+        if (isInViewport(viewportEnter2)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit2)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    
+        if (isInViewport(viewportEnter3)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit3)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    
+        if (isInViewport(viewportEnter4)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit4)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    
+        if (isInViewport(viewportEnter5)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit5)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    
+        if (isInViewport(viewportEnter6)) {
+            scrollChessPieces = false
+            console.log("viewport enter in viewport")
+        } 
+        
+        if (isInViewport(viewportExit6)) {
+            scrollChessPieces = true
+            console.log("viewport exit in viewport")
+        }
+    }
+
+    scrollDownCheck()
     // Extend section-2011 height
     // Check for target div in viewport
     const section2011End = document.querySelector('.section-2011-end');
     const section2012End = document.querySelector('.section-2012-end')
     const section2013End = document.querySelector('.section-2013-end')
-
 
     if (isInViewport(section2011End) && letterCount.length < 58) {
         section2011Vh += 10
@@ -1666,7 +1744,7 @@ function handleScroll() {
         section2012Vh += 10
         document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
         console.log("extend...")
-    } else if (isInViewport(section2013End) && letterCount.length < 162) {
+    } else if (isInViewport(section2013End) && letterCount.length < chroniclesOfEmoryTate2011.length) {
         section2013vh += 10
         document.querySelector(".section-2013").style.height = `${section2013vh}vh`
         console.log("extend...")
@@ -1734,7 +1812,9 @@ const tick = () => {
         }
 
         function scrollDown() {
-            letter.position.y = -3.95 // random number between -5 and -6.5
+
+            letter.position.y = -3.95 + (Math.random() * (-7.65 - (-3.95))) // random number between -3.15 and -7.65
+            //window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = -3.95 - Math.random() * 10 : letter.position.y = -3.95 + Math.random() * (-10.95 - (-3.95))
             letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
             letterCount.push(letterCount.length)
             // console.log(letterCount)
@@ -1747,11 +1827,8 @@ const tick = () => {
             // console.log(letterCount)                
         }
 
-        let viewportEnter = document.querySelector(".viewport-enter")
-        let viewportExit = document.querySelector(".viewport-enter")
-
         function scroll() {
-            if (letter.position.y > 3.95 && nthItemEnd < chroniclesOfEmoryTate2011.length) {
+            if (letter.position.y > 3.95 && nthItemEnd < chroniclesOfEmoryTate2011.length && scrollChessPieces) {
                 scrollDown()
 
                 nthItemStart = nthItemStart + 1
