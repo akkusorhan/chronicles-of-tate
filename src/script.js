@@ -100,7 +100,7 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 4500); //40500
+    }, 40500); //40500
 })
 
 
