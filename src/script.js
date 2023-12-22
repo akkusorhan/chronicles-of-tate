@@ -6,6 +6,7 @@ import * as dat from "lil-gui"
 /**
  * Creating Home Page
  */
+// home page
 let homePageEnabled = true
 let homePage = document.querySelector(".home-page")
 let launchExperienceButton = document.querySelector(".launch-experience-btn")
@@ -17,6 +18,8 @@ let sectionsEnabled = false
 let chhronicleSections = document.querySelector(".sections")
 
 let chroniclesOfTateSoundtrack = new Audio("./tate-chronicles-soundtrack.mp3")
+
+let header = document.querySelector(".header")
 
 window.scrollTo({
     top: 0, 
@@ -62,6 +65,7 @@ launchExperienceButton.addEventListener("click", () => {
             quotePreloader.style.display = "none"
 
             sections.style.opacity = 1
+            header.style.opacity = 1
             sectionsEnabled = true
 
             document.body.style.overflow = ""
@@ -96,7 +100,7 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 40500); //40500
+    }, 4500); //40500
 })
 
 
@@ -1339,6 +1343,7 @@ document.addEventListener('click', () => {
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
+        header.style.opacity = 0
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
@@ -1382,6 +1387,7 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
 
     chroniclePopUp.style.opacity = "0"
     sections.style.opacity = 1
+    header.style.opacity = 1
     // chroniclePopUp.classList.add("hide")
 
     const startTime = performance.now()
@@ -1549,6 +1555,7 @@ window.addEventListener("touchstart", (event) => {
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
+        header.style.opacity = 0
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
@@ -1667,69 +1674,70 @@ function handleScroll() {
     // console.log(lastScrollPosition)
 
     // Check if chess pieces overlap with quote
-    function scrollDownCheck() {
-        if (isInViewport(viewportEnter1)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    // function scrollDownCheck() {
+    //     if (isInViewport(viewportEnter1)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit1)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
+    //     if (isInViewport(viewportExit1)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
     
-        if (isInViewport(viewportEnter2)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    //     if (isInViewport(viewportEnter2)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit2)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
+    //     if (isInViewport(viewportExit2)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
     
-        if (isInViewport(viewportEnter3)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    //     if (isInViewport(viewportEnter3)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit3)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
+    //     if (isInViewport(viewportExit3)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
     
-        if (isInViewport(viewportEnter4)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    //     if (isInViewport(viewportEnter4)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit4)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
+    //     if (isInViewport(viewportExit4)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
     
-        if (isInViewport(viewportEnter5)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    //     if (isInViewport(viewportEnter5)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit5)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
+    //     if (isInViewport(viewportExit5)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
     
-        if (isInViewport(viewportEnter6)) {
-            scrollChessPieces = false
-            console.log("viewport enter in viewport")
-        } 
+    //     if (isInViewport(viewportEnter6)) {
+    //         scrollChessPieces = false
+    //         console.log("viewport enter in viewport")
+    //     } 
         
-        if (isInViewport(viewportExit6)) {
-            scrollChessPieces = true
-            console.log("viewport exit in viewport")
-        }
-    }
+    //     if (isInViewport(viewportExit6)) {
+    //         scrollChessPieces = true
+    //         console.log("viewport exit in viewport")
+    //     }
+    // }
 
     scrollDownCheck()
+
     // Extend section-2011 height
     // Check for target div in viewport
     const section2011End = document.querySelector('.section-2011-end');
@@ -1813,9 +1821,12 @@ const tick = () => {
 
         function scrollDown() {
 
-            letter.position.y = -3.95 + (Math.random() * (-7.65 - (-3.95))) // random number between -3.15 and -7.65
-            //window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = -3.95 - Math.random() * 10 : letter.position.y = -3.95 + Math.random() * (-10.95 - (-3.95))
-            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll down
+            // letter.position.y = -3.94 + Math.random() * ( -4.05 - (-3.94) ) // random number between -3.94 and -4.54
+            // window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = -3.95 - Math.random() * 10 : letter.position.y = -3.95 + Math.random() * (-10.95 - (-3.95))
+            letter.position.y = -3.95 + Math.random() * ( -4.04 - (-3.94) ) // random number between -3.95 and -4.04
+            
+            // letter.position.y = -3.94
+            letter.position.x = (Math.random() - 0.5) * letterRandomPositionX //randomize x on scroll down
             letterCount.push(letterCount.length)
             // console.log(letterCount)
         }
@@ -1828,7 +1839,7 @@ const tick = () => {
         }
 
         function scroll() {
-            if (letter.position.y > 3.95 && nthItemEnd < chroniclesOfEmoryTate2011.length && scrollChessPieces) {
+            if (letter.position.y > 3.95 && nthItemEnd < chroniclesOfEmoryTate2011.length && scrollChessPieces) { // 3.95
                 scrollDown()
 
                 nthItemStart = nthItemStart + 1
@@ -1838,7 +1849,7 @@ const tick = () => {
                 console.log(letter.children[0].chronicleNumber)
                 console.log(`Displaying chronicles ${nthItemStart} to ${nthItemEnd}`)
     
-            } else if (letter.position.y < -4.05) {
+            } else if (letter.position.y < -4.05) { // -4.05 
                 scrollUp()
                 nthItemStart = nthItemStart - 1
                 nthItemEnd = nthItemEnd - 1
