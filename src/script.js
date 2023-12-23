@@ -100,9 +100,16 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 40500); //40500
+    }, 500); //40500
 })
 
+//mute button
+const muteButton = document.querySelector(".mute-btn")
+muteButton.addEventListener("click", () => {
+    muteButton.textContent == "mute" ? muteButton.textContent = "unmute" : muteButton.textContent = "mute"
+
+    muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
+})
 
 
 
@@ -1031,7 +1038,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-// const gui = new dat.GUI()
+const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1083,19 +1090,19 @@ let nthItemEnd = 0
 
 let amountOfChroniclesGenerated
 
-// gltfLoader.load(
-//     "./chess-board.glb",
-//     (gltf) => {
-//         let chessBoard = gltf.scene
-//         console.log(gltf)
+gltfLoader.load(
+    "./chess-board.glb",
+    (gltf) => {
+        let chessBoard = gltf.scene
+        console.log(gltf)
 
-//         gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
-//         gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
-//         gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
+        gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
+        gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
+        gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
         
-//         scene.add(chessBoard)
-//     }
-// )
+        scene.add(chessBoard)
+    }
+)
 
 
 for (let i = 0; i < letterGenerationVariable; i++) {
@@ -1181,6 +1188,10 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             letter.rotation.y = Math.random() - 0.5 * 1.2
             letter.rotation.z = Math.random() - 0.5 * 1.2
 
+            // shadows
+            letter.castShadow = false
+            letter.receiveShadow = false
+
             scene.add(gltf.scene)
 
             gltf.scene.children[0].chronicleNumber = i
@@ -1259,7 +1270,7 @@ const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 0
 
-// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
 // gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
@@ -1267,7 +1278,8 @@ scene.add(ambientLight)
 // Point Light (assigned to mouse position)
 const pointLight = new THREE.PointLight("#FFF7DD", 0) // regular 75
 pointLight.position.z = 3
-pointLight.castShadow = true
+pointLight.rotation.y = Math.PI / 2
+pointLight.castShadow = false
 // pointLight.decay = 1.8
 pointLight.distance = 1000
 scene.add(pointLight)
@@ -1343,7 +1355,6 @@ document.addEventListener('click', () => {
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
-        header.style.opacity = 0
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
 
@@ -1351,6 +1362,12 @@ document.addEventListener('click', () => {
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
+
+        // hide and disable header
+        header.style.opacity = 0
+        setTimeout(() => {
+            header.style.display = "none"
+        }, 1600);
 
         // log the object that was clicked
         console.log('Object clicked:', chronicleIteration);
@@ -1389,6 +1406,13 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
     sections.style.opacity = 1
     header.style.opacity = 1
     // chroniclePopUp.classList.add("hide")
+
+    // show and enable header
+    header.style.display = "flex"
+    header.style.opacity = 0
+    setTimeout(() => {
+        header.style.opacity = 1
+    }, 500);
 
     const startTime = performance.now()
         const duration = animationDuration
@@ -1495,6 +1519,7 @@ const renderer = new THREE.WebGLRenderer({
     alpha: true
 })
 renderer.setSize(sizes.width, sizes.height)
+renderer.shadowMap.enabled = true
 renderer.render(scene, camera)
 
 /**
@@ -1563,6 +1588,12 @@ window.addEventListener("touchstart", (event) => {
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
+
+        // hide and disable header
+        header.style.opacity = 0
+        setTimeout(() => {
+            header.style.display = "none"
+        }, 1600);
 
         const startTime = performance.now()
         const duration = animationDuration
