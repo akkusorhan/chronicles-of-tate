@@ -1949,7 +1949,7 @@ function handleScroll() {
         console.log("extend...")
     } 
     
-    if (isInViewport(section2013End) && letterCount.length < 162) {
+    if (isInViewport(section2013End) && nthItemEnd < chroniclesOfEmoryTate2011.length) { //letterCount.length < 162
         section2013vh += 10
         document.querySelector(".section-2013").style.height = `${section2013vh}vh`
         console.log("extend...")
