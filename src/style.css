@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap'); */
 
 *
 {
@@ -15,13 +16,13 @@ html
     /* background: #070707; */
     background: #070707;
     overflow: hide;
-    background-image: url("../static/grid-background.png");
+    /* background-image: url("../static/grid-background.png"); */
 }
 
-html::before {
+/* html::before {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 
-}
+} */
 
 @keyframes fade-in {
     0% {
@@ -268,27 +269,38 @@ header {
     justify-content: center;
     flex-direction: column;
     width: 80%;
-    height: 95%;
-    margin-top: 25%;
+    height: 80%;
+    margin-top: 30%;
     margin-bottom: 25%;
 }
 
 .chronicle-content img {
     max-width: 100%;
     object-fit: contain;
-    max-height: 35%;
-    margin: 5%; 
+    max-height: 20%;
+    /* margin: 5%;  */
+    margin-top: 0%; 
+    padding: 0px;
+    margin-bottom: 12px;
 
 }
 
 .chronicle-content h3 {
-    font-size: 35px;
-    text-align: center;
+    font-size: 28px;
+    text-align: left;
+}
+
+#chronicle-text-content-date {
+    margin: 0px;
+    margin-top: 12px;
+    font-size: 20px;
 }
 
 .close-chronicle-btn {
     /* display: inline-block; */
-    padding: 10px 20px;
+    /* padding: 10px 20px; */
+    padding: 0px;
+    margin-bottom: 12px;
     border: none;
     /* border-radius: 50%; */
     color: white;
@@ -299,6 +311,7 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease, color 0.3s ease;
     width: fit-content;
+    margin: 0px;
 }
 
 .chronicle-content button:hover {
@@ -315,21 +328,53 @@ header {
 
 @media (max-width: 1000px) {
     .chronicle-content h3 {
-        font-size: 27px;
+        font-size: 28px;
+        margin: 0px;
+        margin-bottom: 12px;
     }
 
     .chronicle-content img {
-
+        max-height: 50%;
+        min-height: 50%;
+        margin: 0px;
+        margin-bottom: 12px;
     }
 
     .close-chronicle-btn {
-        margin-top: 25%;
+        margin: 0px;
+        margin-bottom: 20px;
+    }
+
+    #chronicle-text-content-date {
+        margin: 0px;
+        margin-top: 12px;
+        font-size: 20px;
     }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 750px) {
+    .chronicle-content h3 {
+        font-size: 20px;
+        margin: 0px;
+        margin-bottom: 8px;
+    }
+
+    .chronicle-content img {
+        max-height: 50%;
+        min-height: 20%;
+        margin: 0px;
+        margin-bottom: 8px;
+    }
+
     .close-chronicle-btn {
-        margin-top: 10%;
+        margin: 0px;
+        margin-bottom: 8px;
+    }
+
+    #chronicle-text-content-date {
+        margin: 0px;
+        /* margin-top: 8px; */
+        font-size: 16px;
     }
 }
 
@@ -360,7 +405,8 @@ header {
 }
 
 .section-2011 {
-    height: 700vh;
+    /* height: 700vh; */
+    height: 200vh;
     /* border: 3px solid red; */
     display: flex;
     flex-direction: column;
@@ -375,7 +421,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-bottom: 140vh;
+    /* margin-bottom: 140vh; */
 
 }
 
@@ -464,7 +510,8 @@ header {
 }
 
 .section-2012 {
-    height: 1000vh;
+    /* height: 1000vh; */
+    height: 200vh;
     /* border: 3px solid green; */
     display: flex;
     flex-direction: column;
@@ -477,7 +524,7 @@ header {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin-bottom: 140vh;
+    /* margin-bottom: 140vh; */
 }
 
 .section-2012 h1 {
@@ -492,7 +539,7 @@ header {
 }
 
 .section-2013 {
-    height: 400vh;
+    height: 100vh;
     /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;
@@ -504,7 +551,8 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 75vh;
+    margin-top: 35vh;
+    height: 15vh;
 
 }
 
@@ -536,6 +584,7 @@ header {
     align-items: center;
     text-align: center;
     margin-bottom: 3%;
+    margin-top: 10vh;
     font-size: 30px;
 }
 
@@ -546,6 +595,11 @@ header {
 }
 
 @media (max-width: 500px) {
+    .tate-end {
+        margin-top: 50vh;
+        font-size: 24px;
+    }
+
     .tate-end img {
         max-width: 70%;
         margin: 2%;
