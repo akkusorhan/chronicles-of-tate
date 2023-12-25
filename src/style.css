@@ -10,13 +10,23 @@
     color: white;
 }
 
-html
+body
 {
     /* background: #0e0e0e; */
     /* background: #070707; */
     background: #070707;
     overflow: hide;
-    /* background-image: url("../static/grid-background.png"); */
+    background-image: url("../static/gridbackground.png");
+    /* background-repeat: no-repeat; */
+    background-repeat: repeat;
+    /* background-repeat: repeat-y; */
+    /* background-repeat: repeat-x; */
+    background-attachment: fixed;
+    background-size: 100%;
+    background-position: center center;
+    /* height: 100%; */
+    transition: background-size 1500ms ease-in-out;
+    
 }
 
 /* html::before {
@@ -119,7 +129,7 @@ header {
 .home-page {
     position: absolute;
     /* border: 3px solid yellow; */
-    background: #070707;
+    /* background: #070707; */
     height: 98vh;
     width: 97.5vw;
     font-size: 30px;
@@ -175,7 +185,7 @@ header {
 .quote-preloader {
     position: absolute;
     /* border: 3px solid orange; */
-    background: #070707;
+    /* background: #070707; */
     height: 98vh;
     width: 97.5vw;
     display: flex;

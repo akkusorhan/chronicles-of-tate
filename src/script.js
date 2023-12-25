@@ -100,7 +100,7 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 40500); //40500
+    }, 500); //40500
 })
 
 //mute button
@@ -1511,6 +1511,8 @@ document.addEventListener('click', () => {
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
 
+        document.body.style.backgroundSize = "70%"
+
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
         sections.style.opacity = 0
@@ -1560,6 +1562,8 @@ document.addEventListener('click', () => {
 
 document.querySelector(".close-chronicle-btn").addEventListener('click', () => {   
     popupOpened = false
+
+    document.body.style.backgroundSize = "100%"
 
     chroniclePopUp.style.opacity = "0"
     sections.style.opacity = 1
