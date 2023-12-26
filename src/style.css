@@ -25,10 +25,22 @@ body
     background-size: 100%;
     background-position: center center;
     /* height: 100%; */
-    transition: background-size 1500ms ease-in-out;
+    transition: background-size 1900ms ease-in-out;
     
 }
 
+/* @media (max-width: 1000px) {
+    body {
+        background: #070707;
+        overflow: hide;
+        background-image: url("../static/gridbackgroundVertical.png");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100%;
+        background-position: center center;
+        transition: background-size 1900ms ease-in-out;
+    }
+} */
 /* html::before {
     background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 
@@ -136,14 +148,13 @@ header {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    /* justify-content: flex-start; */
+    /* justify-content: center; */
+    justify-content: space-between;
     align-items: center;
     opacity: 1;
     transition: opacity ease-out 2500ms;
     z-index: 17;
-    margin-top: 0px;
-    padding-top: 0px;
+
 }
 
 .home-page-content {
@@ -153,14 +164,16 @@ header {
     justify-content: center;
     align-items: center;
     /* margin: 0% 10% 0% 10%; */
-    margin-top: 0px;
+    margin-top: 1%;
     padding-top: 0px;
 }
 
 .home-page-content img {
     width: 75%;
-    margin-top: 5%;
-    margin-bottom: 5%;
+    /* margin-top: 5%; */
+    /* margin-bottom: 5%; */
+    margin-top: 12px;
+    margin-bottom: 12px;
 }
 
 .launch-experience-btn {
@@ -176,6 +189,7 @@ header {
         cursor: pointer;
         transition: background-color 0.3s ease, color 0.3s ease;
         width: fit-content;
+        margin-bottom: 3%;
 }
 
 .launch-experience-btn:hover {
@@ -212,13 +226,26 @@ header {
     }
 }
 
+@media (max-height: 900px) {
+    .home-page-content {
+        font-size: 16px;
+    }
+}
+
 @media (max-width: 1000px) {
+    .home-page {
+        justify-content: flex-start;
+        padding-top: 15%;
+    }
+
     .home-page-content {
         font-size: 20px;
     }
 
     .launch-experience-btn {
         font-size: 20px;
+        margin-bottom: 20%;
+        /* border: 3px solid blue; */
     }
 }
 
@@ -258,7 +285,7 @@ header {
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: #070707d6;
+    background-color: #070707a2;
     /* opacity: 10%; */
     animation: fade-in 1500ms;
     transition: opacity ease-out 1500ms;

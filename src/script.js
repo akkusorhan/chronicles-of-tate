@@ -34,31 +34,71 @@ launchExperienceButton.addEventListener("click", () => {
     homePageEnabled = false
     homePage.style.opacity = 0
     chroniclesOfTateSoundtrack.play()
+
+    // chessBoardObject[0].position.x = -2
+
+    // Function to animate the object
+
+    function animateObject() {
+        const startTime = Date.now();
+        const duration = 250000; // Animation duration in milliseconds
+
+        function update() {
+            const currentTime = Date.now();
+            const elapsed = currentTime - startTime;
+
+            if (elapsed < duration) {
+                // Calculate progress
+                const progress = elapsed / duration;
+
+                // Update object properties
+                chessBoardObject[0].rotation.x -= 0.3 * progress;
+                chessBoardObject[0].position.y += 0.5 * progress;
+                chessBoardObject[0].position.z += 6.9 * progress;
+
+                // Render the scene
+                renderer.render(scene, camera);
+
+                // Continue the animation
+                requestAnimationFrame(update);
+            }
+        }
+
+        // Start the animation
+        update();
+    }
     
+    animateObject()
+
     setTimeout(() => {
         quotePreloaderEnabled = true
         quotePreloader.style.opacity = 1
 
-        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 500);
-        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 1500);
-        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 3000);
-        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 5000);
-        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 7500);
-        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 8500);
-        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 10000);
-        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 12500);
-        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 15000);
-        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 17500);
-        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 21000);
-        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 25000);
-        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 27000);
-        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 29000);
-        setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000);
+        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 4500); //500
+        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 5500); //1500
+        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 7000); //3000
+        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 9000); //5000
+        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 11500); //7500
+        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 12500); //8500
+        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 15000); //10000
+        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 17500); //12500
+        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 20000); //15000
+        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 22500); //17500
+        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 25600); //21000
+        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 29600); //25000
+        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 31000); //27000
+        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 32000); //29000
+        setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
     }, 2500);
 
     setTimeout(() => {
         quotePreloaderEnabled = false
         quotePreloader.style.opacity = 0
+
+        camera.position.x = 0
+        pointLight.position.x = 0
+        pointLight.position.z = 3.5
+        
 
         setTimeout(() => {
             homePage.style.display = "none"
@@ -96,11 +136,11 @@ launchExperienceButton.addEventListener("click", () => {
             }
 
             animateLightIntensity(ambientLight, 0.3, 4500)
-            animateLightIntensity(pointLight, 75, 4500)
+            // animateLightIntensity(pointLight, 75, 4500)
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 500); //40500
+    }, 40500); //40500
 })
 
 //mute button
@@ -1211,7 +1251,6 @@ const pixelsPerUnit = 100
 const textureLoader = new THREE.TextureLoader()
 const letterTexture = textureLoader.load("./textures/letter-texture.png")
 const chessTexture = textureLoader.load("./textures/chess-texture.png")
-
 /**
  * Models
  */
@@ -1247,19 +1286,38 @@ let nthItemEnd = 0
 
 let amountOfChroniclesGenerated
 
-// gltfLoader.load(
-//     "./chess-board.glb",
-//     (gltf) => {
-//         let chessBoard = gltf.scene
-//         console.log(gltf)
+let chessBoardObject = []
 
-//         gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
-//         gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
-//         gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
+gltfLoader.load(
+    "./chess-board.glb",
+    (gltf) => {
+        let chessBoard = gltf.scene
+        console.log(gltf)
+
+        chessBoard.position.x = -20
+        chessBoard.position.y = -1.1
+        chessBoard.position.z = 2.7
+
+        chessBoard.rotation.x = 0.3
+
+        // gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
+        // gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
+        // gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
+
+        // gui.add(chessBoard.rotation, "x", -15, 15, 0.1).name("chessBoardXRot")
+        // gui.add(chessBoard.rotation, "y", -15, 15, 0.1).name("chessBoardYRRot")
+        // gui.add(chessBoard.rotation, "z", -15, 15, 0.1).name("chessBoardZTpr")
         
-//         scene.add(chessBoard)
-//     }
-// )
+        scene.add(chessBoard)
+        chessBoardObject.push(chessBoard)
+    }
+)
+
+console.log(chessBoardObject)
+
+// chess board animations
+
+
 
 
 for (let i = 0; i < letterGenerationVariable; i++) {
@@ -1433,13 +1491,16 @@ ambientLight.intensity = 0
 scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("#FFF7DD", 0) // regular 75
-pointLight.position.z = 3
+const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 75
+pointLight.position.x = -20 // normally 0
+pointLight.position.z = 9 // normally 3
 pointLight.rotation.y = Math.PI / 2
 pointLight.castShadow = false
 // pointLight.decay = 1.8
 pointLight.distance = 1000
 scene.add(pointLight)
+
+console.log(pointLight.position)
 
 // const pointLightHelper = new THREE.PointLightHelper(pointLight)
 // scene.add(pointLightHelper)
@@ -1458,7 +1519,7 @@ const mouse = new THREE.Vector2()
 let popupOpened = false
 
 document.addEventListener("mousemove", (event) => {
-    if(!isTouchScreen) {
+    if(!isTouchScreen && sectionsEnabled) {
         // Convert mouse coordinates to a normalized value between -1 and 1
         mouse.x = (event.clientX / window.innerWidth) * 2 - 1
         mouse.y = -(event.clientY / window.innerHeight) * 2 + 1
@@ -1481,8 +1542,8 @@ document.addEventListener("mousemove", (event) => {
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
 
     } else {
-        pointLight.position.x = 0
-        pointLight.position.y = 0
+        // pointLight.position.x = 0
+        // pointLight.position.y = 0
 
         // Update the raycaster's origin and direction
         raycaster.setFromCamera(mouse, camera);
@@ -1657,6 +1718,7 @@ let distance = null
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
+camera.position.x = -20
 camera.position.z = 10
 // camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness), camera will move back on Z axis if on mobile
 // camera.position.y = highestObject.position.y
