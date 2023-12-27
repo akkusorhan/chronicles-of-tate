@@ -52,8 +52,8 @@ launchExperienceButton.addEventListener("click", () => {
                 const progress = elapsed / duration;
 
                 // Update object properties
-                chessBoardObject[0].rotation.x -= 0.3 * progress;
-                chessBoardObject[0].position.y += 0.5 * progress;
+                chessBoardObject[0].rotation.x -= 0.4 * progress; // -0.3
+                chessBoardObject[0].position.y += 0.6 * progress; // +0.5
                 chessBoardObject[0].position.z += 6.9 * progress;
 
                 // Render the scene
@@ -74,20 +74,20 @@ launchExperienceButton.addEventListener("click", () => {
         quotePreloaderEnabled = true
         quotePreloader.style.opacity = 1
 
-        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 4500); //500
-        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 5500); //1500
-        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 7000); //3000
-        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 9000); //5000
-        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 11500); //7500
-        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 12500); //8500
+        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1500); //500 2250
+        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 3750); //1500
+        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 6000); //3000
+        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 8250); //5000
+        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 10500); //7500
+        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 12750); //8500
         setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 15000); //10000
-        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 17500); //12500
-        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 20000); //15000
-        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 22500); //17500
-        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 25600); //21000
-        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 29600); //25000
-        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 31000); //27000
-        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 32000); //29000
+        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 17250); //12500
+        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 19500); //15000
+        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 21750); //17500
+        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 24000); //21000
+        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26250); //25000
+        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28500); //27000
+        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30750); //29000
         setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
     }, 2500);
 
@@ -140,15 +140,31 @@ launchExperienceButton.addEventListener("click", () => {
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 40500); //40500
+    }, 500); //40500
 })
 
 //mute button
 const muteButton = document.querySelector(".mute-btn")
+const mobileMuteButton = document.querySelector("#mute-btn-mobile")
+
 muteButton.addEventListener("click", () => {
     muteButton.textContent == "mute" ? muteButton.textContent = "unmute" : muteButton.textContent = "mute"
 
     muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
+})
+
+// mobileMuteButton.addEventListener("click", () => {
+//     mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
+
+//     mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
+//     mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
+// })
+
+mobileMuteButton.addEventListener("touchstart", () => {
+    mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
+
+    mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
+    mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
 })
 
 
@@ -1563,6 +1579,9 @@ let chronicleTextContentDate = document.querySelector("#chronicle-text-content-d
 let chronicleImageContent = document.querySelector(".chronicle-image-content")
 let sections = document.querySelector(".sections")
 
+let aboutButton = document.querySelector(".about-btn")
+let aboutSection = document.querySelector(".about")
+
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
@@ -1665,6 +1684,14 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
         setTimeout(() => {
             chroniclePopUp.style.display = 'none'
         }, 1600);
+})
+
+aboutButton.addEventListener("click", () => {
+    aboutSection.style.display = "flex"
+
+    setTimeout(() => {
+        aboutSection.style.opacity = 1
+    }, 100);
 })
 
 /**
@@ -1803,11 +1830,14 @@ window.addEventListener("touchstart", (event) => {
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
 
+        document.body.style.backgroundSize = "70%"
+
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
         // header.style.opacity = 0
         sections.style.opacity = 0
         chronicleTextContent.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
+        chronicleTextContentDate.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].date}`
 
         let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 77)] : chroniclesOfEmoryTate2011[chronicleIteration].image
 
