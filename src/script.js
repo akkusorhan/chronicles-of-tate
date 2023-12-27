@@ -1581,6 +1581,7 @@ let sections = document.querySelector(".sections")
 
 let aboutButton = document.querySelector(".about-btn")
 let aboutSection = document.querySelector(".about")
+let aboutCloseButton = document.querySelector("#close-btn")
 
 document.addEventListener('click', () => {
     // Check for intersections
@@ -1687,11 +1688,83 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
 })
 
 aboutButton.addEventListener("click", () => {
+    popupOpened = true
+
     aboutSection.style.display = "flex"
+    aboutSection.style.zIndex = 1
+    document.body.style.backgroundSize = "70%"
+    sections.style.opacity = 0
+    header.style.opacity = 1
 
     setTimeout(() => {
         aboutSection.style.opacity = 1
     }, 100);
+
+    const startTime = performance.now()
+    const duration = animationDuration
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(1, elapsed / duration)
+
+        const easedProgress = easeInOut(progress)
+
+        const value = 10 + easedProgress * 5
+
+        camera.position.z = value
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animate)
+        }
+    }
+
+    function easeInOut(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    requestAnimationFrame(animate)
+    
+})
+
+aboutCloseButton.addEventListener("click", () => {
+    popupOpened = false
+
+    document.body.style.backgroundSize = "100%"
+    sections.style.opacity = 1
+    header.style.opacity = 1
+    aboutSection.style.opacity = 0
+
+    setTimeout(() => {
+        aboutSection.style.display = "none"
+    }, 1600);
+
+    const startTime = performance.now()
+    const duration = animationDuration
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(1, elapsed / duration)
+
+        const easedProgress = easeInOut(progress)
+
+        const value = 15 - easedProgress * 5
+
+        camera.position.z = value
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animate)
+        }
+    }
+
+    function easeInOut(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    requestAnimationFrame(animate)
+
+    setTimeout(() => {
+        chroniclePopUp.style.display = 'none'
+    }, 1600);
 })
 
 /**
