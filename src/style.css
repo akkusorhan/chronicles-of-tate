@@ -15,27 +15,31 @@ body
     /* background: #0e0e0e; */
     /* background: #070707; */
     background: #070707;
-    overflow: hide;
-    background-image: url("../static/gridbackground.png");
-    /* background-repeat: no-repeat; */
-    background-repeat: repeat;
-    /* background-repeat: repeat-y; */
-    /* background-repeat: repeat-x; */
-    background-attachment: fixed;
-    background-size: 100%;
-    background-position: center center;
-    /* height: 100%; */
-    transition: background-size 1900ms ease-in-out;
     
+}
+
+@media (min-width: 1000px) {
+    body {
+        overflow: hide;
+        background-image: url("../static/gridbackground.png");            /* background-repeat: no-repeat; */
+        background-repeat: repeat;
+        /* background-repeat: repeat-y; */
+        /* background-repeat: repeat-x; */
+        background-attachment: fixed;
+        background-size: 100%;
+        background-position: center center;
+        /* height: 100%; */
+        transition: background-size 1900ms ease-in-out;
+    }
 }
 
 @media (max-width: 1000px) {
     body {
         overflow: hide;
-        background-image: url("../static/gridbackgroundVertical.png");
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center center;
+        background-image: none;
+        /* background-repeat: none;
+        background-attachment: none;
+        background-position: none; */
 
     }
 } 
@@ -185,6 +189,10 @@ header {
 
 }
 
+.mobile-background {
+    display: none;
+}
+
 .home-page-content {
     /* border: 3px solid red; */
     display: flex;
@@ -204,8 +212,26 @@ header {
     margin-bottom: 12px;
 }
 
+.loading-bar {
+    height: 2px;
+    width: 100%;
+    background-color: white;
+    margin-top: 16px;
+    transform-origin: center left;
+    transform: scaleX(0);
+    transition: transform 0.5s ease;
+    transition: opacity 0.5s ease;
+}
+
+.home-page-content p {
+    font-size: 12px;
+    margin-top: 12px;
+    transition: opacity 0.5s ease;
+}
+
 .launch-experience-btn {
         /* display: inline-block; */
+        display: none;
         padding: 10px 20px;
         border: none;
         /* border-radius: 50%; */
@@ -218,6 +244,7 @@ header {
         transition: background-color 0.3s ease, color 0.3s ease;
         width: fit-content;
         margin-bottom: 3%;
+        transition: opacity 0.5s ease;
 }
 
 .launch-experience-btn:hover {
@@ -236,12 +263,27 @@ header {
     font-size: 36px;
     opacity: 0;
     transition: opacity ease-out 2500ms;
-    z-index: 15;
+    /* z-index: 15; */
+}
+
+.quote-preloader h3 {
+    /* border: 3px solid purple; */
 }
 
 .quote-preloader h3 span {
     opacity: 0;
     transition: opacity ease-out 500ms;
+}
+
+.skip-btn {
+    position: absolute;
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    margin: 0px;
+    margin-top: 90vh;
+    cursor: pointer;
+    z-index: 150;
 }
 
 #fourteen {
@@ -268,6 +310,26 @@ header {
 
     .home-page-content {
         font-size: 20px;
+    }
+
+    .skip-btn {
+        margin-top: 60vh;
+    }
+
+    .mobile-background {
+        display: flex;
+        /* border: 3px solid orange; */
+        height: 99vh;
+        width: 99vw;
+        overflow: hide;
+        background-image: url("../static/gridbackgroundVertical.png");
+        background-repeat: repeat;
+        /* background-attachment: fixed; */
+        background-position: center center;
+        background-size: 100%;
+        z-index: -2;
+        position: fixed;
+        transition: background-size 1900ms ease-in-out
     }
 
     .launch-experience-btn {

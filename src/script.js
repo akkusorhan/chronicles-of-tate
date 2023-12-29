@@ -21,6 +21,67 @@ let chroniclesOfTateSoundtrack = new Audio("./tate-chronicles-soundtrack.mp3")
 
 let header = document.querySelector(".header")
 
+let skipButton = document.querySelector(".skip-btn")
+
+let skipButtonClicked = false
+skipButton.addEventListener("click", () => {
+    skipButtonClicked = true
+
+    quotePreloader.style.opacity = 0
+
+    chroniclesOfTateSoundtrack.currentTime = 41
+    
+    scene.remove(chessBoardObject[0])
+    console.log("chessboard removed")
+    
+    setTimeout(() => {
+        camera.position.x = 0
+        pointLight.position.x = 0
+        pointLight.position.z = 3.5
+        pointLight.intensity = 0
+
+
+        homePage.style.display = "none"
+        quotePreloader.style.display = "none"
+
+        sections.style.opacity = 1
+        header.style.opacity = 1
+        sectionsEnabled = true
+
+        document.body.style.overflow = ""
+
+        function animateLightIntensity(light, targetIntensity, duration) {
+            const startIntensity = light.intensity;
+            let startTime;
+
+            function update() {
+                const currentTime = performance.now();
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(1, elapsed / duration);
+
+                const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+                light.intensity = newIntensity;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            function startAnimation() {
+                startTime = performance.now();
+                update();
+            }
+
+            startAnimation();
+        }
+
+        animateLightIntensity(ambientLight, 0.3, 4500)
+        animateLightIntensity(pointLight, 75, 4500)
+        // ambientLight.intensity = 0.3
+        // pointLight.intensity = 75
+    }, 2500);
+})
+
 window.scrollTo({
     top: 0, 
     behavior: "smooth"
@@ -73,6 +134,8 @@ launchExperienceButton.addEventListener("click", () => {
     setTimeout(() => {
         quotePreloaderEnabled = true
         quotePreloader.style.opacity = 1
+        launchExperienceButton.style.display = "none"
+        document.body.style.backgroundColor = "#000000"
 
         setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1500); //500 2250
         setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 3750); //1500
@@ -89,60 +152,72 @@ launchExperienceButton.addEventListener("click", () => {
         setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28500); //27000
         setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30750); //29000
         setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
-    }, 2500);
+    },  2500); //2500
 
+    // paste here
     setTimeout(() => {
-        quotePreloaderEnabled = false
-        quotePreloader.style.opacity = 0
+        if (skipButtonClicked) {
 
-        camera.position.x = 0
-        pointLight.position.x = 0
-        pointLight.position.z = 3.5
-        pointLight.intensity = 0
-        
+        } else if (homePageEnabled == false && skipButtonClicked == false) {
+            scene.remove(chessBoardObject[0])
+            console.log("chessboard removed")
 
-        setTimeout(() => {
-            homePage.style.display = "none"
-            quotePreloader.style.display = "none"
+            quotePreloaderEnabled = false
+            quotePreloader.style.opacity = 0
 
-            sections.style.opacity = 1
-            header.style.opacity = 1
-            sectionsEnabled = true
+            camera.position.x = 0
+            pointLight.position.x = 0
+            pointLight.position.z = 3.5
+            pointLight.intensity = 0
 
-            document.body.style.overflow = ""
 
-            function animateLightIntensity(light, targetIntensity, duration) {
-                const startIntensity = light.intensity;
-                let startTime;
+            setTimeout(() => {
+                homePage.style.display = "none"
+                quotePreloader.style.display = "none"
 
-                function update() {
-                    const currentTime = performance.now();
-                    const elapsed = currentTime - startTime;
-                    const progress = Math.min(1, elapsed / duration);
+                sections.style.opacity = 1
+                header.style.opacity = 1
+                sectionsEnabled = true
 
-                    const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
-                    light.intensity = newIntensity;
+                document.body.style.overflow = ""
 
-                    if (progress < 1) {
-                        requestAnimationFrame(update);
+                function animateLightIntensity(light, targetIntensity, duration) {
+                    const startIntensity = light.intensity;
+                    let startTime;
+
+                    function update() {
+                        const currentTime = performance.now();
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(1, elapsed / duration);
+
+                        const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+                        light.intensity = newIntensity;
+
+                        if (progress < 1) {
+                            requestAnimationFrame(update);
+                        }
                     }
+
+                    function startAnimation() {
+                        startTime = performance.now();
+                        update();
+                    }
+
+                    startAnimation();
                 }
 
-                function startAnimation() {
-                    startTime = performance.now();
-                    update();
-                }
+                animateLightIntensity(ambientLight, 0.3, 4500)
+                animateLightIntensity(pointLight, 75, 4500)
+                // ambientLight.intensity = 0.3
+                // pointLight.intensity = 75
 
-                startAnimation();
-            }
-
-            animateLightIntensity(ambientLight, 0.3, 4500)
-            animateLightIntensity(pointLight, 75, 4500)
-            // ambientLight.intensity = 0.3
-            // pointLight.intensity = 75
-        }, 3500);
+                // document.body.style.backgroundColor = "#070707"
+            }, 3500);
+        }
     }, 40500); //40500
 })
+
+//copy here
 
 //mute button
 const muteButton = document.querySelector(".mute-btn")
@@ -1271,7 +1346,76 @@ const chessTexture = textureLoader.load("./textures/chess-texture.png")
 /**
  * Models
  */
-const gltfLoader = new GLTFLoader()
+let threeJsLoaded = false
+let htmlLoaded = false
+const loadingBar = document.querySelector(".loading-bar")
+const loadingText = document.querySelector(".loading-text")
+
+const loadingManager = new THREE.LoadingManager(
+    // loaded
+    () => {
+        console.log("three js loaded")
+        threeJsLoaded = true
+
+        loadingText.textContent = "loading content"
+    }, 
+    // progress
+    (itemUrl, itemsLoaded, itemsTotal) => {
+        console.log("three js loading")
+        console.log(itemsLoaded / itemsTotal)
+        loadingBar.style.transform = `scaleX(${(itemsLoaded / itemsTotal) * 0.65})`
+        loadingText.textContent = "loading chess pieces"
+        htmlLoaded = true
+    }
+)
+
+window.addEventListener("load", (event) => {
+    console.log("page is fully loaded");
+    loadingBar.style.transform = `scaleX(1)`
+    setTimeout(() => {
+        loadingBar.style.opacity = 0
+        loadingText.style.opacity = 0
+    }, 900);
+
+    setTimeout(() => {
+        loadingBar.style.display = "none"
+        loadingText.style.display = "none"
+        launchExperienceButton.style.display = "flex"
+        launchExperienceButton.style.opacity = "0"
+
+        const startTime = performance.now()
+        const duration = animationDuration
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = (-5.1) + easedProgress * 4
+
+            chessBoardObject[0].position.y = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+    }, 1100);
+
+    setTimeout(() => {
+        launchExperienceButton.style.opacity = "1"
+    }, 3000);
+    console.log(event);
+});
+  
+
+const gltfLoader = new GLTFLoader(loadingManager)
 
 const letters = []
 
@@ -1312,7 +1456,7 @@ gltfLoader.load(
         console.log(gltf)
 
         chessBoard.position.x = -20
-        chessBoard.position.y = -1.1
+        chessBoard.position.y = -5.1 // -1.1
         chessBoard.position.z = 2.7
 
         chessBoard.rotation.x = 0.3
@@ -1594,6 +1738,7 @@ document.addEventListener('click', () => {
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
 
         document.body.style.backgroundSize = "70%"
+        mobileBackground.style.backgroundSize = "70%"
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
@@ -1646,6 +1791,7 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
     popupOpened = false
 
     document.body.style.backgroundSize = "100%"
+    mobileBackground.style.backgroundSize = "100%"
 
     chroniclePopUp.style.opacity = "0"
     sections.style.opacity = 1
@@ -1694,6 +1840,7 @@ aboutButton.addEventListener("click", () => {
     aboutSection.style.display = "flex"
     aboutSection.style.zIndex = 1
     document.body.style.backgroundSize = "70%"
+    // mobileBackground.style.backgroundSize = "100%"
     sections.style.opacity = 0
     header.style.opacity = 1
 
@@ -1731,6 +1878,7 @@ aboutCloseButton.addEventListener("click", () => {
     popupOpened = false
 
     document.body.style.backgroundSize = "100%"
+    mobileBackground.style.backgroundSize = "100%"
     sections.style.opacity = 1
     header.style.opacity = 1
     aboutSection.style.opacity = 0
@@ -1891,47 +2039,6 @@ window.addEventListener("touchstart", (event) => {
         // Check for intersections
         const intersects = raycaster.intersectObjects(scene.children);
     }
-
-    let infoButton = document.querySelector(".hamburger-menu-icon")
-
-    infoButton.addEventListener("touchstart", () => {
-        popupOpened = true
-
-        aboutSection.style.display = "flex"
-        aboutSection.style.zIndex = 1
-        document.body.style.backgroundSize = "70%"
-        sections.style.opacity = 0
-        header.style.opacity = 1
-
-        setTimeout(() => {
-            aboutSection.style.opacity = 1
-        }, 100);
-
-        const startTime = performance.now()
-        const duration = animationDuration
-
-        function animate(currentTime) {
-            const elapsed = currentTime - startTime
-            const progress = Math.min(1, elapsed / duration)
-
-            const easedProgress = easeInOut(progress)
-
-            const value = 10 + easedProgress * 5
-
-            camera.position.z = value
-
-            if (elapsed < duration) {
-                requestAnimationFrame(animate)
-            }
-        }
-
-        function easeInOut(t) {
-            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-        }
-
-        requestAnimationFrame(animate)
-    })
-
     // imported line (update at some point)
 
     // Check for intersections
@@ -1944,7 +2051,7 @@ window.addEventListener("touchstart", (event) => {
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
 
-        document.body.style.backgroundSize = "70%"
+        mobileBackground.style.backgroundSize = "70%"
 
         chroniclePopUp.style.display = 'flex'
         chroniclePopUp.style.opacity = '1'
@@ -1994,6 +2101,48 @@ window.addEventListener("touchstart", (event) => {
 
     // end of imported line
 })
+
+let infoButton = document.querySelector(".hamburger-menu-icon")
+let mobileBackground = document.querySelector(".mobile-background")
+
+infoButton.addEventListener("touchstart", () => {
+    popupOpened = true
+
+    aboutSection.style.display = "flex"
+    aboutSection.style.zIndex = 1
+    mobileBackground.style.backgroundSize = "70%"
+    sections.style.opacity = 0
+    header.style.opacity = 1
+
+    setTimeout(() => {
+        aboutSection.style.opacity = 1
+    }, 100);
+
+    const startTime = performance.now()
+    const duration = animationDuration
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(1, elapsed / duration)
+
+        const easedProgress = easeInOut(progress)
+
+        const value = 10 + easedProgress * 5
+
+        camera.position.z = value
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animate)
+        }
+    }
+
+    function easeInOut(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    requestAnimationFrame(animate)
+})
+
 
 let initialScrollPosition = 0
 let scrollInteration
