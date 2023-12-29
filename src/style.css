@@ -325,6 +325,8 @@ header {
     margin-left: 15%;
     margin-top: 10%;
     overflow-y: scroll;
+    font-size: 20px;
+    overflow: auto;
 }
 
 .about-content button {
@@ -437,6 +439,13 @@ header {
 }
 
 @media (max-width: 1000px) {
+    .about-content {
+        margin-right: 5%;
+        margin-left: 5%;
+        margin-top: 25%;
+        height: 80%;
+    }
+
     .chronicle-content h3 {
         font-size: 28px;
         margin: 0px;

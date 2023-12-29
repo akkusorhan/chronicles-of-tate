@@ -98,6 +98,7 @@ launchExperienceButton.addEventListener("click", () => {
         camera.position.x = 0
         pointLight.position.x = 0
         pointLight.position.z = 3.5
+        pointLight.intensity = 0
         
 
         setTimeout(() => {
@@ -136,11 +137,11 @@ launchExperienceButton.addEventListener("click", () => {
             }
 
             animateLightIntensity(ambientLight, 0.3, 4500)
-            // animateLightIntensity(pointLight, 75, 4500)
+            animateLightIntensity(pointLight, 75, 4500)
             // ambientLight.intensity = 0.3
             // pointLight.intensity = 75
         }, 3500);
-    }, 500); //40500
+    }, 40500); //40500
 })
 
 //mute button
@@ -1890,6 +1891,46 @@ window.addEventListener("touchstart", (event) => {
         // Check for intersections
         const intersects = raycaster.intersectObjects(scene.children);
     }
+
+    let infoButton = document.querySelector(".hamburger-menu-icon")
+
+    infoButton.addEventListener("touchstart", () => {
+        popupOpened = true
+
+        aboutSection.style.display = "flex"
+        aboutSection.style.zIndex = 1
+        document.body.style.backgroundSize = "70%"
+        sections.style.opacity = 0
+        header.style.opacity = 1
+
+        setTimeout(() => {
+            aboutSection.style.opacity = 1
+        }, 100);
+
+        const startTime = performance.now()
+        const duration = animationDuration
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = 10 + easedProgress * 5
+
+            camera.position.z = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+    })
 
     // imported line (update at some point)
 
