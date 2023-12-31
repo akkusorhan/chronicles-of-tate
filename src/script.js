@@ -75,8 +75,8 @@ skipButton.addEventListener("click", () => {
             startAnimation();
         }
 
-        animateLightIntensity(ambientLight, 0.3, 4500)
-        animateLightIntensity(pointLight, 300, 4500) //75
+        animateLightIntensity(ambientLight, 0.3, 2500)
+        animateLightIntensity(pointLight, 300, 2500) //75 4500
         // ambientLight.intensity = 0.3
         // pointLight.intensity = 75
     }, 2500);
@@ -207,7 +207,7 @@ launchExperienceButton.addEventListener("click", () => {
                 }
 
                 animateLightIntensity(ambientLight, 0.3, 4500)
-                animateLightIntensity(pointLight, 300, 4500) //75
+                animateLightIntensity(pointLight, 300, 2500) //75 2500
                 // ambientLight.intensity = 0.3
                 // pointLight.intensity = 75
 
@@ -1327,7 +1327,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1344,14 +1344,14 @@ const textureLoader = new THREE.TextureLoader()
 const letterTexture = textureLoader.load("./textures/letter-texture.png")
 const chessTexture = textureLoader.load("./textures/chess-texture.png")
 
-const spriteTexture = new THREE.TextureLoader().load('./textures/quote-sprite.png');
-const spriteMaterial = new THREE.SpriteMaterial({ map: spriteTexture });
+// const spriteTexture = new THREE.TextureLoader().load('./textures/quote-sprite.png');
+// const spriteMaterial = new THREE.SpriteMaterial({ map: spriteTexture });
 
-const sprite = new THREE.Sprite(spriteMaterial)
-sprite.position.y = -8
-sprite.scale.set(6, 2, 1)
+// const sprite = new THREE.Sprite(spriteMaterial)
+// sprite.position.y = -8
+// sprite.scale.set(6, 2, 1)
 
-scene.add(sprite)
+// scene.add(sprite)
 
 /**
  * Models
@@ -1656,13 +1656,13 @@ const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 0
 
-gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-gui.addColor(ambientLight, "color").name("ambientLightColor")
+// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+// gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
-const pointLight = new THREE.PointLight("#FFF7DD", 150) // regular 75
+const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 75
 pointLight.position.x = -20 // normally 0
 pointLight.position.z = 9 // normally 3
 pointLight.rotation.y = Math.PI / 2
@@ -2224,7 +2224,7 @@ function handleScroll() {
 
         for (const mesh of letters) {
             mesh.scene.position.y += deltaScrollPosition * 0.007 // scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
-            sprite.position.y += deltaScrollPosition * 0.0007
+            // sprite.position.y += deltaScrollPosition * 0.0007
         }
 
     } else if (currentScrollPosition > lastScrollPosition) {
@@ -2232,7 +2232,7 @@ function handleScroll() {
 
         for (const mesh of letters) {
             mesh.scene.position.y += deltaScrollPosition * 0.007 // scrollSpeed * ((window.innerWidth / window.innerHeight) * isTouchScreen ? 0.1 : 0.02)
-            sprite.position.y += deltaScrollPosition * 0.0007
+            // sprite.position.y += deltaScrollPosition * 0.0007
         }
     }
 
