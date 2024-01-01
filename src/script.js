@@ -33,6 +33,9 @@ skipButton.addEventListener("click", () => {
     
     scene.remove(chessBoardObject[0])
     console.log("chessboard removed")
+
+    renderer.outputEncoding = THREE.LinearEncoding
+    renderer.gammaOutput = true
     
     setTimeout(() => {
         camera.position.x = 0
@@ -137,20 +140,20 @@ launchExperienceButton.addEventListener("click", () => {
         launchExperienceButton.style.display = "none"
         document.body.style.backgroundColor = "#000000"
 
-        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1500); //500 2250
-        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 3750); //1500
-        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 6000); //3000
-        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 8250); //5000
-        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 10500); //7500
-        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 12750); //8500
-        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 15000); //10000
-        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 17250); //12500
-        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 19500); //15000
-        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 21750); //17500
+        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1700); //500 2250
+        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 2200); //1500
+        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 4300); //3000
+        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 6700); //5000
+        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 9200); //7500
+        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 11250); //8500
+        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 13250); //10000
+        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 16750); //12500
+        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 18750); //15000
+        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 20750); //17500
         setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 24000); //21000
-        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26250); //25000
-        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28500); //27000
-        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30750); //29000
+        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26000); //25000
+        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
+        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
         setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
     },  2500); //2500
 
@@ -170,6 +173,8 @@ launchExperienceButton.addEventListener("click", () => {
             pointLight.position.z = 3.5
             pointLight.intensity = 0
 
+            renderer.outputEncoding = THREE.LinearEncoding
+            renderer.gammaOutput = true
 
             setTimeout(() => {
                 homePage.style.display = "none"
@@ -1667,7 +1672,7 @@ pointLight.position.x = -20 // normally 0
 pointLight.position.z = 9 // normally 3
 pointLight.rotation.y = Math.PI / 2
 pointLight.castShadow = false
-// pointLight.decay = 1.8
+pointLight.decay = 1.8
 pointLight.distance = 1000
 scene.add(pointLight)
 
@@ -2004,8 +2009,8 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.shadowMap.enabled = true
-renderer.outputEncoding = THREE.LinearEncoding
-renderer.gammaOutput = true
+// renderer.outputEncoding = THREE.LinearEncoding
+// renderer.gammaOutput = true
 renderer.render(scene, camera)
 
 /**
