@@ -40,7 +40,7 @@ skipButton.addEventListener("click", () => {
     setTimeout(() => {
         camera.position.x = 0
         pointLight.position.x = 0
-        pointLight.position.z = 3.5
+        pointLight.position.z = 5 // 3.5
         pointLight.intensity = 0
 
 
@@ -170,7 +170,7 @@ launchExperienceButton.addEventListener("click", () => {
 
             camera.position.x = 0
             pointLight.position.x = 0
-            pointLight.position.z = 3.5
+            pointLight.position.z = 5 // 3.5
             pointLight.intensity = 0
 
             renderer.outputEncoding = THREE.LinearEncoding
