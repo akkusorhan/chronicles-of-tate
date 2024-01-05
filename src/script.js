@@ -1502,31 +1502,6 @@ for (let i = 0; i < letterGenerationVariable; i++) {
         `./${chessPieces[randomIndex]}.glb`,
         function (gltf) {
             let letter = gltf.scene
-            // letter.children[0].material.map = textureLoader.load("./textures/chess-texture.png")
-            // letter.children[0].castShadow = true
-            // letter.children[0].receiveShadow = true
-
-            // letter.children[0].material.map = textureLoader.load("./textures/chess-texture.png")
-            // letter.children[0].material.color = "white"
-
-            // let mesh1 = gltf.scene.children[0].children[0]
-            // let mesh2 = gltf.scene.children[0].children[1]
-
-            // mesh1.castShadow = true
-            // mesh1.receiveShadow = true
-
-            // mesh2.castShadow = true
-            // mesh2.receiveShadow = true
-
-            // gltf.scene.castShadow = true
-            // gltf.scene.receiveShadow = true
-
-            // // Applying texture
-            // mesh1.material.map = letterTexture
-            // mesh1.material.color = null
-
-            // mesh2.material.map = letterTexture
-            // mesh2.material.color = null
 
             // Animations
             const randomDecimal = Math.random()
