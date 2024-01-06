@@ -1465,7 +1465,7 @@ let amountOfChroniclesGenerated
 let chessBoardObject = []
 
 gltfLoader.load(
-    "./chess-board.glb",
+    "./tate-opening.glb",
     (gltf) => {
         let chessBoard = gltf.scene
         console.log(gltf)
@@ -1475,13 +1475,14 @@ gltfLoader.load(
         chessBoard.position.z = 2.7
 
         chessBoard.rotation.x = 0.3
+        chessBoard.rotation.y = 2.35 // 3.148
 
         // gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
         // gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
         // gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
 
         // gui.add(chessBoard.rotation, "x", -15, 15, 0.1).name("chessBoardXRot")
-        // gui.add(chessBoard.rotation, "y", -15, 15, 0.1).name("chessBoardYRRot")
+        // gui.add(chessBoard.rotation, "y", -4, 4, 0.1).name("chessBoardYRRot")
         // gui.add(chessBoard.rotation, "z", -15, 15, 0.1).name("chessBoardZTpr")
         
         scene.add(chessBoard)
