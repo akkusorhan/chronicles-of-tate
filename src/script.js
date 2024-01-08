@@ -222,8 +222,6 @@ launchExperienceButton.addEventListener("click", () => {
     }, 40500); //40500
 })
 
-//copy here
-
 //mute button
 const muteButton = document.querySelector(".mute-btn")
 const mobileMuteButton = document.querySelector("#mute-btn-mobile")
@@ -233,13 +231,6 @@ muteButton.addEventListener("click", () => {
 
     muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
 })
-
-// mobileMuteButton.addEventListener("click", () => {
-//     mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
-
-//     mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
-//     mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
-// })
 
 mobileMuteButton.addEventListener("touchstart", () => {
     mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
