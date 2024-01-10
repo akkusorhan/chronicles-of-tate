@@ -1710,6 +1710,7 @@ let aboutButton = document.querySelector(".about-btn")
 let aboutSection = document.querySelector(".about")
 let aboutCloseButton = document.querySelector("#close-btn")
 
+let clickedChronicleIteration
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
@@ -1718,6 +1719,8 @@ document.addEventListener('click', () => {
         popupOpened = true
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
+        clickedChronicleIteration = chronicleIteration
+        console.log(`clickedChronicleIteration: ${clickedChronicleIteration}`)
 
         document.body.style.backgroundSize = "70%"
         mobileBackground.style.backgroundSize = "70%"
@@ -1739,8 +1742,49 @@ document.addEventListener('click', () => {
         //     header.style.display = "none"
         // }, 1600);
 
+        // move clicked piece forward
+        for(let i = 0; i < letters.length; i++) {
+            if(letters[i].scene.children[0].chronicleNumber == chronicleIteration) {
+                console.log("iteration found")
+                // letters[i].scene.position.z += 4
+
+                const itemZ = letters[i].scene.position.z
+
+                const startTime = performance.now()
+                const duration = animationDuration
+        
+                function animate(currentTime) {
+                    const elapsed = currentTime - startTime
+                    const progress = Math.min(1, elapsed / duration)
+        
+                    const easedProgress = easeInOut(progress)
+        
+                    const value =  itemZ + easedProgress * 4
+
+                    letters[i].scene.position.z = value
+        
+                    if (elapsed < duration) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+        
+                function easeInOut(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+        
+                requestAnimationFrame(animate)
+
+            } else {
+                null
+            }
+        }
+
+        // move the camera rearwards
+
+
         // log the object that was clicked
         console.log('Object clicked:', chronicleIteration);
+        console.log('Object clicked:', intersects[0].object);
 
         const startTime = performance.now()
         const duration = animationDuration
@@ -1751,9 +1795,11 @@ document.addEventListener('click', () => {
 
             const easedProgress = easeInOut(progress)
 
-            const value = 10 + easedProgress * 5
+            const value = 10 + easedProgress * 5 // from 10 to 15
+            const lightValue = 5 + easedProgress * 5 // from 5 to 10
 
             camera.position.z = value
+            pointLight.position.z = lightValue
 
             if (elapsed < duration) {
                 requestAnimationFrame(animate)
@@ -1770,6 +1816,7 @@ document.addEventListener('click', () => {
 }, false);
 
 document.querySelector(".close-chronicle-btn").addEventListener('click', () => {   
+    console.log("clicked")
     popupOpened = false
 
     document.body.style.backgroundSize = "100%"
@@ -1779,6 +1826,47 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
     sections.style.opacity = 1
     header.style.opacity = 1
     // chroniclePopUp.classList.add("hide")
+
+    // move clicked piece backward
+    setTimeout(() => {
+        for (let i = 0; i < letters.length; i++) {
+            if (letters[i].scene.children[0].chronicleNumber == clickedChronicleIteration) {
+                console.log("iteration found")
+                // letters[i].scene.position.z += 4
+    
+                const itemZ = letters[i].scene.position.z
+    
+                const startTime = performance.now()
+                const duration = animationDuration
+    
+                function animate(currentTime) {
+                    const elapsed = currentTime - startTime
+                    const progress = Math.min(1, elapsed / duration)
+    
+                    const easedProgress = easeInOut(progress)
+    
+                    const value = itemZ - easedProgress * 4
+                    const lightValue = 10 - easedProgress * 5 // from 10 to 5
+    
+                    letters[i].scene.position.z = value
+                    pointLight.position.z = lightValue
+    
+                    if (elapsed < duration) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+    
+                function easeInOut(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+    
+                requestAnimationFrame(animate)
+    
+            } else {
+                null
+            }
+        }
+    }, 750);
 
     // show and enable header
     // header.style.display = "flex"
@@ -2034,6 +2122,7 @@ window.addEventListener("touchstart", (event) => {
         popupOpened = true
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
+        clickedChronicleIteration = chronicleIteration
 
         mobileBackground.style.backgroundSize = "70%"
 
@@ -2047,6 +2136,45 @@ window.addEventListener("touchstart", (event) => {
         let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 77)] : chroniclesOfEmoryTate2011[chronicleIteration].image
 
         chronicleImageContent.src = `${chronicleImage}`
+
+        // move clicked piece forward
+        console.log(`clickedChronicleIteration: ${clickedChronicleIteration}`)
+        for(let i = 0; i < letters.length; i++) {
+            if(letters[i].scene.children[0].chronicleNumber == chronicleIteration) {
+                console.log("iteration found")
+                // letters[i].scene.position.z += 4
+
+                const itemZ = letters[i].scene.position.z
+
+                const startTime = performance.now()
+                const duration = animationDuration
+        
+                function animate(currentTime) {
+                    const elapsed = currentTime - startTime
+                    const progress = Math.min(1, elapsed / duration)
+        
+                    const easedProgress = easeInOut(progress)
+        
+                    const value =  itemZ + easedProgress * 4
+
+                    letters[i].scene.position.z = value
+        
+                    if (elapsed < duration) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+        
+                function easeInOut(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+        
+                requestAnimationFrame(animate)
+
+            } else {
+                null
+            }
+        }
+
         // chroniclePopUp.classList.remove("show")
 
         // hide and disable header
@@ -2065,8 +2193,10 @@ window.addEventListener("touchstart", (event) => {
             const easedProgress = easeInOut(progress)
 
             const value = 10 + easedProgress * 5
+            const lightValue = 5 + easedProgress * 5 // from 5 to 10
 
             camera.position.z = value
+            pointLight.position.z = lightValue
 
             chroniclePopUp.style.display = 'flex'
             chroniclePopUp.style.opacity = '1'
@@ -2126,6 +2256,8 @@ infoButton.addEventListener("touchstart", () => {
 
     requestAnimationFrame(animate)
 })
+
+
 
 
 let initialScrollPosition = 0
@@ -2329,6 +2461,7 @@ const clock = new THREE.Clock()
 let previousTime = 0
 
 const tick = () => {
+    // console.log(pointLight.position.z)
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime

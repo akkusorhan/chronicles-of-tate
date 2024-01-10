@@ -423,7 +423,7 @@ header {
     display: none;
     justify-content: center;
     align-items: center;
-    background-color: #070707a2;
+    background-color: #07070756;
     /* opacity: 10%; */
     animation: fade-in 1500ms;
     transition: opacity ease-out 1500ms;
