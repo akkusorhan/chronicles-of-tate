@@ -1508,18 +1508,22 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             action.play()
 
             // size
-            // letter.scale.x = 1.30
-            // letter.scale.y = 1.30
-            // letter.scale.z = 1.30
+            letter.scale.x = 0.15
+            letter.scale.y = 0.15
+            letter.scale.z = 0.15
 
-            letter.scale.x = .10
-            letter.scale.y = .10
-            letter.scale.z = .10
+            // letter.scale.x = .10
+            // letter.scale.y = .10
+            // letter.scale.z = .10
 
             if (chessPieces[randomIndex] == "rook") {
-                letter.scale.x = .16
-                letter.scale.y = .16
-                letter.scale.z = .16
+                // letter.scale.x = .16
+                // letter.scale.y = .16
+                // letter.scale.z = .16
+
+                letter.scale.x = .24
+                letter.scale.y = .24
+                letter.scale.z = .24
             }
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
