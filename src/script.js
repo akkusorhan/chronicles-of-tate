@@ -1323,7 +1323,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-// const gui = new dat.GUI()
+const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1630,10 +1630,10 @@ console.log(letterCount)
 // Ambient Light
 const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
-ambientLight.intensity = 0
+ambientLight.intensity = 1
 
-// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-// gui.addColor(ambientLight, "color").name("ambientLightColor")
+gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
@@ -1643,8 +1643,13 @@ pointLight.position.x = -20 // normally 0
 pointLight.position.z = 9 // normally 3
 pointLight.rotation.y = Math.PI / 2
 pointLight.castShadow = false
-pointLight.decay = 1.8
-pointLight.distance = 1000
+// pointLight.decay = 1.8
+pointLight.decay = 1.61
+pointLight.distance = 100
+
+gui.add(pointLight, "decay", 0, 2, 0.01).name("pointLightDecay")
+gui.add(pointLight, "distance", 0, 1000, 1).name("pointLightDecay")
+
 scene.add(pointLight)
 
 console.log(pointLight.position)
@@ -1702,6 +1707,59 @@ document.addEventListener("mousemove", (event) => {
         intersects.length > 0 && sectionsEnabled ? console.log("intersect detected") : null
     }
 })
+
+function buttonMagnetHoverEffectMousein(button, e, offset) {
+    const rect = button.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    const mouseX = e.clientX;
+    const mouseY = e.clientY;
+
+    const deltaX = (mouseX - centerX) / 2; // The divisor controls the intensity of the effect
+    const deltaY = (mouseY - centerY) / 2; // Adjust these values as needed
+
+    button.style.transform = `translate(${deltaX * offset}px, ${deltaY * offset}px)`;
+    button.style.transition = "transform 0.2s ease" /* Adjust timing and easing function as desired */
+}
+
+function buttonMagnetHoverEffectMouseout(button) {
+    button.style.transform = ''; // Reset the transform on mouse leave
+    button.style.transition = "transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)" /* Adjust timing and easing function as desired */
+}
+
+let aboutDesktopButton = document.querySelector("#about-desktop-btn");
+let muteDesktopButton = document.querySelector("#mute-desktop-btn");
+let closeChronicleDesktopButton = document.querySelector("#close-chronicle-desktop-btn");
+let launchExperienceDesktopButton = document.querySelector("#launch-experience-desktop-btn");
+let aboutSectionCloseButton = document.querySelector("#close-btn");
+let chroniclesOfTateDesktopButton = document.querySelector("#chronicles-of-tate-desktop-btn");
+let skipBtn = document.querySelector(".skip-btn");
+
+aboutDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(aboutDesktopButton, e, 0.9)});
+muteDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(muteDesktopButton, e, 0.9)});
+closeChronicleDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(closeChronicleDesktopButton, e, 0.9)});
+launchExperienceDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(launchExperienceDesktopButton, e, 0.125)});
+aboutSectionCloseButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(aboutSectionCloseButton, e, 0.9)});
+skipBtn.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(skipBtn, e, 0.9)});
+chroniclesOfTateDesktopButton.addEventListener("mousemove", (e) => {
+    buttonMagnetHoverEffectMousein(chroniclesOfTateDesktopButton, e, 0.175)
+    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://www.cobratate.com/the-tales-of-wudan" target="_blank">Master Wudan</a>'
+});
+
+aboutDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutDesktopButton)});
+muteDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(muteDesktopButton)});
+closeChronicleDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(closeChronicleDesktopButton)});
+launchExperienceDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(launchExperienceDesktopButton)});
+aboutSectionCloseButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutSectionCloseButton)});
+skipBtn.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(skipBtn)});
+chroniclesOfTateDesktopButton.addEventListener("mouseleave", () => {
+    buttonMagnetHoverEffectMouseout(chroniclesOfTateDesktopButton)
+    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://www.cobratate.com/the-tales-of-wudan" target="_blank">Chronicles Of Tate</a>'
+});
+
+
 
 // Handle mouse click events
 let chroniclePopUp = document.querySelector(".chronicle")

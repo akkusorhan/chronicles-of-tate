@@ -94,6 +94,11 @@ header {
     transition: opacity ease-in-out 1300ms;
 }
 
+#chronicles-of-tate-desktop-btn a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
 .header-menu {
     display: flex;
     justify-content: space-evenly;
