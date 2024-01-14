@@ -1323,7 +1323,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1632,8 +1632,8 @@ const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 1
 
-gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-gui.addColor(ambientLight, "color").name("ambientLightColor")
+// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
+// gui.addColor(ambientLight, "color").name("ambientLightColor")
 
 scene.add(ambientLight)
 
@@ -1647,8 +1647,8 @@ pointLight.castShadow = false
 pointLight.decay = 1.61
 pointLight.distance = 100
 
-gui.add(pointLight, "decay", 0, 2, 0.01).name("pointLightDecay")
-gui.add(pointLight, "distance", 0, 1000, 1).name("pointLightDecay")
+// gui.add(pointLight, "decay", 0, 2, 0.01).name("pointLightDecay")
+// gui.add(pointLight, "distance", 0, 1000, 1).name("pointLightDecay")
 
 scene.add(pointLight)
 
