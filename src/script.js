@@ -1696,14 +1696,47 @@ document.addEventListener("mousemove", (event) => {
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
         // intersects.length > 0 ? console.log(intersects[0].object) : null
 
+        // add hover move effect
+        let runEffectOnce = true 
+        let hoveredChessPiece
+            if(runEffectOnce && intersects.length > 0) {
+                function hoverEffect() {
+                    hoveredChessPiece = intersects[0].object
+                    const itemZ = intersects[0].object.position.z
+
+                    const startTime = performance.now()
+                    const duration = animationDuration
+
+                    function animate(currentTime) {
+                        const elapsed = currentTime - startTime
+                        const progress = Math.min(1, elapsed / duration)
+
+                        const easedProgress = easeInOut(progress)
+
+                        const value = itemZ + easedProgress * 2 // from itemZ to itemZ + 2 units
+
+                        intersects[0].object.position.z = value
+
+                        if (elapsed < duration) {
+                            requestAnimationFrame(animate)
+                        }
+                    }
+
+                    function easeInOut(t) {
+                        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+            
+                    requestAnimationFrame(animate)
+                }
+                hoverEffect()
+            }
+            runEffectOnce = false
+
+
         if(intersects.length > 0) {
             hoveringOverChessPiece = true
-            hoveredChessPiece = intersects[0].object
-            console.log(hoveringOverChessPiece)
         } else {
             hoveringOverChessPiece = false
-
-            console.log(hoveringOverChessPiece)
         }
 
     } else {
