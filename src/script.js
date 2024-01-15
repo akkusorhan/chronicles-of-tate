@@ -1323,7 +1323,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-// const gui = new dat.GUI()
+const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1669,6 +1669,8 @@ const mouse = new THREE.Vector2()
 
 // Handle mousemove events
 let popupOpened = false
+let hoveringOverChessPiece = false
+let hoveredChessPiece
 
 document.addEventListener("mousemove", (event) => {
     if(!isTouchScreen && sectionsEnabled) {
@@ -1692,6 +1694,17 @@ document.addEventListener("mousemove", (event) => {
         // intersect detected
         // intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
+        // intersects.length > 0 ? console.log(intersects[0].object) : null
+
+        if(intersects.length > 0) {
+            hoveringOverChessPiece = true
+            hoveredChessPiece = intersects[0].object
+            console.log(hoveringOverChessPiece)
+        } else {
+            hoveringOverChessPiece = false
+
+            console.log(hoveringOverChessPiece)
+        }
 
     } else {
         // pointLight.position.x = 0
@@ -1821,7 +1834,7 @@ document.addEventListener('click', () => {
         
                     const easedProgress = easeInOut(progress)
         
-                    const value =  itemZ + easedProgress * 4
+                    const value =  itemZ + easedProgress * 4 // from itemZ to itemZ + 4 units
 
                     letters[i].scene.position.z = value
         
@@ -2106,9 +2119,9 @@ camera.position.z = 10
 
 scene.add(camera)
 
-// gui.add(camera.position, "x").min(-15).max(15).step(.01)
-// gui.add(camera.position, "y").min(-120).max(60).step(.01)
-// gui.add(camera.position, "z").min(-15).max(45).step(.01)
+gui.add(camera.position, "x").min(-15).max(15).step(.01)
+gui.add(camera.position, "y").min(-120).max(60).step(.01)
+gui.add(camera.position, "z").min(-15).max(45).step(.01)
 
 
 /**
