@@ -34,7 +34,7 @@ skipButton.addEventListener("click", () => {
     scene.remove(chessBoardObject[0])
     console.log("chessboard removed")
 
-    renderer.outputEncoding = THREE.LinearEncoding
+    // renderer.outputEncoding = THREE.LinearEncoding
     renderer.gammaOutput = true
     
     setTimeout(() => {
@@ -219,7 +219,7 @@ launchExperienceButton.addEventListener("click", () => {
                 // document.body.style.backgroundColor = "#070707"
             }, 3500);
         }
-    }, 40500); //40500
+    }, 500); //40500
 })
 
 //mute button
@@ -1461,7 +1461,7 @@ gltfLoader.load(
         let chessBoard = gltf.scene
         console.log(gltf)
 
-        chessBoard.position.x = -20
+        chessBoard.position.x = -20.17
         chessBoard.position.y = -5.1 // -1.1
         chessBoard.position.z = 2.7
 
@@ -1543,8 +1543,76 @@ for (let i = 0; i < letterGenerationVariable; i++) {
 
             window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = Math.round((Math.random() - 0.6) * 10) : letter.position.y = Math.round((Math.random() - 0.6) * 7)
             letter.position.z = ((Math.random() - 0.5) * 3)
-            letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
 
+            // setting X position
+            // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport, random position set
+            letterRandomPositionX == 15 ? letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) : null// x variable will change based on viewport, random position set
+
+            if(letterRandomPositionX == 8) { //normal viewport
+                i == 0 ? letter.position.x = -2 : null
+                i == 0 ? letter.position.y = 2 : null
+
+                i == 1 ? letter.position.x = 2 : null
+                i == 1 ? letter.position.y = 2 : null
+
+                i == 2 ? letter.position.x = -4 : null
+                i == 2 ? letter.position.y = 1 : null
+
+                i == 3 ? letter.position.x = 1.5 : null
+                i == 3 ? letter.position.y = -0.5 : null
+
+                i == 4 ? letter.position.x = 4 : null
+                i == 4 ? letter.position.y = 0 : null
+
+                i == 5 ? letter.position.x = -4 : null
+                i == 5 ? letter.position.y = -1.5 : null
+
+                i == 6 ? letter.position.x = -3 : null
+                i == 6 ? letter.position.y = -2 : null
+
+                i == 7 ? letter.position.x = -0.75 : null
+                i == 7 ? letter.position.y = -1.5 : null
+
+                i == 8 ? letter.position.x = 1.5 : null
+                i == 8 ? letter.position.y = -2 : null
+
+                i == 9 ? letter.position.x = 3.5 : null
+                i == 9 ? letter.position.y = -3 : null
+
+            } else if (letterRandomPositionX == 2) { // mobile viewport
+                i == 0 ? letter.position.x = 0 : null
+                i == 0 ? letter.position.y = 2 : null
+
+                i == 1 ? letter.position.x = 0.75 : null
+                i == 1 ? letter.position.y = 1.75 : null
+
+                i == 2 ? letter.position.x = -0.9 : null
+                i == 2 ? letter.position.y = 1.65 : null
+
+                i == 3 ? letter.position.x = 0.9 : null
+                i == 3 ? letter.position.y = 0.3 : null
+
+                i == 4 ? letter.position.x = -0.1 : null
+                i == 4 ? letter.position.y = -4 : null
+
+                i == 5 ? letter.position.x = 0 : null
+                i == 5 ? letter.position.y = -1.35 : null
+
+                i == 6 ? letter.position.x = 0.9 : null
+                i == 6 ? letter.position.y = -3.5 : null
+
+                i == 7 ? letter.position.x = -0.8 : null
+                i == 7 ? letter.position.y = -1.85 : null
+
+                i == 8 ? letter.position.x = 0.8 : null
+                i == 8 ? letter.position.y = -2 : null
+
+                i == 9 ? letter.position.x = -0.95 : null
+                i == 9 ? letter.position.y = -3.5 : null
+            }
+
+
+            // Setting rotation 
             // letter.rotation.x = 0.5 
             letter.rotation.x = Math.random() - 0.5 * 1.2
             letter.rotation.y = Math.random() - 0.5 * 1.2
@@ -1696,49 +1764,6 @@ document.addEventListener("mousemove", (event) => {
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
         // intersects.length > 0 ? console.log(intersects[0].object) : null
 
-        // add hover move effect
-        let runEffectOnce = true 
-        let hoveredChessPiece
-            if(runEffectOnce && intersects.length > 0) {
-                function hoverEffect() {
-                    hoveredChessPiece = intersects[0].object
-                    const itemZ = intersects[0].object.position.z
-
-                    const startTime = performance.now()
-                    const duration = animationDuration
-
-                    function animate(currentTime) {
-                        const elapsed = currentTime - startTime
-                        const progress = Math.min(1, elapsed / duration)
-
-                        const easedProgress = easeInOut(progress)
-
-                        const value = itemZ + easedProgress * 2 // from itemZ to itemZ + 2 units
-
-                        intersects[0].object.position.z = value
-
-                        if (elapsed < duration) {
-                            requestAnimationFrame(animate)
-                        }
-                    }
-
-                    function easeInOut(t) {
-                        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-                    }
-            
-                    requestAnimationFrame(animate)
-                }
-                hoverEffect()
-            }
-            runEffectOnce = false
-
-
-        if(intersects.length > 0) {
-            hoveringOverChessPiece = true
-        } else {
-            hoveringOverChessPiece = false
-        }
-
     } else {
         // pointLight.position.x = 0
         // pointLight.position.y = 0
@@ -1791,7 +1816,7 @@ aboutSectionCloseButton.addEventListener("mousemove", (e) => {buttonMagnetHoverE
 skipBtn.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(skipBtn, e, 0.9)});
 chroniclesOfTateDesktopButton.addEventListener("mousemove", (e) => {
     buttonMagnetHoverEffectMousein(chroniclesOfTateDesktopButton, e, 0.175)
-    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://www.cobratate.com/the-tales-of-wudan" target="_blank">Master Wudan</a>'
+    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Master Wudan</a>'
 });
 
 aboutDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutDesktopButton)});
@@ -1802,7 +1827,7 @@ aboutSectionCloseButton.addEventListener("mouseleave", () => {buttonMagnetHoverE
 skipBtn.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(skipBtn)});
 chroniclesOfTateDesktopButton.addEventListener("mouseleave", () => {
     buttonMagnetHoverEffectMouseout(chroniclesOfTateDesktopButton)
-    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://www.cobratate.com/the-tales-of-wudan" target="_blank">Chronicles Of Tate</a>'
+    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Chronicles Of Tate</a>'
 });
 
 
@@ -2172,7 +2197,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.shadowMap.enabled = true
-// renderer.outputEncoding = THREE.LinearEncoding
+renderer.outputEncoding = THREE.LinearEncoding
 // renderer.gammaOutput = true
 renderer.render(scene, camera)
 
@@ -2609,7 +2634,12 @@ const tick = () => {
             letter.position.y = -3.95 + Math.random() * ( -4.04 - (-3.94) ) // random number between -3.95 and -4.04
             
             // letter.position.y = -3.94
-            letter.position.x = (Math.random() - 0.5) * letterRandomPositionX //randomize x on scroll down
+            // letter.position.x = (Math.random() - 0.5) * letterRandomPositionX //randomize x on scroll down
+            // letterRandomPositionX == 2 ? letter.position.x += ((Math.random() - 0.5)) : letter.position.x += ((Math.random() - 0.5)) // add -0.5 to +0.5 to x on scroll down
+
+
+            letter.rotation.x += ((Math.random() - 0.5) * 0.1) // add -0.5 to +0.5 to x rotation on scroll down
+            letter.rotation.y += ((Math.random() - 0.5) * 0.1) // add -0.5 to +0.5 to y rotation on scroll down
             letterCount.push(letterCount.length)
             // console.log(letterCount)
         }
@@ -2617,6 +2647,11 @@ const tick = () => {
         function scrollUp() {
             letter.position.y = 3.95
             // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) //randomize x on scroll up
+            // letter.position.x += (Math.random() - 0.5) // add -0.5 to +0.5 to x position on scroll up
+            // letterRandomPositionX == 2 ? letter.position.x += ((Math.random() - 0.5)) : letter.position.x += ((Math.random() - 0.5)) // add -0.5 to +0.5 to x on scroll up
+
+            letter.rotation.x += ((Math.random() - 0.5) * 0.1) // add -0.5 to +0.5 to x rotation on scroll up
+            letter.rotation.y += ((Math.random() - 0.5) * 0.1) // add -0.5 to +0.5 to y rotation on scroll up
             letterCount.pop()
             // console.log(letterCount)                
         }
