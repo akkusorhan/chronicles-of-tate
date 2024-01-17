@@ -19,6 +19,56 @@ let chhronicleSections = document.querySelector(".sections")
 
 let chroniclesOfTateSoundtrack = new Audio("./chronicles-of-tate-soundtrack.mp3")
 
+let hover1 = new Audio("./audio/hover/hover1.mp3")
+let hover2 = new Audio("./audio/hover/hover2.mp3")
+let hover3 = new Audio("./audio/hover/hover3.mp3")
+let hover4 = new Audio("./audio/hover/hover4.mp3")
+let hover5 = new Audio("./audio/hover/hover5.mp3")
+let hover6 = new Audio("./audio/hover/hover6.mp3")
+let hover7 = new Audio("./audio/hover/hover7.mp3")
+
+let select1 = new Audio("./audio/select/select1.mp3")
+let select2 = new Audio("./audio/select/select2.mp3")
+let select3 = new Audio("./audio/select/select3.mp3")
+let select4 = new Audio("./audio/select/select4.mp3")
+let select5 = new Audio("./audio/select/select5.mp3")
+
+let click1 = new Audio("./audio/click/click1.mp3")
+let click2 = new Audio("./audio/click/click2.mp3")
+let click3 = new Audio("./audio/click/click3.mp3")
+let click4 = new Audio("./audio/click/click4.mp3")
+let click5 = new Audio("./audio/click/click5.mp3")
+let click6 = new Audio("./audio/click/click6.mp3")
+let click7 = new Audio("./audio/click/click7.mp3")
+
+let hoverSoundEffects = [
+    hover1,
+    hover2,
+    hover3,
+    hover4,
+    hover5,
+    hover6,
+    hover7
+]
+
+let selectSoundEffects = [
+    select1,
+    select2,
+    select3,
+    select4,
+    select5,
+]
+
+let clickSoundEffects = [
+    click1,
+    click2,
+    click3,
+    click4,
+    click5,
+    click6,
+    click7,
+]
+
 let header = document.querySelector(".header")
 
 let skipButton = document.querySelector(".skip-btn")
@@ -34,7 +84,7 @@ skipButton.addEventListener("click", () => {
     scene.remove(chessBoardObject[0])
     console.log("chessboard removed")
 
-    // renderer.outputEncoding = THREE.LinearEncoding
+    renderer.outputEncoding = THREE.LinearEncoding
     renderer.gammaOutput = true
     
     setTimeout(() => {
@@ -219,7 +269,7 @@ launchExperienceButton.addEventListener("click", () => {
                 // document.body.style.backgroundColor = "#070707"
             }, 3500);
         }
-    }, 500); //40500
+    }, 40500); //40500
 })
 
 //mute button
@@ -1323,7 +1373,7 @@ console.log(chroniclesOfEmoryTate2011.length)
 /**
  * Debug
  */
-const gui = new dat.GUI()
+// const gui = new dat.GUI()
 
 /**
  * Scene
@@ -1461,7 +1511,7 @@ gltfLoader.load(
         let chessBoard = gltf.scene
         console.log(gltf)
 
-        chessBoard.position.x = -20.17
+        chessBoard.position.x = -20
         chessBoard.position.y = -5.1 // -1.1
         chessBoard.position.z = 2.7
 
@@ -1740,6 +1790,25 @@ let popupOpened = false
 let hoveringOverChessPiece = false
 let hoveredChessPiece
 
+// hover sound effect
+function hoverSoundEffect() {
+    let randomNum = Math.floor(Math.random() * 7)
+    hoverSoundEffects[randomNum].play()
+    console.log("Mouse entered the element!");
+
+}
+
+// click sound effect
+function clickSoundEffect() {
+    let clickRandomNum = Math.floor(Math.random() * 7)
+    let selectRandomNum = Math.floor(Math.random() * 5)
+
+    clickSoundEffects[clickRandomNum].play()
+    setTimeout(() => {
+        selectSoundEffects[selectRandomNum].play()
+    }, 200);
+}
+
 document.addEventListener("mousemove", (event) => {
     if(!isTouchScreen && sectionsEnabled) {
         // Convert mouse coordinates to a normalized value between -1 and 1
@@ -1762,6 +1831,7 @@ document.addEventListener("mousemove", (event) => {
         // intersect detected
         // intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
+        // intersects.length > 0 && !popupOpened && sectionsEnabled ? hoverSoundEffect() : null
         // intersects.length > 0 ? console.log(intersects[0].object) : null
 
     } else {
@@ -1809,11 +1879,27 @@ let chroniclesOfTateDesktopButton = document.querySelector("#chronicles-of-tate-
 let skipBtn = document.querySelector(".skip-btn");
 
 aboutDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(aboutDesktopButton, e, 0.9)});
+aboutDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+aboutDesktopButton.addEventListener("click", (e) => {clickSoundEffect()});
+
 muteDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(muteDesktopButton, e, 0.9)});
+muteDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+
 closeChronicleDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(closeChronicleDesktopButton, e, 0.9)});
+closeChronicleDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+closeChronicleDesktopButton.addEventListener("click", (e) => {clickSoundEffect()});
+
 launchExperienceDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(launchExperienceDesktopButton, e, 0.125)});
+launchExperienceDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+
 aboutSectionCloseButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(aboutSectionCloseButton, e, 0.9)});
+aboutSectionCloseButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+aboutSectionCloseButton.addEventListener("click", (e) => {clickSoundEffect()});
+
 skipBtn.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(skipBtn, e, 0.9)});
+skipBtn.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+
+chroniclesOfTateDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()})
 chroniclesOfTateDesktopButton.addEventListener("mousemove", (e) => {
     buttonMagnetHoverEffectMousein(chroniclesOfTateDesktopButton, e, 0.175)
     chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Master Wudan</a>'
@@ -1844,11 +1930,13 @@ let aboutSection = document.querySelector(".about")
 let aboutCloseButton = document.querySelector("#close-btn")
 
 let clickedChronicleIteration
+
 document.addEventListener('click', () => {
     // Check for intersections
     let intersects = raycaster.intersectObjects(scene.children);
 
     if (intersects.length > 0 && isTouchScreen == false && popupOpened == false && sectionsEnabled) {
+        clickSoundEffect()
         popupOpened = true
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
@@ -2177,9 +2265,9 @@ camera.position.z = 10
 
 scene.add(camera)
 
-gui.add(camera.position, "x").min(-15).max(15).step(.01)
-gui.add(camera.position, "y").min(-120).max(60).step(.01)
-gui.add(camera.position, "z").min(-15).max(45).step(.01)
+// gui.add(camera.position, "x").min(-15).max(15).step(.01)
+// gui.add(camera.position, "y").min(-120).max(60).step(.01)
+// gui.add(camera.position, "z").min(-15).max(45).step(.01)
 
 
 /**
@@ -2197,7 +2285,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.shadowMap.enabled = true
-renderer.outputEncoding = THREE.LinearEncoding
+// renderer.outputEncoding = THREE.LinearEncoding
 // renderer.gammaOutput = true
 renderer.render(scene, camera)
 
@@ -2252,6 +2340,7 @@ window.addEventListener("touchstart", (event) => {
     if (intersects.length > 0 && popupOpened == false && sectionsEnabled) {
         // log the object that was clicked
         console.log('Object touched on mobile:', intersects[0].object);
+        clickSoundEffect()
         popupOpened = true
 
         let chronicleIteration = intersects[0].object.chronicleNumber !== undefined ? intersects[0].object.chronicleNumber : intersects[0].object.parent.chronicleNumber
@@ -2353,6 +2442,7 @@ let infoButton = document.querySelector(".hamburger-menu-icon")
 let mobileBackground = document.querySelector(".mobile-background")
 
 infoButton.addEventListener("touchstart", () => {
+    clickSoundEffect()
     popupOpened = true
 
     aboutSection.style.display = "flex"
