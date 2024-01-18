@@ -1901,8 +1901,10 @@ skipBtn.addEventListener("mouseover", (e) => {hoverSoundEffect()});
 
 chroniclesOfTateDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()})
 chroniclesOfTateDesktopButton.addEventListener("mousemove", (e) => {
-    buttonMagnetHoverEffectMousein(chroniclesOfTateDesktopButton, e, 0.175)
-    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Master Wudan</a>'
+    if(!isTouchScreen) {
+        buttonMagnetHoverEffectMousein(chroniclesOfTateDesktopButton, e, 0.175)
+        chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Master Wudan</a>'
+    } else {null}
 });
 
 aboutDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutDesktopButton)});
@@ -1912,8 +1914,10 @@ launchExperienceDesktopButton.addEventListener("mouseleave", () => {buttonMagnet
 aboutSectionCloseButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutSectionCloseButton)});
 skipBtn.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(skipBtn)});
 chroniclesOfTateDesktopButton.addEventListener("mouseleave", () => {
-    buttonMagnetHoverEffectMouseout(chroniclesOfTateDesktopButton)
-    chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Chronicles Of Tate</a>'
+    if(!isTouchScreen) {
+        buttonMagnetHoverEffectMouseout(chroniclesOfTateDesktopButton)
+        chroniclesOfTateDesktopButton.innerHTML = '<a href="https://customer-29d3r31yjz332bf4.cloudflarestream.com/7687dd63dda8179060bddef2ffdd15bc/iframe?poster=https%3A%2F%2Fcustomer-29d3r31yjz332bf4.cloudflarestream.com%2F7687dd63dda8179060bddef2ffdd15bc%2Fthumbnails%2Fthumbnail.jpg%3Ftime%3D10s%26height%3D600\" target="_blank">Chronicles Of Tate</a>'
+    } else {null}
 });
 
 
