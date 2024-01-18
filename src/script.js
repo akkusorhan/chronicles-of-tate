@@ -71,69 +71,69 @@ let clickSoundEffects = [
 
 let header = document.querySelector(".header")
 
-let skipButton = document.querySelector(".skip-btn")
+// let skipButton = document.querySelector(".skip-btn")
 
-let skipButtonClicked = false
-skipButton.addEventListener("click", () => {
-    skipButtonClicked = true
+// let skipButtonClicked = false
+// skipButton.addEventListener("click", () => {
+//     skipButtonClicked = true
 
-    quotePreloader.style.opacity = 0
+//     quotePreloader.style.opacity = 0
 
-    chroniclesOfTateSoundtrack.currentTime = 41
+//     // chroniclesOfTateSoundtrack.currentTime = 41
     
-    scene.remove(chessBoardObject[0])
-    console.log("chessboard removed")
+//     scene.remove(chessBoardObject[0])
+//     console.log("chessboard removed")
 
-    renderer.outputEncoding = THREE.LinearEncoding
-    renderer.gammaOutput = true
+//     renderer.outputEncoding = THREE.LinearEncoding
+//     renderer.gammaOutput = true
     
-    setTimeout(() => {
-        camera.position.x = 0
-        pointLight.position.x = 0
-        pointLight.position.z = 5 // 3.5
-        pointLight.intensity = 0
+//     setTimeout(() => {
+//         camera.position.x = 0
+//         pointLight.position.x = 0
+//         pointLight.position.z = 5 // 3.5
+//         pointLight.intensity = 0
 
 
-        homePage.style.display = "none"
-        quotePreloader.style.display = "none"
+//         homePage.style.display = "none"
+//         quotePreloader.style.display = "none"
 
-        sections.style.opacity = 1
-        header.style.opacity = 1
-        sectionsEnabled = true
+//         sections.style.opacity = 1
+//         header.style.opacity = 1
+//         sectionsEnabled = true
 
-        document.body.style.overflow = ""
+//         document.body.style.overflow = ""
 
-        function animateLightIntensity(light, targetIntensity, duration) {
-            const startIntensity = light.intensity;
-            let startTime;
+//         function animateLightIntensity(light, targetIntensity, duration) {
+//             const startIntensity = light.intensity;
+//             let startTime;
 
-            function update() {
-                const currentTime = performance.now();
-                const elapsed = currentTime - startTime;
-                const progress = Math.min(1, elapsed / duration);
+//             function update() {
+//                 const currentTime = performance.now();
+//                 const elapsed = currentTime - startTime;
+//                 const progress = Math.min(1, elapsed / duration);
 
-                const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
-                light.intensity = newIntensity;
+//                 const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+//                 light.intensity = newIntensity;
 
-                if (progress < 1) {
-                    requestAnimationFrame(update);
-                }
-            }
+//                 if (progress < 1) {
+//                     requestAnimationFrame(update);
+//                 }
+//             }
 
-            function startAnimation() {
-                startTime = performance.now();
-                update();
-            }
+//             function startAnimation() {
+//                 startTime = performance.now();
+//                 update();
+//             }
 
-            startAnimation();
-        }
+//             startAnimation();
+//         }
 
-        animateLightIntensity(ambientLight, 0.3, 2500)
-        animateLightIntensity(pointLight, 300, 2500) //75 4500
-        // ambientLight.intensity = 0.3
-        // pointLight.intensity = 75
-    }, 2500);
-})
+//         animateLightIntensity(ambientLight, 0.3, 2500)
+//         animateLightIntensity(pointLight, 300, 2500) //75 4500
+//         // ambientLight.intensity = 0.3
+//         // pointLight.intensity = 75
+//     }, 2500);
+// })
 
 window.scrollTo({
     top: 0, 
@@ -147,7 +147,7 @@ setTimeout(() => {
 launchExperienceButton.addEventListener("click", () => {
     homePageEnabled = false
     homePage.style.opacity = 0
-    chroniclesOfTateSoundtrack.play()
+    // chroniclesOfTateSoundtrack.play()
 
     // chessBoardObject[0].position.x = -2
 
@@ -185,49 +185,24 @@ launchExperienceButton.addEventListener("click", () => {
     animateObject()
 
     setTimeout(() => {
-        quotePreloaderEnabled = true
-        quotePreloader.style.opacity = 1
-        launchExperienceButton.style.display = "none"
-        document.body.style.backgroundColor = "#000000"
+        // // for quote preloader
+        // quotePreloaderEnabled = true
+        // quotePreloader.style.opacity = 1
+        // launchExperienceButton.style.display = "none"
+        // document.body.style.backgroundColor = "#000000"
 
-        setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1700); //500 2250
-        setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 2200); //1500
-        setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 4300); //3000
-        setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 6700); //5000
-        setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 9200); //7500
-        setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 11250); //8500
-        setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 13250); //10000
-        setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 16750); //12500
-        setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 18750); //15000
-        setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 20750); //17500
-        setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 24000); //21000
-        setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26000); //25000
-        setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
-        setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
-        setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
-    },  2500); //2500
+        scene.remove(chessBoardObject[0])
+        console.log("chessboard removed")
 
-    // paste here
-    setTimeout(() => {
-        if (skipButtonClicked) {
+        camera.position.x = 0
+        pointLight.position.x = 0
+        pointLight.position.z = 5 // 3.5
+        pointLight.intensity = 0
 
-        } else if (homePageEnabled == false && skipButtonClicked == false) {
-            scene.remove(chessBoardObject[0])
-            console.log("chessboard removed")
+        renderer.outputEncoding = THREE.LinearEncoding
+        renderer.gammaOutput = true
 
-            quotePreloaderEnabled = false
-            quotePreloader.style.opacity = 0
-
-            camera.position.x = 0
-            pointLight.position.x = 0
-            pointLight.position.z = 5 // 3.5
-            pointLight.intensity = 0
-
-            renderer.outputEncoding = THREE.LinearEncoding
-            renderer.gammaOutput = true
-
-            setTimeout(() => {
-                homePage.style.display = "none"
+        homePage.style.display = "none"
                 quotePreloader.style.display = "none"
 
                 sections.style.opacity = 1
@@ -263,13 +238,88 @@ launchExperienceButton.addEventListener("click", () => {
 
                 animateLightIntensity(ambientLight, 0.3, 4500)
                 animateLightIntensity(pointLight, 300, 2500) //75 2500
-                // ambientLight.intensity = 0.3
-                // pointLight.intensity = 75
 
-                // document.body.style.backgroundColor = "#070707"
-            }, 3500);
-        }
-    }, 40500); //40500
+        // // for quote preloader
+        // setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1700); //500 2250
+        // setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 2200); //1500
+        // setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 4300); //3000
+        // setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 6700); //5000
+        // setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 9200); //7500
+        // setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 11250); //8500
+        // setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 13250); //10000
+        // setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 16750); //12500
+        // setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 18750); //15000
+        // setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 20750); //17500
+        // setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 24000); //21000
+        // setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26000); //25000
+        // setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
+        // setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
+        // setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
+    },  2500); //2500
+
+    // paste here
+    // setTimeout(() => {
+    //     if (skipButtonClicked) {
+
+    //     } else if (homePageEnabled == false && skipButtonClicked == false) {
+    //         scene.remove(chessBoardObject[0])
+    //         console.log("chessboard removed")
+
+    //         quotePreloaderEnabled = false
+    //         quotePreloader.style.opacity = 0
+
+    //         camera.position.x = 0
+    //         pointLight.position.x = 0
+    //         pointLight.position.z = 5 // 3.5
+    //         pointLight.intensity = 0
+
+    //         renderer.outputEncoding = THREE.LinearEncoding
+    //         renderer.gammaOutput = true
+
+    //         // setTimeout(() => {
+    //         //     homePage.style.display = "none"
+    //         //     quotePreloader.style.display = "none"
+
+    //         //     sections.style.opacity = 1
+    //         //     header.style.opacity = 1
+    //         //     sectionsEnabled = true
+
+    //         //     document.body.style.overflow = ""
+
+    //         //     function animateLightIntensity(light, targetIntensity, duration) {
+    //         //         const startIntensity = light.intensity;
+    //         //         let startTime;
+
+    //         //         function update() {
+    //         //             const currentTime = performance.now();
+    //         //             const elapsed = currentTime - startTime;
+    //         //             const progress = Math.min(1, elapsed / duration);
+
+    //         //             const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+    //         //             light.intensity = newIntensity;
+
+    //         //             if (progress < 1) {
+    //         //                 requestAnimationFrame(update);
+    //         //             }
+    //         //         }
+
+    //         //         function startAnimation() {
+    //         //             startTime = performance.now();
+    //         //             update();
+    //         //         }
+
+    //         //         startAnimation();
+    //         //     }
+
+    //         //     animateLightIntensity(ambientLight, 0.3, 4500)
+    //         //     animateLightIntensity(pointLight, 300, 2500) //75 2500
+    //         //     // ambientLight.intensity = 0.3
+    //         //     // pointLight.intensity = 75
+
+    //         //     // document.body.style.backgroundColor = "#070707"
+    //         // }, 3500);
+    //     }
+    // }, 3000); //40500
 })
 
 //mute button
@@ -279,14 +329,14 @@ const mobileMuteButton = document.querySelector("#mute-btn-mobile")
 muteButton.addEventListener("click", () => {
     muteButton.textContent == "mute" ? muteButton.textContent = "unmute" : muteButton.textContent = "mute"
 
-    muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
+    // muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
 })
 
 mobileMuteButton.addEventListener("touchstart", () => {
     mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
 
-    mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
-    mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
+    // mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
+    // mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
 })
 
 
@@ -1534,9 +1584,6 @@ gltfLoader.load(
 console.log(chessBoardObject)
 
 // chess board animations
-
-
-
 
 for (let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)

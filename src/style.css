@@ -224,8 +224,7 @@ header {
     margin-top: 16px;
     transform-origin: center left;
     transform: scaleX(0);
-    transition: transform 0.5s ease;
-    transition: opacity 0.5s ease;
+    transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .home-page-content p {
@@ -246,10 +245,10 @@ header {
         text-align: center;
         font-size: 40px;
         cursor: pointer;
-        transition: background-color 0.3s ease, color 0.3s ease;
+        /* transition: background-color 0.3s ease, color 0.3s ease; */
         width: fit-content;
         margin-bottom: 3%;
-        transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease, background-color 0.3s ease-in-out;
 }
 
 .launch-experience-btn:hover {
