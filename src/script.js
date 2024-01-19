@@ -147,13 +147,14 @@ setTimeout(() => {
 launchExperienceButton.addEventListener("click", () => {
     homePageEnabled = false
     homePage.style.opacity = 0
-    // chroniclesOfTateSoundtrack.play()
+    chroniclesOfTateSoundtrack.play()
 
     // chessBoardObject[0].position.x = -2
 
     // Function to animate the object
 
     function animateObject() {
+        
         const startTime = Date.now();
         const duration = 250000; // Animation duration in milliseconds
 
@@ -183,6 +184,7 @@ launchExperienceButton.addEventListener("click", () => {
     }
     
     animateObject()
+    console.log(chessBoardObject[0].position)
 
     setTimeout(() => {
         // // for quote preloader
@@ -255,7 +257,7 @@ launchExperienceButton.addEventListener("click", () => {
         // setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
         // setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
         // setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
-    },  2500); //2500
+    },  3500); //2500
 
     // paste here
     // setTimeout(() => {
@@ -325,18 +327,23 @@ launchExperienceButton.addEventListener("click", () => {
 //mute button
 const muteButton = document.querySelector(".mute-btn")
 const mobileMuteButton = document.querySelector("#mute-btn-mobile")
+let muted = false
 
 muteButton.addEventListener("click", () => {
     muteButton.textContent == "mute" ? muteButton.textContent = "unmute" : muteButton.textContent = "mute"
+    muteButton.textContent == "mute" ? muted = false : muted = true
 
-    // muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
+    muteButton.textContent == "unmute" ? chroniclesOfTateSoundtrack.pause() : chroniclesOfTateSoundtrack.play()
 })
 
 mobileMuteButton.addEventListener("touchstart", () => {
     mobileMuteButton.src.includes("unmute") ? mobileMuteButton.src = "./mute-icon.png" : mobileMuteButton.src = "./unmute-icon.png"
 
-    // mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
-    // mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
+    mobileMuteButton.src.includes("mute") ? chroniclesOfTateSoundtrack.pause() : null
+    mobileMuteButton.src.includes("mute") ? muted = true : null
+
+    mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
+    mobileMuteButton.src.includes("unmute") ? muted = false : null
 })
 
 
@@ -498,7 +505,7 @@ const chroniclesOfEmoryTate2011 = [
         image: null
     },
     {
-        quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  <span class="red-text">I refuse to be called afraid<span>."',
+        quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  <span class="red-text"><br>I refuse to be called afraid<span>."',
         display: true,
         date: `Dec 7, 2011`,
         image: null
@@ -1568,7 +1575,7 @@ gltfLoader.load(
         chessBoard.rotation.x = 0.3
         chessBoard.rotation.y = 2.35 // 3.148
 
-        // gui.add(chessBoard.position, "x", -15, 15, 0.1).name("chessBoardX")
+        // gui.add(chessBoard.position, "x", -25, 15, 0.1).name("chessBoardX")
         // gui.add(chessBoard.position, "y", -15, 15, 0.1).name("chessBoardY")
         // gui.add(chessBoard.position, "z", -15, 15, 0.1).name("chessBoardZ")
 
@@ -1739,7 +1746,6 @@ for (let i = 0; i < letterGenerationVariable; i++) {
     )
 }
 
-
 // for(let i = 0; i < 189; i++) {
 //     gltfLoader.load(
 //         "./letter.glb",
@@ -1839,21 +1845,34 @@ let hoveredChessPiece
 
 // hover sound effect
 function hoverSoundEffect() {
-    let randomNum = Math.floor(Math.random() * 7)
-    hoverSoundEffects[randomNum].play()
-    console.log("Mouse entered the element!");
+    if(muted == false) {
+        let randomNum = Math.floor(Math.random() * 7)
+        hoverSoundEffects[randomNum].play()
+        console.log("Mouse entered the element!");
+    } else { null }
 
 }
 
 // click sound effect
 function clickSoundEffect() {
-    let clickRandomNum = Math.floor(Math.random() * 7)
-    let selectRandomNum = Math.floor(Math.random() * 5)
+    if(muted == false) {
+        let clickRandomNum = Math.floor(Math.random() * 7)
+        let selectRandomNum = Math.floor(Math.random() * 5)
+    
+        clickSoundEffects[clickRandomNum].play()
+        setTimeout(() => {
+            selectSoundEffects[selectRandomNum].play()
+        }, 200);
+    }
+}
 
-    clickSoundEffects[clickRandomNum].play()
-    setTimeout(() => {
-        selectSoundEffects[selectRandomNum].play()
-    }, 200);
+let intersectDetected = true
+function chessPieceHoverSoundEffect() {
+    if(intersectDetected == true) {
+            hoverSoundEffect()
+            intersects.length > 0 ? intersectDetected = false : null
+
+    } else { null }
 }
 
 document.addEventListener("mousemove", (event) => {
@@ -1878,7 +1897,7 @@ document.addEventListener("mousemove", (event) => {
         // intersect detected
         // intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
-        // intersects.length > 0 && !popupOpened && sectionsEnabled ? hoverSoundEffect() : null
+        intersects.length > 0 && !popupOpened && sectionsEnabled ? chessPieceHoverSoundEffect() : intersectDetected = true
         // intersects.length > 0 ? console.log(intersects[0].object) : null
 
     } else {
