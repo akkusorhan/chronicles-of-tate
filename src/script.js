@@ -324,6 +324,20 @@ launchExperienceButton.addEventListener("click", () => {
     // }, 3000); //40500
 })
 
+function handleVisibilityChange() {
+    if(document.hidden) {
+        chroniclesOfTateSoundtrack.pause()
+        document.title = "Finish the task at hand."
+    } else if(!document.hidden && sectionsEnabled == true){
+        chroniclesOfTateSoundtrack.play()
+        document.title = "Chronicles of Emory Tate"
+    } else {
+        document.title = "Chronicles of Emory Tate"
+    }
+}
+
+document.addEventListener("visibilitychange", handleVisibilityChange, false)
+
 //mute button
 const muteButton = document.querySelector(".mute-btn")
 const mobileMuteButton = document.querySelector("#mute-btn-mobile")
@@ -442,37 +456,37 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Cowards die a thousand deaths, a brave man only one.  Stand against mediocrity.  <span class="red-text">Fight brainwashing</span>."',
         display: true,
         date: `Oct. 19, 2011`,
-        image: null
+        image: "/images/emory-tate.png"
     },
     {
         quote: '"Andrew is now the Cobra, but he was born a Tiger.  Such a combination will never be beat!!!  <span class="red-text">Go team Cobra</span>"',
         display: true,
         date: `Nov 12, 2011`,
-        image: "/images/emory-tate-with-mom.png"
+        image: "/images/emory-tate-young.png"
     },
-    {
-        quote: '"Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?"',
-        display: true,
-        date: `Nov 12, 2011`,
-        image: null
-    },
-    {
-        quote: '"The orange TV link is a bust so far."',
-        display: true,
-        date: `Nov 12, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"Only adverts and sports replay on the orange channel link.  Are the lower fights not being shown?  Will they cut in for ANdrew?"',
+    //     display: true,
+    //     date: `Nov 12, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: '"The orange TV link is a bust so far."',
+    //     display: true,
+    //     date: `Nov 12, 2011`,
+    //     image: null
+    // },
     {
         quote: '".<span class="red-text">Fighting  demands guts</span>.  Cobra fought, to win, for the contract.  Even a loss on his record was not worth his integrity as a superstar"',
         display: true,
         date: `Nov 12, 2011`,
-        image: null
+        image: "/images/emory40.png"
     },
     {
         quote: '"And so we find time marches on.  Miracles happen  I am happy and I am sad that my son fought so hard.  All 7 rounds What a tough guy. <span class="red-text">Always</span>"',
         display: true,
         date: `Nov 14, 2011`,
-        image: null
+        image: "/images/the-tate-pride.png"
     },
     {
         quote: '"Tristan is unleashed upon the world.... Love him or hate him.  <span class="red-text">he probly dont care</span>."',
@@ -480,83 +494,83 @@ const chroniclesOfEmoryTate2011 = [
         date: `Nov 15, 2011`,
         image: null
     },
-    {
-        quote: '"Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!"',
-        display: true,
-        date: `Dec 3, 2011`,
-        image: null
-    },
-    {
-        quote: '"Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate"',
-        display: true,
-        date: `Dec 5, 2011`,
-        image: null
-    },
-    {
-        quote: '"Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!"',
-        display: true,
-        date: `Dec 6, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"Jason Bourne is the man.Yet he is fiction,one step above a cartoon.Want your ass kicked? Break my security space then?Move toward the light!"',
+    //     display: true,
+    //     date: `Dec 3, 2011`,
+    //     image: "/images/emory59.png"
+    // },
+    // {
+    //     quote: '"Jason Bourne really is the man... the lonely hero.  F$$K with him and you are ffkkkkin with the man.  Too bad it is fiction.  Tate"',
+    //     display: true,
+    //     date: `Dec 5, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: '"Music does soothe the savage beast.  I listened to a harp and felt calm.  Now back to reality as I must go prowl among the sheep AGAIN!"',
+    //     display: true,
+    //     date: `Dec 6, 2011`,
+    //     image: null
+    // },
     {
         quote: '"Joining a group protest is not for my Tate personality.  I take it straight to the source of corruption.  And I stay alive!  <span class="red-text">Walk the walk</span>."',
         display: true,
         date: `Dec 6, 2011`,
-        image: null
+        image: "/images/emory62.png"
     },
     {
         quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  <span class="red-text"><br>I refuse to be called afraid<span>."',
         display: true,
         date: `Dec 7, 2011`,
-        image: null
+        image: "/images/emory24.png"
     },
     {
         quote: '"Every wants to be a tough guy.Which of you have tasted your own blood.  When I was three,busted head.I <span class="red-text">DRANK</span> my blood.Daddy panicked. <span class="red-text">not me</span>"',
         display: true,
         date: `Dec 8, 2011`,
-        image: null
+        image: "/images/emory56.png"
     },
     {
         quote: '"How has it become that I no longer can tell male thought from female thought.  Yes, I cry... <span class="red-text">but that does not mean I think like a woman</span>."',
         display: true,
         date: `Dec 8, 2011`,
-        image: null
+        image: "/images/emory64.png"
     },
     {
         quote: '"It really is getting so much harder to identify a credible enemy anymore.  <span class="red-text">Could it be that all these people killed were not hostile at all?</span>"',
         display: true,
         date: `Dec 11, 2011`,
-        image: null
+        image: "/images/emory57.png"
     },
     {
         quote: `"I appears to me that if I concentrate on happy ideas, no one can make me sad.  After all, I am the best that I've ever seen!! <span class="red-text">So are you</span>."`,
         display: true,
         date: `Dec 11, 2011`,
-        image: null
+        image: "/images/emory37.png"
     },
     {
         quote: '"These people who know me, know by now they shoulda put me in charge.  I have never seen such a consistent record of failure in my life.  <span class="red-text">Sad</span>"',
         display: true,
         date: `Dec 11, 2011`,
-        image: null
+        image: "/images/emory28.png"
     },
-    {
-        quote: '"OCCUPY Twitter!!!  How u like me now, mo fo?"',
-        display: true,
-        date: `Dec 11, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"OCCUPY Twitter!!!  How u like me now, mo fo?"',
+    //     display: true,
+    //     date: `Dec 11, 2011`,
+    //     image: null
+    // },
     {
         quote: `"Vodka and guava juice at 3am, alone in a hotel room.negro gotta have a screw loose. I say "tighten up".don't lighten up, tighten up.  buzzed"`,
         display: true,
         date: `Dec 11, 2011`,
-        image: null
+        image: "/images/emory20.png"
     },
     {
         quote: '"It does get a bit tricky when the only two bad ass men who could kick my ass happen to be my two sons.<span class="red-text">Everybody else better watch the fk out</span>"',
         display: true,
         date: `Dec 11, 2011`,
-        image: null
+        image: "/images/the-tate-pride.png"
     },
     {
         quote: '"Without a baseline for truth, we (humans) are like savage apes, doing dirt in the dark, and smiling by day. <span class="red-text">Animals</span>.Still, noone is perfect."',
@@ -580,7 +594,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Chess is somewhat underrated.  A cerebral exercise, for certain,yet the war strategy aspect is often overlooked.  <span class="red-text">War is everywhere</span>. Believe"',
         display: true,
         date: `Dec 12, 2011`,
-        image: null
+        image: "/images/emory15.png"
     },
     {
         quote: '"Caught between the longing for love and the struggle for the legal tender (The Pretender) song"',
@@ -592,7 +606,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"There is no Kyoto protocol.There is no way to control pollution.I see human pollution.Cant control it. <span class="red-text">these people think that they matter?</span>"',
         display: true,
         date: `Dec 12, 2011`,
-        image: null
+        image: "/images/tateism.png"
     },
     {
         quote: '"I am honored to be (humble servant of the future) yet I am myself.  I am honored to be to your. dad.  no kidding.  <span class="red-text">Who could want more?</span>"',
@@ -604,7 +618,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: `"I've been a bit remiss by not flexing my vernacular. Now is time to <span class="red-text">hearken to the brazeness of modern men, hiding their true craven nature</span>"`,
         display: true,
         date: `Dec 13, 2011`,
-        image: null
+        image: "/images/emory53.png"
     },
     {
         quote: `"Anhedonia is a little-known place, far beyond equanimity. Tate
@@ -617,7 +631,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Inaction is, of itself, <span class="red-text">an action</span>.  Sun Xu.  <span class="red-text">Idiots run the world and they are cowards too</span>.  Tate.  Dont fuk with me. Tateism"',
         display: true,
         date: `Dec 13, 2011`,
-        image: null
+        image: "/images/emory2.png"
     },
     {
         quote: '"I knew this woul happen.no kidding, <span class="red-text">my actions forstall the inevitable but, in the end futile</span>.Think how many tweeters dont know futilility"',
@@ -635,14 +649,14 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Everybody wants to be a tuf guy, but so few pay the price to get there.  These pretend clones in public make me uneasy.  <span class="red-text">I abhor cowards.</span>"',
         display: true,
         date: `Dec 15, 2011`,
-        image: null
+        image: "/images/emory29.png"
     },
     {
         quote: `"The problem with cowards is that they can get you killed when <span class="red-text">THEY</span> panic!
         You might have to deal with the primary threat and <span class="red-text">K O the coward</span>"`,
         display: true,
         date: `Dec 15, 2011`,
-        image: null
+        image: "/images/emory41.png"
     },
     {
         quote: '"The only way to explain the technical failure, moral and ethical failure and disregard for the truth??  <span class="red-text">Realize it was deliberate,  They win</span>"',
@@ -654,7 +668,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Whereas it seems impossible for one man to be smarter that all the rest put together, <span class="red-text">One man can be right while everyone else is wrong. I</span>"',
         display: true,
         date: `Dec 15, 2011`,
-        image: null
+        image: "/images/emory5.png"
     },
     {
         quote: `"All the inaction and failure I witnessed made angry, I asked my mom why wouldn't people do something.  <span class="red-text">You cain't do what you cain't think!</span>"`,
@@ -672,13 +686,13 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"It appears to me that wisdom is replaced by knowledge. This fact undermines the elder statesman, and threatens all society.  <span class="red-text">Amateurs</span>."',
         display: true,
         date: `Dec 21, 2011`,
-        image: null
+        image: "/images/emory40.png"
     },
     {
         quote: '"These fukkers on the train behind me started loud chat about computer stuff, incomprehensible!Can they be polite? <span class="red-text">can they stop my fist?</span>fail"',
         display: true,
         date: `Dec 21, 2011`,
-        image: null
+        image: "/images/emory20.png"
     },
     {
         quote: `"Old people are somehow "funny" All dead mf's who died young must be absolutely hilarious. (group laughter) <span class="red-text">Is the very meaning of life lost?</span>"`,
@@ -690,7 +704,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: '"Becoming old means my enemies had to fail... had to hide, had to return to the roots of cowardice.<span class="red-text">To face me is to lose</span>, Tateism."',
         display: true,
         date: `Dec 21, 2011`,
-        image: null
+        image: "/images/emory60.png"
     },
     {
         quote: '"Imagine deer, antelope, allowed the adolescent males to break in all the females.Unproven sperm through the bloodline. <span class="red-text">The alpha dies</span>. Shit."',
@@ -714,13 +728,13 @@ const chroniclesOfEmoryTate2011 = [
         quote: `"Today is a good day to evaluate your belief system. Looks like pure christianity is fading away, the priests' true perversions revealed.<span class="red-text">Damn</span>"`,
         display: true,
         date: `Dec 25, 2011`,
-        image: null
+        image: "/images/emory33.png"
     },
     {
         quote: '"He who hesitates is lost I once hesitated to protect a system. <span class="red-text">The system is broken</span> What to do now? Cowards,traitors,amateurs.Epic fail. Sad"',
         display: true,
         date: `Dec 25, 2011`,
-        image: null
+        image: "/images/emory28.png"
     },
     {
         quote: '"To achieve brilliance is a wonderful thing.<span class="red-text">To act brilliantly is rare</span>.Take action and where you fit in on the brilliance scale?"',
@@ -876,7 +890,7 @@ const chroniclesOfEmoryTate2011 = [
         quote: `"Confusing knowledge with wisdom is a dangerous trend. Life may seem like a game,but in fact is deadly serious. <span class="red-text">Wisdom breeds action</span>, Tateism"`,
         display: true,
         date: `Jan 16, 2012`,
-        image: null
+        image: "/images/emory5.png"
     },
     {
         quote: `"He who shuns the dust of the arena, shall not sit in the shade of the olive tree.  Fight! or <span class="red-text">live in the shadow of one's own cowardice</span>. Fail"`,
@@ -2707,7 +2721,7 @@ function handleScroll() {
     const section2012End = document.querySelector('.section-2012-end')
     const section2013End = document.querySelector('.section-2013-end')
 
-    if (isInViewport(section2011End) && letterCount.length < 58) {
+    if (isInViewport(section2011End) && letterCount.length < 52) { // 58, 6 tweets removed from original
         section2011Vh += 10
         document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
         console.log("extend...")
