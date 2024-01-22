@@ -1694,49 +1694,6 @@ for (let i = 0; i < letterGenerationVariable; i++) {
     )
 }
 
-// for(let i = 0; i < 189; i++) {
-//     gltfLoader.load(
-//         "./letter.glb",
-//         function (gltf) {
-//             let letter = gltf.scene
-
-//             let mesh1 = gltf.scene.children[0].children[0]
-//             let mesh2 = gltf.scene.children[0].children[1]
-
-//             mesh1.castShadow = true
-//             mesh1.receiveShadow = true
-
-//             mesh2.castShadow = true
-//             mesh2.receiveShadow = true
-
-//             // Applying texture
-//             mesh1.material.map = letterTexture
-//             mesh1.material.color = null
-
-//             mesh2.material.map = letterTexture
-//             mesh2.material.color = null
-
-//             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport (only for widescreen aspect ratios)
-//             let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
-
-//             // Setting a random X, Y, Z value for position
-//             letter.position.y = ((Math.random() - 1) * 110) // Math.random() - 1 makes the objects generate from the top down, rather than from the middle
-//             letter.position.z = ((Math.random() - 0.5) * 3) 
-//             letter.position.x = ((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport
-
-//             letter.rotation.x = 0.5 
-//             letter.rotation.x = Math.random() - 0.1
-//             letter.rotation.y = Math.random() - 0.5
-//             letter.rotation.z = Math.random() - 0.5
-
-//             scene.add(gltf.scene)
-//             letters.push(gltf)
-
-
-//         }
-//     )
-// }
-
 console.log(letters)
 console.log(mixers)
 console.log(letterCount)
@@ -1773,8 +1730,6 @@ scene.add(pointLight)
 
 console.log(pointLight.position)
 
-// const pointLightHelper = new THREE.PointLightHelper(pointLight)
-// scene.add(pointLightHelper)
 
 /**
  * Raycaster
@@ -1843,7 +1798,6 @@ document.addEventListener("mousemove", (event) => {
         intersects = raycaster.intersectObjects(scene.children);
 
         // intersect detected
-        // intersects.length > 0 ? intersects[0].object.position.z + 1.7 : null
         intersects.length > 0 && !popupOpened && sectionsEnabled ? document.body.style.cursor = 'pointer' : document.body.style.cursor = 'auto'
         intersects.length > 0 && !popupOpened && sectionsEnabled ? chessPieceHoverSoundEffect() : intersectDetected = true
         // intersects.length > 0 ? console.log(intersects[0].object) : null
