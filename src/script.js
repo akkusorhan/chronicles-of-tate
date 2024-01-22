@@ -258,70 +258,6 @@ launchExperienceButton.addEventListener("click", () => {
         // setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
         // setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
     },  3500); //2500
-
-    // paste here
-    // setTimeout(() => {
-    //     if (skipButtonClicked) {
-
-    //     } else if (homePageEnabled == false && skipButtonClicked == false) {
-    //         scene.remove(chessBoardObject[0])
-    //         console.log("chessboard removed")
-
-    //         quotePreloaderEnabled = false
-    //         quotePreloader.style.opacity = 0
-
-    //         camera.position.x = 0
-    //         pointLight.position.x = 0
-    //         pointLight.position.z = 5 // 3.5
-    //         pointLight.intensity = 0
-
-    //         renderer.outputEncoding = THREE.LinearEncoding
-    //         renderer.gammaOutput = true
-
-    //         // setTimeout(() => {
-    //         //     homePage.style.display = "none"
-    //         //     quotePreloader.style.display = "none"
-
-    //         //     sections.style.opacity = 1
-    //         //     header.style.opacity = 1
-    //         //     sectionsEnabled = true
-
-    //         //     document.body.style.overflow = ""
-
-    //         //     function animateLightIntensity(light, targetIntensity, duration) {
-    //         //         const startIntensity = light.intensity;
-    //         //         let startTime;
-
-    //         //         function update() {
-    //         //             const currentTime = performance.now();
-    //         //             const elapsed = currentTime - startTime;
-    //         //             const progress = Math.min(1, elapsed / duration);
-
-    //         //             const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
-    //         //             light.intensity = newIntensity;
-
-    //         //             if (progress < 1) {
-    //         //                 requestAnimationFrame(update);
-    //         //             }
-    //         //         }
-
-    //         //         function startAnimation() {
-    //         //             startTime = performance.now();
-    //         //             update();
-    //         //         }
-
-    //         //         startAnimation();
-    //         //     }
-
-    //         //     animateLightIntensity(ambientLight, 0.3, 4500)
-    //         //     animateLightIntensity(pointLight, 300, 2500) //75 2500
-    //         //     // ambientLight.intensity = 0.3
-    //         //     // pointLight.intensity = 75
-
-    //         //     // document.body.style.backgroundColor = "#070707"
-    //         // }, 3500);
-    //     }
-    // }, 3000); //40500
 })
 
 function handleVisibilityChange() {
@@ -359,8 +295,6 @@ mobileMuteButton.addEventListener("touchstart", () => {
     mobileMuteButton.src.includes("unmute") ? chroniclesOfTateSoundtrack.play() : null
     mobileMuteButton.src.includes("unmute") ? muted = false : null
 })
-
-
 
 const images = [
     "/images/tateism.png" ,
