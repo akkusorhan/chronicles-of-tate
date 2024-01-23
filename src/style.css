@@ -272,6 +272,7 @@ header {
 
 .quote-preloader h3 {
     /* border: 3px solid purple; */
+    text-align: center;
 }
 
 .quote-preloader h3 span {
@@ -345,13 +346,13 @@ header {
 
 @media (max-width: 700px) {
     .quote-preloader h3 {
-        font-size: 16px;
+        font-size: 20px;
     }
 }
 
 @media (max-width: 540px) {
     .quote-preloader h3 {
-        font-size: 14px;
+        font-size: 20px;
     }
 }
 
@@ -361,11 +362,11 @@ header {
     }
 
     .quote-preloader h3 {
-        font-size: 10px;
+        font-size: 20px;
     }
     
     .launch-experience-btn {
-        font-size: 14px;
+        font-size: 20px;
     }
 }
 

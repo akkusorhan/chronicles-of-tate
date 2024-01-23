@@ -188,60 +188,24 @@ launchExperienceButton.addEventListener("click", () => {
 
     setTimeout(() => {
         // // for quote preloader
-        // quotePreloaderEnabled = true
-        // quotePreloader.style.opacity = 1
-        // launchExperienceButton.style.display = "none"
-        // document.body.style.backgroundColor = "#000000"
+        quotePreloaderEnabled = true
+        homePage.style.display = "none"
+        quotePreloader.style.opacity = 1
+        launchExperienceButton.style.display = "none"
+        document.body.style.backgroundColor = "#000000"
 
         scene.remove(chessBoardObject[0])
         console.log("chessboard removed")
 
-        camera.position.x = 0
-        pointLight.position.x = 0
-        pointLight.position.z = 5 // 3.5
-        pointLight.intensity = 0
+        // camera.position.x = 0
+        // pointLight.position.x = 0
+        // pointLight.position.z = 5 // 3.5
+        // pointLight.intensity = 0
 
         renderer.outputEncoding = THREE.LinearEncoding
         renderer.gammaOutput = true
 
-        homePage.style.display = "none"
-                quotePreloader.style.display = "none"
-
-                sections.style.opacity = 1
-                header.style.opacity = 1
-                sectionsEnabled = true
-
-                document.body.style.overflow = ""
-
-                function animateLightIntensity(light, targetIntensity, duration) {
-                    const startIntensity = light.intensity;
-                    let startTime;
-
-                    function update() {
-                        const currentTime = performance.now();
-                        const elapsed = currentTime - startTime;
-                        const progress = Math.min(1, elapsed / duration);
-
-                        const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
-                        light.intensity = newIntensity;
-
-                        if (progress < 1) {
-                            requestAnimationFrame(update);
-                        }
-                    }
-
-                    function startAnimation() {
-                        startTime = performance.now();
-                        update();
-                    }
-
-                    startAnimation();
-                }
-
-                animateLightIntensity(ambientLight, 0.3, 4500)
-                animateLightIntensity(pointLight, 300, 2500) //75 2500
-
-        // // for quote preloader
+        // for quote preloader
         // setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1700); //500 2250
         // setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 2200); //1500
         // setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 4300); //3000
@@ -257,7 +221,60 @@ launchExperienceButton.addEventListener("click", () => {
         // setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
         // setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
         // setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
+        
     },  3500); //2500
+
+    setTimeout(() => {
+        quotePreloader.style.opacity = 0
+    }, 5500);
+
+    setTimeout(() => {
+
+
+        // quotePreloader.style.display = "none"
+
+        camera.position.x = 0
+        pointLight.position.x = 0
+        pointLight.position.z = 5 // 3.5
+        pointLight.intensity = 0
+        
+
+        sections.style.opacity = 1
+        header.style.opacity = 1
+        sectionsEnabled = true
+
+        document.body.style.overflow = ""
+
+        function animateLightIntensity(light, targetIntensity, duration) {
+            const startIntensity = light.intensity;
+            let startTime;
+
+            function update() {
+                const currentTime = performance.now();
+                const elapsed = currentTime - startTime;
+                const progress = Math.min(1, elapsed / duration);
+
+                const newIntensity = startIntensity + progress * (targetIntensity - startIntensity);
+                light.intensity = newIntensity;
+
+                if (progress < 1) {
+                    requestAnimationFrame(update);
+                }
+            }
+
+            function startAnimation() {
+                startTime = performance.now();
+                update();
+            }
+
+            startAnimation();
+    }
+
+    animateLightIntensity(ambientLight, 0.3, 4500)
+    animateLightIntensity(pointLight, 300, 2500) //75 2500
+    }, 8100);
+
+
 })
 
 function handleVisibilityChange() {
@@ -1844,7 +1861,7 @@ let closeChronicleDesktopButton = document.querySelector("#close-chronicle-deskt
 let launchExperienceDesktopButton = document.querySelector("#launch-experience-desktop-btn");
 let aboutSectionCloseButton = document.querySelector("#close-btn");
 let chroniclesOfTateDesktopButton = document.querySelector("#chronicles-of-tate-desktop-btn");
-let skipBtn = document.querySelector(".skip-btn");
+// let skipBtn = document.querySelector(".skip-btn");
 
 aboutDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(aboutDesktopButton, e, 0.9)});
 aboutDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
@@ -1864,8 +1881,8 @@ aboutSectionCloseButton.addEventListener("mousemove", (e) => {buttonMagnetHoverE
 aboutSectionCloseButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
 aboutSectionCloseButton.addEventListener("click", (e) => {clickSoundEffect()});
 
-skipBtn.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(skipBtn, e, 0.9)});
-skipBtn.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+// skipBtn.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(skipBtn, e, 0.9)});
+// skipBtn.addEventListener("mouseover", (e) => {hoverSoundEffect()});
 
 chroniclesOfTateDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()})
 chroniclesOfTateDesktopButton.addEventListener("mousemove", (e) => {
@@ -1880,7 +1897,7 @@ muteDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectM
 closeChronicleDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(closeChronicleDesktopButton)});
 launchExperienceDesktopButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(launchExperienceDesktopButton)});
 aboutSectionCloseButton.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(aboutSectionCloseButton)});
-skipBtn.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(skipBtn)});
+// skipBtn.addEventListener("mouseleave", () => {buttonMagnetHoverEffectMouseout(skipBtn)});
 chroniclesOfTateDesktopButton.addEventListener("mouseleave", () => {
     if(!isTouchScreen) {
         buttonMagnetHoverEffectMouseout(chroniclesOfTateDesktopButton)
