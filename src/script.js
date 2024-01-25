@@ -1429,6 +1429,10 @@ window.addEventListener("load", (event) => {
 });
   
 
+/**
+ * Loading Models
+ */
+
 const gltfLoader = new GLTFLoader(loadingManager)
 
 const letters = []
@@ -1806,8 +1810,19 @@ aboutDesktopButton.addEventListener("click", (e) => {clickSoundEffect()});
 muteDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(muteDesktopButton, e, 0.9)});
 muteDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
 
+let escBtnCounter = 0
 closeChronicleDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(closeChronicleDesktopButton, e, 0.9)});
-closeChronicleDesktopButton.addEventListener("mouseover", (e) => {hoverSoundEffect()});
+closeChronicleDesktopButton.addEventListener("mouseover", (e) => {
+    hoverSoundEffect()
+    if(escBtnCounter <= 2) {
+        closeChronicleDesktopButton.innerHTML = "close (esc)"
+        escBtnCounter += 1
+        console.log(escBtnCounter)
+    }
+});
+closeChronicleDesktopButton.addEventListener("mouseleave", (e) => {
+    escBtnCounter <= 3 ? closeChronicleDesktopButton.innerHTML = "close" : null
+});
 closeChronicleDesktopButton.addEventListener("click", (e) => {clickSoundEffect()});
 
 launchExperienceDesktopButton.addEventListener("mousemove", (e) => {buttonMagnetHoverEffectMousein(launchExperienceDesktopButton, e, 0.125)});
@@ -1845,6 +1860,7 @@ chroniclesOfTateDesktopButton.addEventListener("mouseleave", () => {
 
 // Handle mouse click events
 let chroniclePopUp = document.querySelector(".chronicle")
+let chronicleContent = document.querySelector(".chronicle-content")
 let chronicleTextContent = document.querySelector(".chronicle-text-content")
 let chronicleTextContentDate = document.querySelector("#chronicle-text-content-date")
 let chronicleImageContent = document.querySelector(".chronicle-image-content")
@@ -2050,8 +2066,202 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
         }, 1600);
 })
 
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && popupOpened == true && aboutPopupOpened == false) {
+        console.log("esc key was clicked, while chronicle is opened")
+
+        popupOpened = false
+        clickSoundEffect()
+
+        document.body.style.backgroundSize = "100%"
+        mobileBackground.style.backgroundSize = "100%"
+
+        chroniclePopUp.style.opacity = "0"
+        sections.style.opacity = 1
+        header.style.opacity = 1
+        // chroniclePopUp.classList.add("hide")
+
+        // move clicked piece backward
+        setTimeout(() => {
+            for (let i = 0; i < letters.length; i++) {
+                if (letters[i].scene.children[0].chronicleNumber == clickedChronicleIteration) {
+                    console.log("iteration found")
+                    // letters[i].scene.position.z += 4
+
+                    const itemZ = letters[i].scene.position.z
+
+                    const startTime = performance.now()
+                    const duration = animationDuration
+
+                    function animate(currentTime) {
+                        const elapsed = currentTime - startTime
+                        const progress = Math.min(1, elapsed / duration)
+
+                        const easedProgress = easeInOut(progress)
+
+                        const value = itemZ - easedProgress * 4
+                        const lightValue = 10 - easedProgress * 5 // from 10 to 5
+
+                        letters[i].scene.position.z = value
+                        pointLight.position.z = lightValue
+
+                        if (elapsed < duration) {
+                            requestAnimationFrame(animate)
+                        }
+                    }
+
+                    function easeInOut(t) {
+                        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                    }
+
+                    requestAnimationFrame(animate)
+
+                } else {
+                    null
+                }
+            }
+        }, 750);
+
+        // show and enable header
+        // header.style.display = "flex"
+        // header.style.opacity = 0
+        // setTimeout(() => {
+        //     header.style.opacity = 1
+        // }, 500);
+
+        const startTime = performance.now()
+        const duration = animationDuration
+
+        function animate(currentTime) {
+            const elapsed = currentTime - startTime
+            const progress = Math.min(1, elapsed / duration)
+
+            const easedProgress = easeInOut(progress)
+
+            const value = 15 - easedProgress * 5
+
+            camera.position.z = value
+
+            if (elapsed < duration) {
+                requestAnimationFrame(animate)
+            }
+        }
+
+        function easeInOut(t) {
+            return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+        }
+
+        requestAnimationFrame(animate)
+
+        setTimeout(() => {
+            chroniclePopUp.style.display = 'none'
+        }, 1600);
+
+    } else { null }
+})
+
+chronicleContent.addEventListener("click", (event) => {
+    event.stopPropagation()
+
+})
+
+chroniclePopUp.addEventListener("click", (event) => {
+    console.log("parent element clicked")
+
+
+    popupOpened = false
+    clickSoundEffect()
+
+    document.body.style.backgroundSize = "100%"
+    mobileBackground.style.backgroundSize = "100%"
+
+    chroniclePopUp.style.opacity = "0"
+    sections.style.opacity = 1
+    header.style.opacity = 1
+    // chroniclePopUp.classList.add("hide")
+
+    // move clicked piece backward
+    setTimeout(() => {
+        for (let i = 0; i < letters.length; i++) {
+            if (letters[i].scene.children[0].chronicleNumber == clickedChronicleIteration) {
+                console.log("iteration found")
+                // letters[i].scene.position.z += 4
+
+                const itemZ = letters[i].scene.position.z
+
+                const startTime = performance.now()
+                const duration = animationDuration
+
+                function animate(currentTime) {
+                    const elapsed = currentTime - startTime
+                    const progress = Math.min(1, elapsed / duration)
+
+                    const easedProgress = easeInOut(progress)
+
+                    const value = itemZ - easedProgress * 4
+                    const lightValue = 10 - easedProgress * 5 // from 10 to 5
+
+                    letters[i].scene.position.z = value
+                    pointLight.position.z = lightValue
+
+                    if (elapsed < duration) {
+                        requestAnimationFrame(animate)
+                    }
+                }
+
+                function easeInOut(t) {
+                    return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+                }
+
+                requestAnimationFrame(animate)
+
+            } else {
+                null
+            }
+        }
+    }, 750);
+
+    // show and enable header
+    // header.style.display = "flex"
+    // header.style.opacity = 0
+    // setTimeout(() => {
+    //     header.style.opacity = 1
+    // }, 500);
+
+    const startTime = performance.now()
+    const duration = animationDuration
+
+    function animate(currentTime) {
+        const elapsed = currentTime - startTime
+        const progress = Math.min(1, elapsed / duration)
+
+        const easedProgress = easeInOut(progress)
+
+        const value = 15 - easedProgress * 5
+
+        camera.position.z = value
+
+        if (elapsed < duration) {
+            requestAnimationFrame(animate)
+        }
+    }
+
+    function easeInOut(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+    }
+
+    requestAnimationFrame(animate)
+
+    setTimeout(() => {
+        chroniclePopUp.style.display = 'none'
+    }, 1600);
+    
+})
+
+let aboutPopupOpened = false
 aboutButton.addEventListener("click", () => {
     popupOpened = true
+    aboutPopupOpened = true
 
     aboutSection.style.display = "flex"
     aboutSection.style.zIndex = 1
@@ -2092,6 +2302,7 @@ aboutButton.addEventListener("click", () => {
 
 aboutCloseButton.addEventListener("click", () => {
     popupOpened = false
+    aboutPopupOpened = false
 
     document.body.style.backgroundSize = "100%"
     mobileBackground.style.backgroundSize = "100%"
