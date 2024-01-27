@@ -120,7 +120,7 @@ launchExperienceButton.addEventListener("click", () => {
     }
     
     animateObject()
-    console.log(chessBoardObject[0].position)
+    // console.log(chessBoardObject[0].position)
 
     setTimeout(() => {
         // // for quote preloader
@@ -140,23 +140,6 @@ launchExperienceButton.addEventListener("click", () => {
 
         renderer.outputEncoding = THREE.LinearEncoding
         renderer.gammaOutput = true
-
-        // for quote preloader
-        // setTimeout(() => {document.querySelector("#one").style.opacity = 1}, 1700); //500 2250
-        // setTimeout(() => {document.querySelector("#two").style.opacity = 1}, 2200); //1500
-        // setTimeout(() => {document.querySelector("#three").style.opacity = 1}, 4300); //3000
-        // setTimeout(() => {document.querySelector("#four").style.opacity = 1}, 6700); //5000
-        // setTimeout(() => {document.querySelector("#five").style.opacity = 1}, 9200); //7500
-        // setTimeout(() => {document.querySelector("#six").style.opacity = 1}, 11250); //8500
-        // setTimeout(() => {document.querySelector("#seven").style.opacity = 1}, 13250); //10000
-        // setTimeout(() => {document.querySelector("#eight").style.opacity = 1}, 16750); //12500
-        // setTimeout(() => {document.querySelector("#nine").style.opacity = 1}, 18750); //15000
-        // setTimeout(() => {document.querySelector("#ten").style.opacity = 1}, 20750); //17500
-        // setTimeout(() => {document.querySelector("#eleven").style.opacity = 1}, 24000); //21000
-        // setTimeout(() => {document.querySelector("#twelve").style.opacity = 1}, 26000); //25000
-        // setTimeout(() => {document.querySelector("#thirteen").style.opacity = 1}, 28000); //27000
-        // setTimeout(() => {document.querySelector("#fourteen").style.opacity = 1}, 30050); //29000
-        // setTimeout(() => {document.querySelector("#fifteen").style.opacity = 1}, 33000); //33000
         
     },  3500); //2500
 
@@ -329,7 +312,7 @@ const images = [
 ]
 
 function preloadImages(imageArray) {
-    for (var i = 0; i < imageArray.length; i++) {
+    for (var i = 0; i <= imageArray.length; i++) {
         var img = new Image();
         img.src = imageArray[i];
     }
@@ -1368,15 +1351,15 @@ const loadingText = document.querySelector(".loading-text")
 const loadingManager = new THREE.LoadingManager(
     // loaded
     () => {
-        console.log("three js loaded")
+        // console.log("three js loaded")
         threeJsLoaded = true
 
         loadingText.textContent = "loading content"
     }, 
     // progress
     (itemUrl, itemsLoaded, itemsTotal) => {
-        console.log("three js loading")
-        console.log(itemsLoaded / itemsTotal)
+        // console.log("three js loading")
+        // console.log(itemsLoaded / itemsTotal)
         loadingBar.style.transform = `scaleX(${(itemsLoaded / itemsTotal) * 0.65})`
         loadingText.textContent = "loading chess pieces"
         htmlLoaded = true
@@ -1425,7 +1408,7 @@ window.addEventListener("load", (event) => {
     setTimeout(() => {
         launchExperienceButton.style.opacity = "1"
     }, 3000);
-    console.log(event);
+    // console.log(event);
 });
   
 
@@ -1471,7 +1454,7 @@ gltfLoader.load(
     "./tate-opening.glb",
     (gltf) => {
         let chessBoard = gltf.scene
-        console.log(gltf)
+        // console.log(gltf)
 
         chessBoard.position.x = -20
         chessBoard.position.y = -5.1 // -1.1
@@ -1493,7 +1476,7 @@ gltfLoader.load(
     }
 )
 
-console.log(chessBoardObject)
+// console.log(chessBoardObject)
 
 // chess board animations
 
