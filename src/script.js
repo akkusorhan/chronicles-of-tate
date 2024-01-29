@@ -1666,8 +1666,6 @@ pointLight.distance = 100
 
 scene.add(pointLight)
 
-console.log(pointLight.position)
-
 
 /**
  * Raycaster
