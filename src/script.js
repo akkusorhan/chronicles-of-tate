@@ -1476,8 +1476,6 @@ gltfLoader.load(
     }
 )
 
-// console.log(chessBoardObject)
-
 // chess board animations
 
 for (let i = 0; i < letterGenerationVariable; i++) {
