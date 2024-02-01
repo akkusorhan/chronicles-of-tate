@@ -2549,8 +2549,6 @@ window.addEventListener("touchstart", (event) => {
 
         requestAnimationFrame(animate)
     }
-
-    // end of imported line
 })
 
 let infoButton = document.querySelector(".hamburger-menu-icon")
@@ -2594,9 +2592,6 @@ infoButton.addEventListener("touchstart", () => {
 
     requestAnimationFrame(animate)
 })
-
-
-
 
 let initialScrollPosition = 0
 let scrollInteration
