@@ -5,7 +5,7 @@ import * as dat from "lil-gui"
 import chroniclesOfEmoryTate2011 from './chronicles.js'
 
 /**
- * Creating Home Page
+ * Creating Home Page Elements
  */
 let homePageEnabled = true
 let homePage = document.querySelector(".home-page")
@@ -17,8 +17,10 @@ let quotePreloader = document.querySelector(".quote-preloader")
 let sectionsEnabled = false
 let chhronicleSections = document.querySelector(".sections")
 
+let header = document.querySelector(".header")
+
 /**
- * Loading Audio
+ * Loading Audio Files
  */
 let chroniclesOfTateSoundtrack = new Audio("./chronicles-of-tate-soundtrack.mp3")
 
@@ -44,7 +46,7 @@ let click5 = new Audio("./audio/click/click5.mp3")
 let click6 = new Audio("./audio/click/click6.mp3")
 let click7 = new Audio("./audio/click/click7.mp3")
 
-
+// Placing click, hover, and select audio files into arrays, will later be used to play randomly on event trigger
 let hoverSoundEffects = [
     hover1,
     hover2,
@@ -73,8 +75,14 @@ let clickSoundEffects = [
     click7,
 ]
 
-let header = document.querySelector(".header")
-
+/**
+ * When page first loads, the app will scroll to top of page
+ * by default. For all of the chess pieces to be in chronological
+ * order and the app to start as intended, the app needs to be top 
+ * of page. The chess pieces are anchored to the scroll position, 
+ * so in case the app refreshes or does not load in top of page position, 
+ * the app will scroll up for 1000 milliseconds initially. 
+ */
 window.scrollTo({
     top: 0, 
     behavior: "smooth"
@@ -85,16 +93,17 @@ setTimeout(() => {
 }, 1000);
 
 launchExperienceButton.addEventListener("click", () => {
+    /**
+     * disabling the launcher HTML div element by giving it an opacity of 0 and 
+     * saving its enabled/disabled state as a boolean to enable other site elements
+     */
     homePageEnabled = false
     homePage.style.opacity = 0
+
     chroniclesOfTateSoundtrack.play()
 
-    // chessBoardObject[0].position.x = -2
-
-    // Function to animate the object
-
+    // Function to animate the chessboard on button click
     function animateObject() {
-        
         const startTime = Date.now();
         const duration = 250000; // Animation duration in milliseconds
 
@@ -118,49 +127,42 @@ launchExperienceButton.addEventListener("click", () => {
                 requestAnimationFrame(update);
             }
         }
-
         // Start the animation
         update();
     }
     
     animateObject()
-    // console.log(chessBoardObject[0].position)
 
-    setTimeout(() => {
-        // // for quote preloader
-        quotePreloaderEnabled = true
+    // removing home page launcher HTML element and loading quote preloader HTML element
+    setTimeout(() => { 
+        quotePreloaderEnabled = true // HTML div element "click on chess piece to view chronicle"
         homePage.style.display = "none"
         quotePreloader.style.opacity = 1
         launchExperienceButton.style.display = "none"
         document.body.style.backgroundColor = "#000000"
 
-        scene.remove(chessBoardObject[0])
-        console.log("chessboard removed")
-
-        // camera.position.x = 0
-        // pointLight.position.x = 0
-        // pointLight.position.z = 5 // 3.5
-        // pointLight.intensity = 0
+        scene.remove(chessBoardObject[0]) // removing chessboard from scene
 
         renderer.outputEncoding = THREE.LinearEncoding
         renderer.gammaOutput = true
-        
     },  3500); //2500
 
+    // visually removing (not disabling) quote preloader HTML element
     setTimeout(() => {
         quotePreloader.style.opacity = 0
     }, 5500);
 
+    /**
+     * Changing camera & lights position to view chess pieces,
+     * optimizing lights intensity, enabling the HTML elements
+     * for chess pieces, and disabling the quote preloader HTML
+     * element.
+     */
     setTimeout(() => {
-
-
-        // quotePreloader.style.display = "none"
-
         camera.position.x = 0
         pointLight.position.x = 0
         pointLight.position.z = 5 // 3.5
         pointLight.intensity = 0
-        
 
         sections.style.opacity = 1
         header.style.opacity = 1
@@ -168,7 +170,7 @@ launchExperienceButton.addEventListener("click", () => {
 
         document.body.style.overflow = ""
 
-        function animateLightIntensity(light, targetIntensity, duration) {
+        function animateLightIntensity(light, targetIntensity, duration) { // animation to fade the lights in
             const startIntensity = light.intensity;
             let startTime;
 
@@ -189,17 +191,15 @@ launchExperienceButton.addEventListener("click", () => {
                 startTime = performance.now();
                 update();
             }
-
             startAnimation();
     }
 
     animateLightIntensity(ambientLight, 0.3, 4500)
     animateLightIntensity(pointLight, 300, 2500) //75 2500
     }, 8100);
-
-
 })
 
+// function to change tab text when user exits tab but does not close tab & pause/unpause audio
 function handleVisibilityChange() {
     if(document.hidden) {
         chroniclesOfTateSoundtrack.pause()
@@ -214,7 +214,7 @@ function handleVisibilityChange() {
 
 document.addEventListener("visibilitychange", handleVisibilityChange, false)
 
-//mute button
+//mute button logic
 const muteButton = document.querySelector(".mute-btn")
 const mobileMuteButton = document.querySelector("#mute-btn-mobile")
 let muted = false
@@ -236,6 +236,7 @@ mobileMuteButton.addEventListener("touchstart", () => {
     mobileMuteButton.src.includes("unmute") ? muted = false : null
 })
 
+// Loading images 
 const images = [
     "/images/tateism.png" ,
     "/images/emory-tate-chess.png",
@@ -321,11 +322,7 @@ function preloadImages(imageArray) {
         img.src = imageArray[i];
     }
 }
-
 preloadImages(images);
-console.log(images.length)
-
-console.log(chroniclesOfEmoryTate2011.length)
 
 /**
  * Debug
@@ -337,16 +334,9 @@ console.log(chroniclesOfEmoryTate2011.length)
  */
 const scene = new THREE.Scene()
 
-// Scene conversion factor (adjust as needed)
-const pixelsPerUnit = 100
-
 /**
- * Textures
+ * Textures & Sprites
  */
-const textureLoader = new THREE.TextureLoader()
-const letterTexture = textureLoader.load("./textures/letter-texture.png")
-const chessTexture = textureLoader.load("./textures/chess-texture.png")
-
 // const spriteTexture = new THREE.TextureLoader().load('./textures/quote-sprite.png');
 // const spriteMaterial = new THREE.SpriteMaterial({ map: spriteTexture });
 
@@ -357,7 +347,7 @@ const chessTexture = textureLoader.load("./textures/chess-texture.png")
 // scene.add(sprite)
 
 /**
- * Models
+ * Loading/Progress Bar Logic
  */
 let threeJsLoaded = false
 let htmlLoaded = false
@@ -367,15 +357,11 @@ const loadingText = document.querySelector(".loading-text")
 const loadingManager = new THREE.LoadingManager(
     // loaded
     () => {
-        // console.log("three js loaded")
         threeJsLoaded = true
-
         loadingText.textContent = "loading content"
     }, 
     // progress
     (itemUrl, itemsLoaded, itemsTotal) => {
-        // console.log("three js loading")
-        // console.log(itemsLoaded / itemsTotal)
         loadingBar.style.transform = `scaleX(${(itemsLoaded / itemsTotal) * 0.65})`
         loadingText.textContent = "loading chess pieces"
         htmlLoaded = true
@@ -383,13 +369,13 @@ const loadingManager = new THREE.LoadingManager(
 )
 
 window.addEventListener("load", (event) => {
-    console.log("page is fully loaded");
-    loadingBar.style.transform = `scaleX(1)`
+    loadingBar.style.transform = `scaleX(1)` // fully loaded, css delay added
     setTimeout(() => {
         loadingBar.style.opacity = 0
         loadingText.style.opacity = 0
-    }, 900);
+    }, 900); // adding a delay to let the progress animation play
 
+    // Once page loads, removing load/progress bar and loading chessboard into viewport from a lower position
     setTimeout(() => {
         loadingBar.style.display = "none"
         loadingText.style.display = "none"
@@ -399,7 +385,7 @@ window.addEventListener("load", (event) => {
         const startTime = performance.now()
         const duration = animationDuration
 
-        function animate(currentTime) {
+        function animate(currentTime) { // animation to move chessboard into viewport
             const elapsed = currentTime - startTime
             const progress = Math.min(1, elapsed / duration)
 
@@ -421,23 +407,22 @@ window.addEventListener("load", (event) => {
         requestAnimationFrame(animate)
     }, 1100);
 
-    setTimeout(() => {
+    /**
+     * Visually enabling "launch experience" button once loading/progress bar
+     * has loaded and chessboard has entered viewport
+     */
+    setTimeout(() => { 
         launchExperienceButton.style.opacity = "1"
     }, 3000);
-    // console.log(event);
 });
   
-
 /**
  * Loading Models
  */
-
 const gltfLoader = new GLTFLoader(loadingManager)
 
-const letters = []
-
+const letters = [] 
 const animationDuration = 1500
-
 const mixers = []
 let letterCount = []
 const chessPieces = [
@@ -449,6 +434,13 @@ const chessPieces = [
     "pawn"
 ]
 
+/**
+ * Lettergenerationvariable will look at the viewport size, determine whether
+ * its ultrawide, mobile, or normal desktop/laptop viewport. Then it will assign
+ *  a value that will be used for generating the correct amount of chess pieces to fit
+ * the designated viewport. If mobile, 10 chess pieces will be generated, ultrawide 15, 
+ * and normal desktop/laptop 10 pieces.
+ */
 let letterGenerationVariable
 if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
     letterGenerationVariable = 15
@@ -458,19 +450,28 @@ if(window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
     letterGenerationVariable = 10
 }
 
+/**
+ * NthItem is the variable that will track which order of chronicles are assigned to the 
+ * chess pieces that are currently in the viewport. When chess pieces first load (say 10 
+ * pieces are loaded), nthItemStart will be 0 and nthItenEnd will be 9. Based on this, 
+ * if a user clicks on a chess piece they will see a chronicle that is from index 0-9
+ * from the chroniclesOfEmoryTate2011 array. When a user scrolls down a new chess piece 
+ * will enter the viewport, nthItemStart will +1, and nthItem end will +1, and visa versa.
+ * This way, the chess pieces that are in viewport are always viewing the correct chronicles 
+ * in the correct order. 
+ */
 let nthItem = []
 let nthItemStart = 0
 let nthItemEnd = 0
 
 let amountOfChroniclesGenerated
 
+// Loading chessboard
 let chessBoardObject = []
-
 gltfLoader.load(
     "./tate-opening.glb",
     (gltf) => {
         let chessBoard = gltf.scene
-        // console.log(gltf)
 
         chessBoard.position.x = -20
         chessBoard.position.y = -5.1 // -1.1
@@ -492,15 +493,15 @@ gltfLoader.load(
     }
 )
 
-// chess board animations
-
+// Loading chess pieces
 for (let i = 0; i < letterGenerationVariable; i++) {
     const randomIndex = Math.floor(Math.random() * chessPieces.length)
     gltfLoader.load(
-        `./${chessPieces[randomIndex]}.glb`,
+        `./${chessPieces[randomIndex]}.glb`, // randomly loading pawn, rook, king, queen,, knight and bishop
         function (gltf) {
-            let letter = gltf.scene
+            let letter = gltf.scene // "letter" represents chess pieces
 
+            // Creating AnimationMixers for each chess piece
             // Animations
             const randomDecimal = Math.random()
             const randomNumber = Math.floor(randomDecimal * 3) + 1
@@ -518,24 +519,14 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             letter.scale.y = 0.15
             letter.scale.z = 0.15
 
-            // letter.scale.x = .10
-            // letter.scale.y = .10
-            // letter.scale.z = .10
-
             if (chessPieces[randomIndex] == "rook") {
-                // letter.scale.x = .16
-                // letter.scale.y = .16
-                // letter.scale.z = .16
-
                 letter.scale.x = .24
                 letter.scale.y = .24
                 letter.scale.z = .24
             }
 
             // letterRandomPositionX variable will project the cubes to fit the screen based on viewport on X axis (adjust as needed)
-            // let letterRandomPositionX = window.innerHeight / window.innerWidth < 0.45 ? 15 : 10 // adjust as needed
             let letterRandomPositionX = null
-
             if (window.innerHeight / window.innerWidth < 0.45) { // ultrawide viewport
                 letterRandomPositionX = 15
             } else if (window.innerHeight / window.innerWidth > 0.9) { // mobile viewport
@@ -550,9 +541,8 @@ for (let i = 0; i < letterGenerationVariable; i++) {
             window.innerHeight / window.innerWidth > 0.9 ? letter.position.y = Math.round((Math.random() - 0.6) * 10) : letter.position.y = Math.round((Math.random() - 0.6) * 7)
             letter.position.z = ((Math.random() - 0.5) * 3)
 
-            // setting X position
-            // letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) // x variable will change based on viewport, random position set
-            letterRandomPositionX == 15 ? letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) : null// x variable will change based on viewport, random position set
+            // setting X position manually
+            letterRandomPositionX == 15 ? letter.position.x = Math.round((Math.random() - 0.5) * letterRandomPositionX) : null // x variable will change based on viewport, random position set
 
             if(letterRandomPositionX == 8) { //normal viewport
                 i == 0 ? letter.position.x = -2 : null
@@ -619,7 +609,6 @@ for (let i = 0; i < letterGenerationVariable; i++) {
 
 
             // Setting rotation 
-            // letter.rotation.x = 0.5 
             letter.rotation.x = Math.random() - 0.5 * 1.2
             letter.rotation.y = Math.random() - 0.5 * 1.2
             letter.rotation.z = Math.random() - 0.5 * 1.2
@@ -630,14 +619,24 @@ for (let i = 0; i < letterGenerationVariable; i++) {
 
             scene.add(gltf.scene)
 
+            /**
+             * Giving each chess piece a chronicleNumber. This is the value that will determine the order of 
+             * chronicles from chroniclesOfEmoryTate2011 array variable. For example, if 10 pieces are generated 
+             * from this for loop, each will have a chronicleNumber from 0-9. When a user clicks on a chess piece, 
+             * the chronicleNumber will be used to pull the correct chronicle from the chroniclesOfEmoryTate2011
+             * array and display it to the user. This number also increments and decrements when the user scrolls
+             * and chess pieces are cycled through the viewport.
+             */
             gltf.scene.children[0].chronicleNumber = i
 
             letters.push(gltf)
             letterCount.push(i)
 
+            // Setting nthItem values
             nthItem.push(i)
             nthItemEnd = nthItem.length
 
+            // Displaying to console the range (nthItem) of chronicles displayed, and the amount generated
             i = letterGenerationVariable ? console.log(`displaying chronicles ${nthItemStart} to ${nthItemEnd}`) : null
 
             if (i = letterGenerationVariable) {
@@ -648,12 +647,6 @@ for (let i = 0; i < letterGenerationVariable; i++) {
     )
 }
 
-console.log(letters)
-console.log(mixers)
-console.log(letterCount)
-
-// console.log(`Displaying items ${nthItemStart} to ${nthItem.length}`)
-
 /**
  * Lights
  */
@@ -662,32 +655,24 @@ const ambientLightColor = new THREE.Color("#ffe7d6")
 const ambientLight = new THREE.AmbientLight(ambientLightColor)
 ambientLight.intensity = 1
 
-// gui.add(ambientLight, "intensity", 0, 10, 0.1).name("ambientLightIntensity")
-// gui.addColor(ambientLight, "color").name("ambientLightColor")
-
 scene.add(ambientLight)
 
 // Point Light (assigned to mouse position)
 const pointLight = new THREE.PointLight("#FFF7DD", 75) // regular 75
-pointLight.position.x = -20 // normally 0
-pointLight.position.z = 9 // normally 3
-pointLight.rotation.y = Math.PI / 2
+pointLight.position.x = -20 // normally 0, reassigned once "launch experience" button cliked
+pointLight.position.z = 9 // normally 3, reassigned once "launch experience" button cliked
+pointLight.rotation.y = Math.PI / 2 // rotated to face chess pieces
 pointLight.castShadow = false
-// pointLight.decay = 1.8
 pointLight.decay = 1.61
 pointLight.distance = 100
 
-// gui.add(pointLight, "decay", 0, 2, 0.01).name("pointLightDecay")
-// gui.add(pointLight, "distance", 0, 1000, 1).name("pointLightDecay")
-
 scene.add(pointLight)
-
 
 /**
  * Raycaster
  */
 
-// Set up raycaster
+// Set up raycaster, used to detect hover and click on THREE.js chess pieces
 var raycaster = new THREE.Raycaster();
 var intersects = []; // Array to store intersected objects
 
@@ -1025,13 +1010,6 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
         }
     }, 750);
 
-    // show and enable header
-    // header.style.display = "flex"
-    // header.style.opacity = 0
-    // setTimeout(() => {
-    //     header.style.opacity = 1
-    // }, 500);
-
     const startTime = performance.now()
         const duration = animationDuration
 
@@ -1063,7 +1041,6 @@ document.querySelector(".close-chronicle-btn").addEventListener('click', () => {
 
 document.addEventListener("keydown", (e) => {
     if (e.key === "Escape" && popupOpened == true && aboutPopupOpened == false) {
-        console.log("esc key was clicked, while chronicle is opened")
 
         popupOpened = false
         clickSoundEffect()
@@ -1074,7 +1051,6 @@ document.addEventListener("keydown", (e) => {
         chroniclePopUp.style.opacity = "0"
         sections.style.opacity = 1
         header.style.opacity = 1
-        // chroniclePopUp.classList.add("hide")
 
         // move clicked piece backward
         setTimeout(() => {
@@ -1117,13 +1093,6 @@ document.addEventListener("keydown", (e) => {
             }
         }, 750);
 
-        // show and enable header
-        // header.style.display = "flex"
-        // header.style.opacity = 0
-        // setTimeout(() => {
-        //     header.style.opacity = 1
-        // }, 500);
-
         const startTime = performance.now()
         const duration = animationDuration
 
@@ -1163,7 +1132,6 @@ chronicleContent.addEventListener("click", (event) => {
 chroniclePopUp.addEventListener("click", (event) => {
     console.log("parent element clicked")
 
-
     popupOpened = false
     clickSoundEffect()
 
@@ -1173,7 +1141,6 @@ chroniclePopUp.addEventListener("click", (event) => {
     chroniclePopUp.style.opacity = "0"
     sections.style.opacity = 1
     header.style.opacity = 1
-    // chroniclePopUp.classList.add("hide")
 
     // move clicked piece backward
     setTimeout(() => {
@@ -1216,13 +1183,6 @@ chroniclePopUp.addEventListener("click", (event) => {
         }
     }, 750);
 
-    // show and enable header
-    // header.style.display = "flex"
-    // header.style.opacity = 0
-    // setTimeout(() => {
-    //     header.style.opacity = 1
-    // }, 500);
-
     const startTime = performance.now()
     const duration = animationDuration
 
@@ -1261,7 +1221,6 @@ aboutButton.addEventListener("click", () => {
     aboutSection.style.display = "flex"
     aboutSection.style.zIndex = 1
     document.body.style.backgroundSize = "70%"
-    // mobileBackground.style.backgroundSize = "100%"
     sections.style.opacity = 0
     header.style.opacity = 1
 
@@ -1290,9 +1249,7 @@ aboutButton.addEventListener("click", () => {
     function easeInOut(t) {
         return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
     }
-
     requestAnimationFrame(animate)
-    
 })
 
 aboutCloseButton.addEventListener("click", () => {
@@ -1362,50 +1319,14 @@ window.addEventListener('resize', () =>
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 })
 
-// Calculate height of scene
-let highestObject = null
-let lowestObject = null
-let distance = null
-
-// scene.traverse(object => {
-//     if (object instanceof THREE.Group) {
-//         if (highestObject === null || object.position.y > highestObject.position.y) {
-//             highestObject = object
-//         } else if (lowestObject === null || object.position.y < lowestObject.position.y) {
-//             lowestObject = object
-//         }
-//     }
-// })
-
-// if (highestObject && lowestObject) {
-//     distance = highestObject.position.distanceTo(lowestObject.position)
-
-//     console.log("Distance between highest and lowest objects on the Y-axis: " + distance)
-// } else {
-//     console.log("No valid objects found in the scene, error. Check code.")
-// }
-
 /**
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height)
 camera.position.x = -20
 camera.position.z = 10
-// camera.position.z = window.innerHeight / window.innerWidth > 0.9 ? 16 : 10 // adjust as needed (mobile responsiveness), camera will move back on Z axis if on mobile
-// camera.position.y = highestObject.position.y
 
 scene.add(camera)
-
-// gui.add(camera.position, "x").min(-15).max(15).step(.01)
-// gui.add(camera.position, "y").min(-120).max(60).step(.01)
-// gui.add(camera.position, "z").min(-15).max(45).step(.01)
-
-
-/**
- * Controls
- */
-// const controls = new OrbitControls(camera, document.querySelector(".webgl"))
-// controls.enableDamping = true
 
 /**
  * Renderer
@@ -1463,7 +1384,6 @@ window.addEventListener("touchstart", (event) => {
         // Check for intersections
         const intersects = raycaster.intersectObjects(scene.children);
     }
-    // imported line (update at some point)
 
     // Check for intersections
     var intersects = raycaster.intersectObjects(scene.children);
@@ -1527,14 +1447,6 @@ window.addEventListener("touchstart", (event) => {
                 null
             }
         }
-
-        // chroniclePopUp.classList.remove("show")
-
-        // hide and disable header
-        // header.style.opacity = 0
-        // setTimeout(() => {
-        //     header.style.display = "none"
-        // }, 1600);
 
         const startTime = performance.now()
         const duration = animationDuration
@@ -1619,21 +1531,6 @@ let section2011Vh = 200
 let section2012Vh = 200
 let section2013vh = 100
 
-let scrollChessPieces = true
-const viewportEnter1 = document.querySelector(".viewport-enter1")
-const viewportExit1 = document.querySelector(".viewport-exit1")
-const viewportEnter2 = document.querySelector(".viewport-enter2")
-const viewportExit2 = document.querySelector(".viewport-exit2")
-const viewportEnter3 = document.querySelector(".viewport-enter3")
-const viewportExit3 = document.querySelector(".viewport-exit3")
-const viewportEnter4 = document.querySelector(".viewport-enter4")
-const viewportExit4 = document.querySelector(".viewport-exit4")
-const viewportEnter5 = document.querySelector(".viewport-enter5")
-const viewportExit5 = document.querySelector(".viewport-exit5")
-const viewportEnter6 = document.querySelector(".viewport-enter6")
-const viewportExit6 = document.querySelector(".viewport-exit6")
-
-
 function handleScroll() {
     scrollY = window.scrollY 
     scrollInteration = scrollY
@@ -1652,10 +1549,6 @@ function handleScroll() {
     // Update the previous values for the next calculation
     prevScrollPos = currentScrollPos;
     prevTimestamp = currentTimestamp;
-
-    // console.log(`Scroll speed: ${scrollSpeed} pixels per millisecond`);
-
-
 
     const currentScrollPosition = window.scrollY
     let scrollDamp
@@ -1691,71 +1584,6 @@ function handleScroll() {
 
     lastScrollPosition = currentScrollPosition
     // console.log(lastScrollPosition)
-
-    // Check if chess pieces overlap with quote
-    // function scrollDownCheck() {
-    //     if (isInViewport(viewportEnter1)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit1)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    
-    //     if (isInViewport(viewportEnter2)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit2)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    
-    //     if (isInViewport(viewportEnter3)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit3)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    
-    //     if (isInViewport(viewportEnter4)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit4)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    
-    //     if (isInViewport(viewportEnter5)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit5)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    
-    //     if (isInViewport(viewportEnter6)) {
-    //         scrollChessPieces = false
-    //         console.log("viewport enter in viewport")
-    //     } 
-        
-    //     if (isInViewport(viewportExit6)) {
-    //         scrollChessPieces = true
-    //         console.log("viewport exit in viewport")
-    //     }
-    // }
-
-    // scrollDownCheck()
 
     // Extend section-2011 height
     // Check for target div in viewport
@@ -1822,10 +1650,6 @@ const tick = () => {
     for(const mixer of mixers) {
         mixer.update(deltaTime)
     }
-    
-    
-    let initialScrollUpTriggered = false
-
 
     // Update mesh position based on scroll
     for(let i = 0; i < letters.length; i++) {
