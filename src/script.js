@@ -341,7 +341,7 @@ const scene = new THREE.Scene()
 // const spriteMaterial = new THREE.SpriteMaterial({ map: spriteTexture });
 
 // const sprite = new THREE.Sprite(spriteMaterial)
-// sprite.position.y = -8
+// sprite.position.y = -8 // -8 original
 // sprite.scale.set(6, 2, 1)
 
 // scene.add(sprite)
@@ -1591,13 +1591,13 @@ function handleScroll() {
     const section2012End = document.querySelector('.section-2012-end')
     const section2013End = document.querySelector('.section-2013-end')
 
-    if (isInViewport(section2011End) && letterCount.length < 52) { // 58, 6 tweets removed from original
+    if (isInViewport(section2011End) && letterCount.length < 31) { // 58, 6 tweets removed from original | 2025 edit: 31 tweets in 2011 from original 58
         section2011Vh += 10
         document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
         console.log("extend...")
     } 
     
-    if (isInViewport(section2012End) && letterCount.length < 146) {
+    if (isInViewport(section2012End) && letterCount.length < 76) { // 2025 edit: 45 tweets in 2011 from original amount of 146, 31+45=76
         section2012Vh += 10
         document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
         console.log("extend...")
