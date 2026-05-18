@@ -869,7 +869,7 @@ document.addEventListener('click', () => {
         chronicleTextContent.innerHTML = `${chroniclesOfEmoryTate2011[chronicleIteration].quote}`
         chronicleTextContentDate.textContent = `${chroniclesOfEmoryTate2011[chronicleIteration].date}`
 
-        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 77)] : chroniclesOfEmoryTate2011[chronicleIteration].image
+        let chronicleImage = chroniclesOfEmoryTate2011[chronicleIteration].image == null ? images[Math.floor(Math.random() * 72)] : chroniclesOfEmoryTate2011[chronicleIteration].image // 2026 update: the 77 number has been reduced to 72 due to some images being taken out of rotation
 
         chronicleImageContent.src = `${chronicleImage}`
         // chroniclePopUp.classList.remove("show")
