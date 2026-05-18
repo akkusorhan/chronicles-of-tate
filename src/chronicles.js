@@ -65,24 +65,24 @@ const chroniclesOfEmoryTate2011 = [
         date: `Dec 6, 2011`,
         image: "/images/emory62.png"
     },
-    {
-        quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  <span class="red-text"><br>I refuse to be called afraid<span>."',
-        display: true,
-        date: `Dec 7, 2011`,
-        image: "/images/emory24.png"
-    },
-    {
-        quote: '"Every wants to be a tough guy.Which of you have tasted your own blood.  When I was three,busted head.I <span class="red-text">DRANK</span> my blood.Daddy panicked. <span class="red-text">not me</span>"',
-        display: true,
-        date: `Dec 8, 2011`,
-        image: "/images/emory56.png"
-    },
-    {
-        quote: '"How has it become that I no longer can tell male thought from female thought.  Yes, I cry... <span class="red-text">but that does not mean I think like a woman</span>."',
-        display: true,
-        date: `Dec 8, 2011`,
-        image: "/images/emory64.png"
-    },
+    // {
+    //     quote: '"The word homophobic needs to be rethought.  Nobody is afraid, actually.  The real word is homo-intolerant.  <span class="red-text"><br>I refuse to be called afraid<span>."',
+    //     display: true,
+    //     date: `Dec 7, 2011`,
+    //     image: "/images/emory24.png"
+    // },
+    // {
+    //     quote: '"Every wants to be a tough guy.Which of you have tasted your own blood.  When I was three,busted head.I <span class="red-text">DRANK</span> my blood.Daddy panicked. <span class="red-text">not me</span>"',
+    //     display: true,
+    //     date: `Dec 8, 2011`,
+    //     image: "/images/emory56.png"
+    // },
+    // {
+    //     quote: '"How has it become that I no longer can tell male thought from female thought.  Yes, I cry... <span class="red-text">but that does not mean I think like a woman</span>."',
+    //     display: true,
+    //     date: `Dec 8, 2011`,
+    //     image: "/images/emory64.png"
+    // },
     {
         quote: '"It really is getting so much harder to identify a credible enemy anymore.  <span class="red-text">Could it be that all these people killed were not hostile at all?</span>"',
         display: true,
@@ -131,12 +131,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Dec 12, 2011`,
     //     image: null
     // },
-    {
-        quote: '"Does being imprisoned in America mean free health care?Seems like a good trade-off.Go on a crime-spree then get meds in jail. Some sex too?!"',
-        display: true,
-        date: `Dec 12, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"Does being imprisoned in America mean free health care?Seems like a good trade-off.Go on a crime-spree then get meds in jail. Some sex too?!"',
+    //     display: true,
+    //     date: `Dec 12, 2011`,
+    //     image: null
+    // },
     {
         quote: '"Chess is somewhat underrated.  A cerebral exercise, for certain,yet the war strategy aspect is often overlooked.  <span class="red-text">War is everywhere</span>. Believe"',
         display: true,
@@ -149,12 +149,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Dec 12, 2011`,
     //     image: null
     // },
-    {
-        quote: '"There is no Kyoto protocol.There is no way to control pollution.I see human pollution.Cant control it. <span class="red-text">these people think that they matter?</span>"',
-        display: true,
-        date: `Dec 12, 2011`,
-        image: "/images/tateism.png"
-    },
+    // {
+    //     quote: '"There is no Kyoto protocol.There is no way to control pollution.I see human pollution.Cant control it. <span class="red-text">these people think that they matter?</span>"',
+    //     display: true,
+    //     date: `Dec 12, 2011`,
+    //     image: "/images/tateism.png"
+    // },
     // {
     //     quote: '"I am honored to be (humble servant of the future) yet I am myself.  I am honored to be to your. dad.  no kidding.  <span class="red-text">Who could want more?</span>"',
     //     display: true,
@@ -180,12 +180,12 @@ const chroniclesOfEmoryTate2011 = [
         date: `Dec 13, 2011`,
         image: "/images/emory2.png"
     },
-    {
-        quote: '"I knew this woul happen.no kidding, <span class="red-text">my actions forstall the inevitable but, in the end futile</span>.Think how many tweeters dont know futilility"',
-        display: true,
-        date: `Dec 13, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"I knew this woul happen.no kidding, <span class="red-text">my actions forstall the inevitable but, in the end futile</span>.Think how many tweeters dont know futilility"',
+    //     display: true,
+    //     date: `Dec 13, 2011`,
+    //     image: null
+    // },
     // {
     //     quote: '"Liege Belgium in the news (wrong reasons).The train to Maastricht Nederland is quite cheap. Eurolines bus from London is adequate.Back door"',
     //     display: true,
@@ -205,24 +205,24 @@ const chroniclesOfEmoryTate2011 = [
         date: `Dec 15, 2011`,
         image: "/images/emory41.png"
     },
-    {
-        quote: '"The only way to explain the technical failure, moral and ethical failure and disregard for the truth??  <span class="red-text">Realize it was deliberate,  They win</span>"',
-        display: true,
-        date: `Dec 15, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"The only way to explain the technical failure, moral and ethical failure and disregard for the truth??  <span class="red-text">Realize it was deliberate,  They win</span>"',
+    //     display: true,
+    //     date: `Dec 15, 2011`,
+    //     image: null
+    // },
     {
         quote: '"Whereas it seems impossible for one man to be smarter that all the rest put together, <span class="red-text">One man can be right while everyone else is wrong. I</span>"',
         display: true,
         date: `Dec 15, 2011`,
         image: "/images/emory5.png"
     },
-    {
-        quote: `"All the inaction and failure I witnessed made angry, I asked my mom why wouldn't people do something.  <span class="red-text">You cain't do what you cain't think!</span>"`,
-        display: true,
-        date: `Dec 16, 2011`,
-        image: null
-    },
+    // {
+    //     quote: `"All the inaction and failure I witnessed made angry, I asked my mom why wouldn't people do something.  <span class="red-text">You cain't do what you cain't think!</span>"`,
+    //     display: true,
+    //     date: `Dec 16, 2011`,
+    //     image: null
+    // },
     {
         quote: '"Jealousy drives envy till they imitate, unable to emulate.  After practice, delusion follows and they try to erase the original.  <span class="red-text">Parasites</span>"',
         display: true,
@@ -235,54 +235,54 @@ const chroniclesOfEmoryTate2011 = [
         date: `Dec 21, 2011`,
         image: "/images/emory40.png"
     },
-    {
-        quote: '"These fukkers on the train behind me started loud chat about computer stuff, incomprehensible!Can they be polite? <span class="red-text">can they stop my fist?</span>fail"',
-        display: true,
-        date: `Dec 21, 2011`,
-        image: "/images/emory20.png"
-    },
-    {
-        quote: `"Old people are somehow "funny" All dead mf's who died young must be absolutely hilarious. (group laughter) <span class="red-text">Is the very meaning of life lost?</span>"`,
-        display: true,
-        date: `Dec 21, 2011`,
-        image: null
-    },
-    {
-        quote: '"Becoming old means my enemies had to fail... had to hide, had to return to the roots of cowardice.<span class="red-text">To face me is to lose</span>, Tateism."',
-        display: true,
-        date: `Dec 21, 2011`,
-        image: "/images/emory60.png"
-    },
-    {
-        quote: '"Imagine deer, antelope, allowed the adolescent males to break in all the females.Unproven sperm through the bloodline. <span class="red-text">The alpha dies</span>. Shit."',
-        display: true,
-        date: `Dec 21, 2011`,
-        image: null
-    },
-    {
-        quote: '"No need for debate about Jesus, here at Christmas time. Find the ways that you are crucified.  <span class="red-text">Seek your enemies, and stop the torture</span>. Tate"',
-        display: true,
-        date: `Dec 23, 2011`,
-        image: null
-    },
-    {
-        quote: '"The envious cowards of my generation have shown me many things. And they talk, talk. I have seen a lot, but I HAVE HEARD IT ALL!!  <span class="red-text">Silence!</span>"',
-        display: true,
-        date: `Dec 24, 2011`,
-        image: null
-    },
-    {
-        quote: `"Today is a good day to evaluate your belief system. Looks like pure christianity is fading away, the priests' true perversions revealed.<span class="red-text">Damn</span>"`,
-        display: true,
-        date: `Dec 25, 2011`,
-        image: "/images/emory33.png"
-    },
-    {
-        quote: '"He who hesitates is lost I once hesitated to protect a system. <span class="red-text">The system is broken</span> What to do now? Cowards,traitors,amateurs.Epic fail. Sad"',
-        display: true,
-        date: `Dec 25, 2011`,
-        image: "/images/emory28.png"
-    },
+    // {
+    //     quote: '"These fukkers on the train behind me started loud chat about computer stuff, incomprehensible!Can they be polite? <span class="red-text">can they stop my fist?</span>fail"',
+    //     display: true,
+    //     date: `Dec 21, 2011`,
+    //     image: "/images/emory20.png"
+    // },
+    // {
+    //     quote: `"Old people are somehow "funny" All dead mf's who died young must be absolutely hilarious. (group laughter) <span class="red-text">Is the very meaning of life lost?</span>"`,
+    //     display: true,
+    //     date: `Dec 21, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: '"Becoming old means my enemies had to fail... had to hide, had to return to the roots of cowardice.<span class="red-text">To face me is to lose</span>, Tateism."',
+    //     display: true,
+    //     date: `Dec 21, 2011`,
+    //     image: "/images/emory60.png"
+    // },
+    // {
+    //     quote: '"Imagine deer, antelope, allowed the adolescent males to break in all the females.Unproven sperm through the bloodline. <span class="red-text">The alpha dies</span>. Shit."',
+    //     display: true,
+    //     date: `Dec 21, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: '"No need for debate about Jesus, here at Christmas time. Find the ways that you are crucified.  <span class="red-text">Seek your enemies, and stop the torture</span>. Tate"',
+    //     display: true,
+    //     date: `Dec 23, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: '"The envious cowards of my generation have shown me many things. And they talk, talk. I have seen a lot, but I HAVE HEARD IT ALL!!  <span class="red-text">Silence!</span>"',
+    //     display: true,
+    //     date: `Dec 24, 2011`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"Today is a good day to evaluate your belief system. Looks like pure christianity is fading away, the priests' true perversions revealed.<span class="red-text">Damn</span>"`,
+    //     display: true,
+    //     date: `Dec 25, 2011`,
+    //     image: "/images/emory33.png"
+    // },
+    // {
+    //     quote: '"He who hesitates is lost I once hesitated to protect a system. <span class="red-text">The system is broken</span> What to do now? Cowards,traitors,amateurs.Epic fail. Sad"',
+    //     display: true,
+    //     date: `Dec 25, 2011`,
+    //     image: "/images/emory28.png"
+    // },
     {
         quote: '"To achieve brilliance is a wonderful thing.<span class="red-text">To act brilliantly is rare</span>.Take action and where you fit in on the brilliance scale?"',
         display: true,
@@ -331,12 +331,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Dec 31, 2011`,
     //     image: null
     // },
-    {
-        quote: '"they are teaching gay issues to 7-yr old kids. <span class="red-text">BY LAW</span>.  A pure homosexual can not reproduce, <span class="red-text">so they need your children for new partners</span>. OK"',
-        display: true,
-        date: `Dec 31, 2011`,
-        image: null
-    },
+    // {
+    //     quote: '"they are teaching gay issues to 7-yr old kids. <span class="red-text">BY LAW</span>.  A pure homosexual can not reproduce, <span class="red-text">so they need your children for new partners</span>. OK"',
+    //     display: true,
+    //     date: `Dec 31, 2011`,
+    //     image: null
+    // },
     // {
     //     quote: '"Even as New Year approaches West Coast, I seek the correct feeling.  The "E" word.Not ecstasy per se, rather Equanimity.<span class="red-text">A core professional</span>"',
     //     display: true,
@@ -361,24 +361,24 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Jan 1, 2012`,
     //     image: null
     // },
-    {
-        quote: `"An old man told me(I was 20 yrs) Never scare a coward.I told him"I aint scary".YES YOU ARE <span class="red-text">Now a generation of cowards are afraid of me</span>.OOPS"`,
-        display: true,
-        date: `Jan 1, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"An old man told me(I was 20 yrs) Never scare a coward.I told him"I aint scary".YES YOU ARE <span class="red-text">Now a generation of cowards are afraid of me</span>.OOPS"`,
+    //     display: true,
+    //     date: `Jan 1, 2012`,
+    //     image: null
+    // },
     {
         quote: `"I watch the most capable athletes in the world,but feel no envy.When it was my turn(as a man) I conquered. <span class="red-text">Find achievement and be capable.</span>"`,
         display: true,
         date: `Jan 2, 2012`,
         image: null
     },
-    {
-        quote: `"It appears to me that many Chinese live without that common feeling of human <span class="red-text">ENVY</span>. They seem to be so driven.They are just being themselves."`,
-        display: true,
-        date: `Jan 8, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"It appears to me that many Chinese live without that common feeling of human <span class="red-text">ENVY</span>. They seem to be so driven.They are just being themselves."`,
+    //     display: true,
+    //     date: `Jan 8, 2012`,
+    //     image: null
+    // },
     {
         quote: `"A highly-educated (formal education) PHD quips (to me) maybe I could have been you and you could have been the phd.He doesn't get it.No tks."`,
         display: true,
@@ -421,18 +421,18 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Jan 13, 2012`,
     //     image: null
     // },
-    {
-        quote: `"I must admit, the clowns who perpetrate their "games" on free society are no longer funny."funny?" .<span class="red-text">Not out here on the sharp end</span>.  Shut up"`,
-        display: true,
-        date: `Jan 13, 2012`,
-        image: null
-    },
-    {
-        quote: `"Physical force is underrated,S.Do something more effective than "walking off" and pretending.He must learn his place in life"`,
-        display: true,
-        date: `Jan 15, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"I must admit, the clowns who perpetrate their "games" on free society are no longer funny."funny?" .<span class="red-text">Not out here on the sharp end</span>.  Shut up"`,
+    //     display: true,
+    //     date: `Jan 13, 2012`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"Physical force is underrated,S.Do something more effective than "walking off" and pretending.He must learn his place in life"`,
+    //     display: true,
+    //     date: `Jan 15, 2012`,
+    //     image: null
+    // },
     {
         quote: `"Confusing knowledge with wisdom is a dangerous trend. Life may seem like a game,but in fact is deadly serious. <span class="red-text">Wisdom breeds action</span>, Tateism"`,
         display: true,
@@ -458,12 +458,12 @@ const chroniclesOfEmoryTate2011 = [
         date: `Jan 20, 2012`,
         image: null
     },
-    {
-        quote: `"Again I worry, if gays can not have children,all they need is <span class="red-text">YOUR</span> children to continue their sex lives.<span class="red-text">How could this logic be flawed?</span> Tate"`,
-        display: true,
-        date: `Jan 22, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"Again I worry, if gays can not have children,all they need is <span class="red-text">YOUR</span> children to continue their sex lives.<span class="red-text">How could this logic be flawed?</span> Tate"`,
+    //     display: true,
+    //     date: `Jan 22, 2012`,
+    //     image: null
+    // },
     {
         quote: `"Turning a "blind eye" does not make you cool. A non-reaction isnt "smooth"  <span class="red-text">It makes you weak,unaware and a walking target for hostile acts</span>"`,
         display: true,
@@ -507,12 +507,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Feb 13, 2012`,
     //     image: null
     // },
-    {
-        quote: `"Rape in the military terrible. But when a fem soldier foreplays on some dude's face and leaves a dude with blue-balls, <span class="red-text">did she rape him?</span> yes"`,
-        display: true,
-        date: `Feb 14, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"Rape in the military terrible. But when a fem soldier foreplays on some dude's face and leaves a dude with blue-balls, <span class="red-text">did she rape him?</span> yes"`,
+    //     display: true,
+    //     date: `Feb 14, 2012`,
+    //     image: null
+    // },
     // {
     //     quote: `"When your name is Tristan Tate, the people love to hate. They can't duplicate, nor even emulate. It's sad to imitate. <span class="red-text">Silence all debate</span>."`,
     //     display: true,
@@ -536,7 +536,7 @@ const chroniclesOfEmoryTate2011 = [
         image: null
     },
     {
-        quote: `"Some moron recommends that I "pay attention". For each thing you see there is something else you miss.  I should have told him <span class="red-text">STFU</span>. #Child"`,
+        quote: `"Some moron recommends that I "pay attention". <span class="red-text">For each thing you see there is something else you miss.</span>"`,
         display: true,
         date: `Mar 5, 2012`,
         image: null
@@ -560,24 +560,24 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Mar 7, 2012`,
     //     image: null
     // },
-    {
-        quote: `"One must admit that the racial hatreds have gone "underground".  They don't shout NIGGER anymore, <span class="red-text">they just quietly discriminate and ignore</span>."`,
-        display: true,
-        date: `Mar 9, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"One must admit that the racial hatreds have gone "underground".  They don't shout NIGGER anymore, <span class="red-text">they just quietly discriminate and ignore</span>."`,
+    //     display: true,
+    //     date: `Mar 9, 2012`,
+    //     image: null
+    // },
     {
         quote: `"The ability to read minds develops after many decades. Still, it is becoming useless now as empty-headed "cool" people are tuned out. #lost"`,
         display: true,
         date: `Mar 9, 2012`,
         image: null
     },
-    {
-        quote: `"My mind-reading skills are rendered neutral, as the streets fill with empty-headed youth, no goals, and very little self-respect. #PIERCEME"`,
-        display: true,
-        date: `Mar 11, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"My mind-reading skills are rendered neutral, as the streets fill with empty-headed youth, no goals, and very little self-respect. #PIERCEME"`,
+    //     display: true,
+    //     date: `Mar 11, 2012`,
+    //     image: null
+    // },
     {
         quote: `"Living in a state of paranoia and looking is dangerous to one's physical and mental health and also results in poor security. 
         <span class="red-text">Rodent-like</span>."`,
@@ -586,25 +586,25 @@ const chroniclesOfEmoryTate2011 = [
         image: null
     },
     {
-        quote: `"Many animals are immune to their own poison. The toxic HUMAN realizes that his  toxin kills even himself, <span class="red-text">toxifies his kids, all</span>. #epicfail"`,
+        quote: `"Many animals are immune to their own poison. The toxic HUMAN realizes that his  toxin kills even himself, <span class="red-text">toxifies his kids, all</span>."`,
         display: true,
         date: `Mar 20, 2012`,
         image: null
     },
     {
-        quote: `"Conformity is the touchstone of failed genius.  Show conformist, <span class="red-text">I will show you average</span>. BTW tattoo and piercing is another way to conform."`,
+        quote: `"Conformity is the touchstone of failed genius.  Show conformist, <span class="red-text">I will show you average</span>."`,
         display: true,
         date: `Mar 20, 2012`,
         image: null
     },
     {
-        quote: `"Problem with small-minded people is that one can always tell what they are thinking. <span class="red-text">It is rarely even original, good, or safe</span>. #idiotbuddy"`,
+        quote: `"Problem with small-minded people is that one can always tell what they are thinking. <span class="red-text">It is rarely even original, good, or safe</span>."`,
         display: true,
         date: `Mar 21, 2012`,
         image: null
     },
     {
-        quote: `"I allow manipulation to find out where my enemy wants me to go. Then I <span class="red-text">use my mind to break the trap and punish the perpetrators</span>. #alwayswin"`,
+        quote: `"I allow manipulation to find out where my enemy wants me to go. Then I <span class="red-text">use my mind to break the trap and punish the perpetrators</span>."`,
         display: true,
         date: `Mar 21, 2012`,
         image: null
@@ -621,12 +621,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Mar 25, 2012`,
     //     image: null
     // },
-    {
-        quote: `"The soft underbelly of the "New World Order" is exposed-"CONNECTED" people steal all wealth. Idiots march in lockstep. <span class="red-text">Mimic then DIE</span>#zombie"`,
-        display: true,
-        date: `Mar 26, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"The soft underbelly of the "New World Order" is exposed-"CONNECTED" people steal all wealth. Idiots march in lockstep. <span class="red-text">Mimic then DIE</span>."`,
+    //     display: true,
+    //     date: `Mar 26, 2012`,
+    //     image: null
+    // },
     {
         quote: `"Action remains when we run out of excuses.Contentment is left when we exhaust our lust. Ashes remain from fire, <span class="red-text">we all return to the dust</span>."`,
         display: true,
@@ -664,26 +664,26 @@ const chroniclesOfEmoryTate2011 = [
         date: `Mar 29, 2012`,
         image: null
     },
-    {
-        quote: `"Enemies of Alpha males are weak.<span class="red-text">They hunt in packs</span>.They invent motives to harm. Mostly, they pretend to be the alpha's friends, <span class="red-text">to get close</span>"`,
-        display: true,
-        date: `Mar 30, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"Enemies of Alpha males are weak.<span class="red-text">They hunt in packs</span>.They invent motives to harm. Mostly, they pretend to be the alpha's friends, <span class="red-text">to get close</span>"`,
+    //     display: true,
+    //     date: `Mar 30, 2012`,
+    //     image: null
+    // },
     // {
     //     quote: `"Honestly. There is a problem with the hoodie. Just like the burkha or the assassin's balaclava. It is not a racial thing, <span class="red-text">it is a disguise</span>."`,
     //     display: true,
     //     date: `Mar 30, 2012`,
     //     image: null
     // },
+    // {
+    //     quote: `"Intelligence wins against cunning! Not that some fk can't bash your head with a rock  Even if it kills you he can't say <span class="red-text">"I am smarter!"</span>#fail"`,
+    //     display: true,
+    //     date: `Apr 11, 2012`,
+    //     image: null
+    // },
     {
-        quote: `"Intelligence wins against cunning! Not that some fk can't bash your head with a rock  Even if it kills you he can't say <span class="red-text">"I am smarter!"</span>#fail"`,
-        display: true,
-        date: `Apr 11, 2012`,
-        image: null
-    },
-    {
-        quote: `"Can cowards tell you to "have courage" Can athiests say "God help me" Can narcissists say "I love you" <span class="red-text">Can dictators say "Freedom"</span> #puzzling"`,
+        quote: `"Can cowards tell you to "have courage" Can athiests say "God help me" Can narcissists say "I love you" <span class="red-text">Can dictators say "Freedom"</span>."`,
         display: true,
         date: `Apr 12, 2012`,
         image: null
@@ -708,7 +708,7 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `"Being real means NOT being a reflection of pop culture.  <span class="red-text">How can you be an individual when your very thoughts are cloned</span>. Be urself. #fake"`,
+        quote: `"Being real means NOT being a reflection of pop culture.  <span class="red-text">How can you be an individual when your very thoughts are cloned</span>. Be urself."`,
         display: true,
         date: `Apr 19, 2012`,
         image: null
@@ -790,44 +790,44 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Jun 11, 2012`,
     //     image: null
     // },
+    // {
+    //     quote: `"FAILURE tastes like a thick,bitter liquid  hard to swallow. <span class="red-text">With an aftertaste of unmentionable rankness</span>. This is what I am told.#neverfail"`,
+    //     display: true,
+    //     date: `Jun 18, 2012`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"Why do inferior males always have something smart to say, when with a group or gang.  <span class="red-text">Alone they are as silent as frightened birds</span>. #coward"`,
+    //     display: true,
+    //     date: `Jun 22, 2012`,
+    //     image: null
+    // },
     {
-        quote: `"FAILURE tastes like a thick,bitter liquid  hard to swallow. <span class="red-text">With an aftertaste of unmentionable rankness</span>. This is what I am told.#neverfail"`,
-        display: true,
-        date: `Jun 18, 2012`,
-        image: null
-    },
-    {
-        quote: `"Why do inferior males always have something smart to say, when with a group or gang.  <span class="red-text">Alone they are as silent as frightened birds</span>. #coward"`,
-        display: true,
-        date: `Jun 22, 2012`,
-        image: null
-    },
-    {
-        quote: `"When you run out of cliche and pop-culture knowledge your real thoughts seem so useless Right?  <span class="red-text">Look at what they have done to you</span>. #Improve"`,
-        display: true,
-        date: `Jul 1, 2012`,
-        image: null
-    },
-    {
-        quote: `"Work Consume Die. Good Luck Life goes on Take care Hang in there Nothing lasts forever Does not kill makes you stronger.  <span class="red-text">Forgive and forget</span>"`,
+        quote: `"When you run out of cliche and pop-culture knowledge your real thoughts seem so useless Right?  <span class="red-text">Look at what they have done to you</span>."`,
         display: true,
         date: `Jul 1, 2012`,
         image: null
     },
+    // {
+    //     quote: `"Work Consume Die. Good Luck Life goes on Take care Hang in there Nothing lasts forever Does not kill makes you stronger.  <span class="red-text">Forgive and forget</span>"`,
+    //     display: true,
+    //     date: `Jul 1, 2012`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"We "congratulate" Ander Cooper when he OUTS himself, or Frankie Ocean. Explain the ACHIEVEMENT of being gay. <span class="red-text">I made children</span>. #Nobodycares."`,
+    //     display: true,
+    //     date: `Jul 4, 2012`,
+    //     image: null
+    // },
     {
-        quote: `"We "congratulate" Ander Cooper when he OUTS himself, or Frankie Ocean. Explain the ACHIEVEMENT of being gay. <span class="red-text">I made children</span>. #Nobodycares."`,
-        display: true,
-        date: `Jul 4, 2012`,
-        image: null
-    },
-    {
-        quote: `"The truth is if I could clone myself. I would not.  The better versions of me already walk the planet. <span class="red-text">Love was my link to the future</span>. kids#"`,
+        quote: `"The truth is if I could clone myself. I would not.  The better versions of me already walk the planet. <span class="red-text">Love was my link to the future</span>."`,
         display: true,
         date: `Jul 16, 2012`,
         image: null
     },
     {
-        quote: `"As the problem reveals itself I know that people realize that they are their own worst enemy.  <span class="red-text">As such they turn their hate outward</span>. #fail"`,
+        quote: `"As the problem reveals itself I know that people realize that they are their own worst enemy.  <span class="red-text">As such they turn their hate outward</span>."`,
         display: true,
         date: `Jul 29, 2012`,
         image: null
@@ -838,12 +838,12 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Jul 29, 2012`,
     //     image: null
     // },
-    {
-        quote: `"A combination of my sheer indefagitability, and my unequalled perspicacity makes me a feared adversary, <span class="red-text">regardless of field of endeavour</span>"`,
-        display: true,
-        date: `Aug 24, 2012`,
-        image: null
-    },
+    // {
+    //     quote: `"A combination of my sheer indefagitability, and my unequalled perspicacity makes me a feared adversary, <span class="red-text">regardless of field of endeavour</span>"`,
+    //     display: true,
+    //     date: `Aug 24, 2012`,
+    //     image: null
+    // },
     // {
     //     quote: `"Anybody who thinks they have children in my kid's league, tell me! I know we all truly love our kids. Still, <span class="red-text">I am certain mine are "perfect"</span>"`,
     //     display: true,
@@ -857,7 +857,7 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `"All these people talking forgiveness.It is appropriate to get on your knees while begging.  <span class="red-text">Men should never forget wrongs</span> #perservere"`,
+        quote: `"All these people talking forgiveness.It is appropriate to get on your knees while begging.  <span class="red-text">Men should never forget wrongs</span>."`,
         display: true,
         date: `Sep 10, 2012`,
         image: null
@@ -869,7 +869,7 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `"Life only has 3 categories.  Cause and effect.  Purpose and intent. Action and reaction.  <span class="red-text">When you master all three realms you begin Tateism</span>"`,
+        quote: `"Life only has 3 categories.  Cause and effect.  Purpose and intent. Action and reaction.  <span class="red-text">When you master all three realms you begin Tateism</span>."`,
         display: true,
         date: `Sep 22, 2012`,
         image: null
@@ -881,7 +881,7 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `"When the final mind-game is played, and death awaits, you might wonder.<span class="red-text">If I did not mind did it matter</span>.  Your moves, sand on the beach.#fear"`,
+        quote: `"When the final mind-game is played, and death awaits, you might wonder.<span class="red-text">If I did not mind did it matter</span>.  Your moves, sand on the beach."`,
         display: true,
         date: `Oct 7, 2012`,
         image: null
@@ -892,26 +892,26 @@ const chroniclesOfEmoryTate2011 = [
     //     date: `Nov 12, 2012`,
     //     image: null
     // },
+    // {
+    //     quote: `"People say "I am a vegetarian".  No such thing. Human species.  Better stated one  practices vegetarianism.  <span class="red-text">It is religion, not a reality</span>."`,
+    //     display: true,
+    //     date: `Feb 8, 2013`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"The  average human in the postmodern world works to have leisure  time. Work to sit and relax. <span class="red-text">We must break the work,consume, die  cycle</span>"`,
+    //     display: true,
+    //     date: `Feb 8, 2013`,
+    //     image: null
+    // },
+    // {
+    //     quote: `"It appears the insanity of the ruling elite is exposed worldwide now.  <span class="red-text">They will kill you</span>.  Keep your mouths shut, behave as sheep. #sadlife"`,
+    //     display: true,
+    //     date: `Feb 28, 2013`,
+    //     image: null
+    // },
     {
-        quote: `"People say "I am a vegetarian".  No such thing. Human species.  Better stated one  practices vegetarianism.  <span class="red-text">It is religion, not a reality</span>."`,
-        display: true,
-        date: `Feb 8, 2013`,
-        image: null
-    },
-    {
-        quote: `"The  average human in the postmodern world works to have leisure  time. Work to sit and relax. <span class="red-text">We must break the work,consume, die  cycle</span>"`,
-        display: true,
-        date: `Feb 8, 2013`,
-        image: null
-    },
-    {
-        quote: `"It appears the insanity of the ruling elite is exposed worldwide now.  <span class="red-text">They will kill you</span>.  Keep your mouths shut, behave as sheep. #sadlife"`,
-        display: true,
-        date: `Feb 28, 2013`,
-        image: null
-    },
-    {
-        quote: `"Look in a mirror and ask yourself, <span class="red-text">who is leading me.Why do I act this way?</span>If you believe the people on Tele =leaders, remain a puppet!#fool"`,
+        quote: `"Look in a mirror and ask yourself, <span class="red-text">who is leading me.Why do I act this way?</span>If you believe the people on Tele =leaders, remain a puppet!"`,
         display: true,
         date: `Mar 2, 2013`,
         image: null
@@ -923,7 +923,7 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `"The psychological effects of mind-fuck are not understood.<span class="red-text">We learned nothing from the Nazi failure</span>.Get  into lock-step.Lose ur mind. #puppet"`,
+        quote: `"The psychological effects of mind-fuck are not understood.<span class="red-text">We learned nothing from the Nazi failure</span>.Get  into lock-step. Lose your mind."`,
         display: true,
         date: `Mar 3, 2013`,
         image: null
@@ -942,17 +942,17 @@ const chroniclesOfEmoryTate2011 = [
     //     image: null
     // },
     {
-        quote: `""Who chains us.and who holds the key that can  set us free? It's you. You have all the weapons you need. Now fight!" (MOVIE SUCKER PUNCH)"`,
+        quote: `""Who chains us.and who holds the key that can  set us free? It's you. You have all the weapons you need. Now fight!""`,
         display: true,
         date: `Mar 15, 2013`,
         image: null
     },
-    {
-        quote: `"Gays (esp men) <span class="red-text">can't reproduce so they need YOUR children</span>.Men will marry men to get tax break/govt benefits.Gay divorce will clog courts.#NO"`,
-        display: true,
-        date: `Mar 28, 2013`,
-        image: null
-    },
+    // {
+    //     quote: `"Gays (esp men) <span class="red-text">can't reproduce so they need YOUR children</span>.Men will marry men to get tax break/govt benefits.Gay divorce will clog courts.#NO"`,
+    //     display: true,
+    //     date: `Mar 28, 2013`,
+    //     image: null
+    // },
     {
         quote: `"The problem with modern dudes is that their main sex organ is the tongue. Favourite position,head between thighs.<span class="red-text">I fail and now have 3 kids</span>."`,
         display: true,

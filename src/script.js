@@ -241,7 +241,6 @@ const images = [
     "/images/tateism.png" ,
     "/images/emory-tate-chess.png",
     "/images/emory-tate.png",
-    "/images/the-tate-pride.png",
     "/images/emory-tate-with-mom.png",
     "/images/emory-tate-young.png",
     "/images/tate-pondering.png",
@@ -274,7 +273,6 @@ const images = [
     "/images/emory27.png",
     "/images/emory28.png",
     "/images/emory29.png",
-    "/images/emory30.png",
     "/images/emory31.png",
     "/images/emory32.png",
     "/images/emory33.png",
@@ -289,7 +287,6 @@ const images = [
     "/images/emory42.png",
     "/images/emory43.png",
     "/images/emory44.png",
-    "/images/emory45.png",
     "/images/emory46.png",
     "/images/emory47.png",
     "/images/emory48.png",
@@ -309,7 +306,6 @@ const images = [
     "/images/emory62.png",
     "/images/emory63.png",
     "/images/emory64.png",
-    "/images/emory65.png",
     "/images/emory66.png",
     "/images/emory67.png",
     "/images/emory68.png",
@@ -1591,13 +1587,13 @@ function handleScroll() {
     const section2012End = document.querySelector('.section-2012-end')
     const section2013End = document.querySelector('.section-2013-end')
 
-    if (isInViewport(section2011End) && letterCount.length < 31) { // 58, 6 tweets removed from original | 2025 edit: 31 tweets in 2011 from original 58
+    if (isInViewport(section2011End) && letterCount.length < 13) { // 58, 6 tweets removed from original | 2025 edit: 31 tweets in 2011 from original 58 | 2026 Edit, 14 tweets in 2011 from original 58
         section2011Vh += 10
         document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
         console.log("extend...")
     } 
     
-    if (isInViewport(section2012End) && letterCount.length < 76) { // 2025 edit: 45 tweets in 2011 from original amount of 146, 31+45=76
+    if (isInViewport(section2012End) && letterCount.length < 29) { // 2025 edit: 45 tweets in 2011 from original amount of 146, 31+45=76 | 2026 edit: 29 tweets from 2012
         section2012Vh += 10
         document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
         console.log("extend...")
