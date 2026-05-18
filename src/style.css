@@ -597,7 +597,7 @@ header {
 
 .section-2011 {
     /* height: 700vh; */
-    height: 200vh;
+    height: 100vh;
     /* border: 3px solid red; */
     display: flex;
     flex-direction: column;
@@ -702,7 +702,7 @@ header {
 
 .section-2012 {
     /* height: 1000vh; */
-    height: 200vh;
+    height: 100vh;
     /* border: 3px solid green; */
     display: flex;
     flex-direction: column;
@@ -730,7 +730,7 @@ header {
 }
 
 .section-2013 {
-    height: 100vh;
+    height: 1vh;
     /* border: 3px solid blue; */
     display: flex;
     flex-direction: column;

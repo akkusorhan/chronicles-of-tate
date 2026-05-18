@@ -1587,20 +1587,20 @@ function handleScroll() {
     const section2012End = document.querySelector('.section-2012-end')
     const section2013End = document.querySelector('.section-2013-end')
 
-    if (isInViewport(section2011End) && letterCount.length < 13) { // 58, 6 tweets removed from original | 2025 edit: 31 tweets in 2011 from original 58 | 2026 Edit, 14 tweets in 2011 from original 58
-        section2011Vh += 10
+    if (isInViewport(section2011End) && letterCount.length < 7) { // 58, 6 tweets removed from original | 2025 edit: 31 tweets in 2011 from original 58 | 2026 Edit, 14 tweets in 2011 from original 58
+        section2011Vh += 1
         document.querySelector(".section-2011").style.height = `${section2011Vh}vh`
         console.log("extend...")
     } 
     
-    if (isInViewport(section2012End) && letterCount.length < 29) { // 2025 edit: 45 tweets in 2011 from original amount of 146, 31+45=76 | 2026 edit: 29 tweets from 2012
-        section2012Vh += 10
+    if (isInViewport(section2012End) && letterCount.length < 21) { // 2025 edit: 45 tweets in 2011 from original amount of 146, 31+45=76 | 2026 edit: 29 tweets from 2012
+        section2012Vh += 1
         document.querySelector(".section-2012").style.height = `${section2012Vh}vh`
         console.log("extend...")
     } 
     
     if (isInViewport(section2013End) && nthItemEnd < chroniclesOfEmoryTate2011.length) { //letterCount.length < 162
-        section2013vh += 10
+        section2013vh += 1
         document.querySelector(".section-2013").style.height = `${section2013vh}vh`
         console.log("extend...")
     }
